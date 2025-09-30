@@ -9,6 +9,8 @@ if(!defined('ABSPATH')){
     exit;
 }
 
+require_once plugin_dir_path(__FILE__) . 'includes/shortcode.php';
+
 class Loan_calculator{
     private static $instance = null;
 
@@ -17,6 +19,10 @@ class Loan_calculator{
             self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    public function __construct(){
+        new Loan_calculator_shortcode();
     }
 }
 
