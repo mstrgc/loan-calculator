@@ -18,3 +18,5 @@ class Loan_calculator{
         return self::$instance;
     }
 }
+
+add_action('plugin_loaded', ['Loan_calculator', 'get_instance']);
