@@ -8,6 +8,7 @@
 if(!defined('ABSPATH')){
     exit;
 }
+
 class Loan_calculator{
     private static $instance = null;
 
