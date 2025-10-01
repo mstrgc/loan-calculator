@@ -53,7 +53,7 @@ class Loan_calculator_shortcode{
                     <br>
                     <input type="number" id="fee" min="0" max="4" step="2">
                     <label for="fee">کارمزد</label>
-                    <button type="submit" onclick="calculate()">محاسبه</button>
+                    <button type="button" id="loan_form_submit">محاسبه</button>
                 </form>
                 <p id="result"></p>
             </div>
@@ -62,10 +62,12 @@ class Loan_calculator_shortcode{
 
                 function calculate() {
                     let loan_form = document.getElementById('loan_form');
-                    let loan_form_data = new loan_form_data(loan_form);
+                    let loan_form_data = new FormData(loan_form);
 
-                    result.innerHTML = loan_form_data;
+                    console.log(loan_form_data);
                 }
+
+                document.getElementById('loan_form_submit').addEventListener('click', calculate);
             </script>
         <?php
         return ob_get_clean();
