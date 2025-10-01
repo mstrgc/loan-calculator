@@ -8,35 +8,27 @@ class Loan_calculator_shortcode{
         add_action('wp_ajax_calculator', [$this, 'calculator']);
     }
 
-    public static $fee = [
+    public static $factor = [
         '0' => [
-            '6' => 22,
-            '12' => 12.5,
-            '18' => 8.5,
-            '24' => 6.5,
-            '30' => 5,
-            '36' => 4,
-            '42' => 3.5,
-            '48' => 3,
-            '54' => 2.5,
-            '60' => 2
-        ],
-        '2' => [
-            '6' => 22,
-            '12' => 12.5,
-            '18' => 8.5,
-            '24' => 6.5,
-            '30' => 5,
-            '36' => 4,
-            '42' => 3.5,
-            '48' => 3,
-            '54' => 2.5,
-            '60' => 2
+            '6' => [22, 44, 66.5, 88.5, 110.5, 132.5, 154.5, 176.5, 198, 220, 242, 264],
+            '12' => [12.5, 25, 37.5, 50, 62, 74.5, 87, 99.5, 112, 124, 136.5, 149],
+            '18' => [8.5, 17.5, 26, 35, 44, 52.5, 61.5, 70, 79, 88, 96, 105],
+            '24' => [6.5, 13, 19.5, 26, 32.5, 39, 45.5, 52, 58.5, 65, 71.5, 78],
+            '30' => [5, 10.5, 16, 21, 26.5, 32, 37, 42.5, 48, 53, 58.5, 63.5],
+            '36' => [4, 8.5, 13, 17.5, 21.5, 26, 30.5, 35, 39, 43.5, 48, 52],
+            '42' => [3.5, 7.5, 11, 15, 18, 22.5, 26, 30, 33.5, 37.5, 41, 45],
+            '48' => [3, 6.5, 9.5, 13, 16, 19.5, 22.5, 26, 29, 32, 35.5, 38.5],
+            '54' => [2.5, 5.5, 8.5, 11.5, 14.5, 17, 20, 23, 25.5, 28.5, 31.5, 34.5],
+            '60' => [2, 5, 7.5, 10, 12.5, 15, 17.5, 20, 22.5, 25.5, 28, 30.5]
         ]
     ];
 
     public function calculator() {
-        echo '"hello"';
+        $average = $_POST['average'];
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $fee = $_POST['fee'];
+        $factor = self::$factor;
         wp_die();
     }
 
@@ -61,7 +53,7 @@ class Loan_calculator_shortcode{
                 <p id="result"></p>
             </div>
             <script>
-                const presult = document.getElementById('result');
+                const text_result = document.getElementById('result');
 
                 function calculate() {
                     let loan_form = document.getElementById('loan_form');
@@ -70,10 +62,8 @@ class Loan_calculator_shortcode{
                     loan_form_data.append('action', 'calculator');
 
                     fetch("<?= admin_url('admin-ajax.php') ?>", {method: 'post', body: loan_form_data})
-
                     .then(response => response.text())
-                    .then(result => {console.log(result);
-                    });
+                    .then(result => {text_result.innerHTML = result;});
                 }
 
                 document.getElementById('loan_form_submit').addEventListener('click', calculate);
