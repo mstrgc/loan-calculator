@@ -61,14 +61,10 @@ class Loan_calculator_shortcode{
                 const result = document.getElementById('result');
 
                 function calculate() {
-                    let average = Number(document.getElementById('average').value);
-                    let date = Number(document.getElementById('date').value);
-                    let time = Number(document.getElementById('time').value);
-                    let fee = Number(document.getElementById('fee').value);
+                    let loan_form = document.getElementById('loan_form');
+                    let loan_form_data = new loan_form_data(loan_form);
 
-                    var calculator = <?= $this->calculator(); ?>;
-
-                    result.innerHTML = calculator;
+                    result.innerHTML = loan_form_data;
                 }
             </script>
         <?php
