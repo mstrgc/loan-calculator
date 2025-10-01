@@ -26,9 +26,15 @@ class Loan_calculator_shortcode{
     public function calculator() {
         $average = $_POST['average'];
         $date = $_POST['date'];
-        $time = $_POST['time'];
+        $time = $_POST['time'] - 1;
         $fee = $_POST['fee'];
-        $factor = self::$factor;
+
+        $factor = self::$factor[$fee][$date][$time];
+
+        $loan = ($average * $factor) / 100;
+
+        echo $loan;
+
         wp_die();
     }
 
