@@ -42,29 +42,33 @@ class Loan_calculator_shortcode{
         ?>
             <div>
                 <form id="loan_form">
-                    <input type="text" id="average">
+                    <input type="text" name="average" id="average">
                     <label for="average">میانگین سرمایه</label>
                     <br>
-                    <input type="number" id="date" min="6" max="60" step="6">
+                    <input type="number" name="date" id="date" min="6" max="60" step="6">
                     <label for="date">مدت زمان</label>
                     <br>
-                    <input type="number" id="time" min="1" max="12">
+                    <input type="number" name="time" id="time" min="1" max="12">
                     <label for="time">مدت زمان واریز به حساب</label>
                     <br>
-                    <input type="number" id="fee" min="0" max="4" step="2">
+                    <input type="number" name="fee" id="fee" min="0" max="4" step="2">
                     <label for="fee">کارمزد</label>
                     <button type="button" id="loan_form_submit">محاسبه</button>
                 </form>
                 <p id="result"></p>
             </div>
             <script>
-                const result = document.getElementById('result');
+                const presult = document.getElementById('result');
 
                 function calculate() {
                     let loan_form = document.getElementById('loan_form');
                     let loan_form_data = new FormData(loan_form);
 
-                    console.log(loan_form_data);
+                    fetch("", {method: 'post', body: loan_form_data})
+
+                    .then(response => response.text())
+                    .then(result => {console.log(result);
+                    });
                 }
 
                 document.getElementById('loan_form_submit').addEventListener('click', calculate);
