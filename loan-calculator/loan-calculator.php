@@ -10,6 +10,7 @@ if(!defined('ABSPATH')){
 }
 
 require_once plugin_dir_path(__FILE__) . 'includes/shortcode.php';
+require_once plugin_dir_path(__FILE__) . 'includes/enqueue.php';
 
 class Loan_calculator{
     private static $instance = null;
@@ -23,6 +24,7 @@ class Loan_calculator{
 
     public function __construct(){
         new Loan_calculator_shortcode();
+        new Loan_enqueue();
     }
 }
 
