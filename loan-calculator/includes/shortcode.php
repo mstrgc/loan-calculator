@@ -4,6 +4,8 @@ class Loan_calculator_shortcode{
 
     public function __construct(){
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
+        add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
+        add_action('wp_ajax_calculator', [$this, 'calculator']);
     }
 
     public static $fee = [
@@ -34,7 +36,8 @@ class Loan_calculator_shortcode{
     ];
 
     public function calculator() {
-        return '"hello"';
+        echo '"hello"';
+        wp_die();
     }
 
     public function render_loan_calculator(){
@@ -64,7 +67,9 @@ class Loan_calculator_shortcode{
                     let loan_form = document.getElementById('loan_form');
                     let loan_form_data = new FormData(loan_form);
 
-                    fetch("", {method: 'post', body: loan_form_data})
+                    loan_form_data.append('action', 'calculator');
+
+                    fetch("<?= admin_url('admin-ajax.php') ?>", {method: 'post', body: loan_form_data})
 
                     .then(response => response.text())
                     .then(result => {console.log(result);
