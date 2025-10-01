@@ -6,45 +6,69 @@ class Loan_calculator_shortcode{
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
     }
 
-    public static $zero_fee = [
-        '6' => 22,
-        '12' => 12.5,
-        '18' => 8.5,
-        '24' => 6.5,
-        '30' => 5,
-        '36' => 4,
-        '42' => 3.5,
-        '48' => 3,
-        '54' => 2.5,
-        '60' => 2,
+    public static $fee = [
+        '0' => [
+            '6' => 22,
+            '12' => 12.5,
+            '18' => 8.5,
+            '24' => 6.5,
+            '30' => 5,
+            '36' => 4,
+            '42' => 3.5,
+            '48' => 3,
+            '54' => 2.5,
+            '60' => 2
+        ],
+        '2' => [
+            '6' => 22,
+            '12' => 12.5,
+            '18' => 8.5,
+            '24' => 6.5,
+            '30' => 5,
+            '36' => 4,
+            '42' => 3.5,
+            '48' => 3,
+            '54' => 2.5,
+            '60' => 2
+        ]
     ];
+
+    public function calculator() {
+        return '"hello"';
+    }
 
     public function render_loan_calculator(){
         ob_start();
         ?>
-            <form action="">
-                <input type="text" id="average">
-                <label for="average">میانگین سرمایه</label>
-                <br>
-                <input type="number" id="date" min="6" max="60" step="6">
-                <label for="date">مدت زمان</label>
-                <br>
-                <input type="number" id="time" min="1" max="12">
-                <label for="time">مدت زمان واریز به حساب</label>
-            </form>
-            <button onclick="calculate()">محاسبه</button>
-            <p id="result"></p>
+            <div>
+                <form id="loan_form">
+                    <input type="text" id="average">
+                    <label for="average">میانگین سرمایه</label>
+                    <br>
+                    <input type="number" id="date" min="6" max="60" step="6">
+                    <label for="date">مدت زمان</label>
+                    <br>
+                    <input type="number" id="time" min="1" max="12">
+                    <label for="time">مدت زمان واریز به حساب</label>
+                    <br>
+                    <input type="number" id="fee" min="0" max="4" step="2">
+                    <label for="fee">کارمزد</label>
+                    <button type="submit" onclick="calculate()">محاسبه</button>
+                </form>
+                <p id="result"></p>
+            </div>
             <script>
                 const result = document.getElementById('result');
 
                 function calculate() {
-                    const average = document.getElementById('average').value;
-                    const date = document.getElementById('date').value;
-                    const time = document.getElementById('time').value;
-                    const fee_list = <?= json_encode(self::$zero_fee) ?>;
-                    let date1 = fee_list[date];
+                    let average = Number(document.getElementById('average').value);
+                    let date = Number(document.getElementById('date').value);
+                    let time = Number(document.getElementById('time').value);
+                    let fee = Number(document.getElementById('fee').value);
 
-                    result.innerHTML = (average * (date1 * time)) / 100;
+                    var calculator = <?= $this->calculator(); ?>;
+
+                    result.innerHTML = calculator;
                 }
             </script>
         <?php
