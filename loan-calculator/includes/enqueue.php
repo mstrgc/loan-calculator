@@ -19,7 +19,7 @@ class Loan_enqueue{
         );
 
         wp_localize_script('loan_config', 'loan_config_variables',
-            ['admin_ajax_url' => 'admin_url("admin-ajax.php")']
+            ['admin_ajax_url' => admin_url("admin-ajax.php")]
         );
     }
 }
