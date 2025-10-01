@@ -11,4 +11,5 @@ function calculate() {
         .then(result => { text_result.innerHTML = result; });
 }
 
-document.getElementById('loan_form_submit').addEventListener('click', calculate);
+document.addEventListener('DOMContentLoaded', calculate);
+document.getElementById('loan_form').addEventListener('input', calculate);
