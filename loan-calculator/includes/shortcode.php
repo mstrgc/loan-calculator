@@ -48,19 +48,21 @@ class Loan_calculator_shortcode{
     ];
 
     public function calculator() {
-        $loan_or_average = $_POST['loan_or_average'];
-        $price = $_POST['price'];
-        $date = $_POST['date'];
-        $time = $_POST['time'] - 1;
-        $fee = $_POST['fee'];
+        if(isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'])){
+            $loan_or_average = $_POST['loan_or_average'];
+            $price = $_POST['price'];
+            $date = $_POST['date'];
+            $time = $_POST['time'] - 1;
+            $fee = $_POST['fee'];
 
-        if($loan_or_average == 'average'){
-            $result = $this->average_to_loan_calculator($price, $date, $time, $fee);
-        } elseif($loan_or_average == 'loan'){
-            $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
+            if($loan_or_average == 'average'){
+                $result = $this->average_to_loan_calculator($price, $date, $time, $fee);
+            } elseif($loan_or_average == 'loan'){
+                $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
+            }
+
+            echo $result;
         }
-
-        echo $result;
         wp_die();
     }
 
@@ -83,6 +85,7 @@ class Loan_calculator_shortcode{
         ?>
             <div>
                 <form id="loan_form">
+                    <?php wp_nonce_field() ?>
                     <input type="radio" name="loan_or_average" value="average" id="average" checked>
                     <label for="average">میانگین</label>
                     <br>
