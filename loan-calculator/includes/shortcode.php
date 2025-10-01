@@ -24,28 +24,26 @@ class Loan_calculator_shortcode{
     ];
 
     public function calculator() {
-        $average = $_POST['average'];
+        $price = $_POST['price'];
         $date = $_POST['date'];
         $time = $_POST['time'] - 1;
         $fee = $_POST['fee'];
 
-        $result = $this->loan_to_average_calculator($average, $date, $time, $fee);
-
+        $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
         echo $result;
-
         wp_die();
     }
 
-    public function average_to_loan_calculator($average, $date, $time, $fee): int{
+    public function average_to_loan_calculator($price, $date, $time, $fee): int{
         $factor = self::$factor[$fee][$date][$time];
-        $loan = ($average * $factor) / 100;
+        $loan = ($price * $factor) / 100;
 
         return $loan;
     }
 
-    public function loan_to_average_calculator($loan, $date, $time, $fee): int{
+    public function loan_to_average_calculator($price, $date, $time, $fee): int{
         $factor = self::$factor[$fee][$date][$time];
-        $average = ($loan / $factor) * 100;
+        $average = ($price / $factor) * 100;
 
         return $average;
     }
@@ -55,7 +53,13 @@ class Loan_calculator_shortcode{
         ?>
             <div>
                 <form id="loan_form">
-                    <input type="text" name="average" id="average">
+                    <input type="radio" name="loan_or_average" value="average" id="average" checked>
+                    <label for="average">میانگین</label>
+                    <br>
+                    <input type="radio" name="loan_or_average" value="loan" id="loan">
+                    <label for="loan">وام</label>
+                    <br>
+                    <input type="text" name="price" id="average">
                     <label for="average">میانگین سرمایه</label>
                     <br>
                     <input type="number" name="date" id="date" min="6" max="60" step="6">
@@ -66,6 +70,7 @@ class Loan_calculator_shortcode{
                     <br>
                     <input type="number" name="fee" id="fee" min="0" max="4" step="2">
                     <label for="fee">کارمزد</label>
+                    <br>
                     <button type="button" id="loan_form_submit">محاسبه</button>
                 </form>
                 <p id="result"></p>
