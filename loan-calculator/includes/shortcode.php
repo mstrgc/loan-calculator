@@ -29,13 +29,18 @@ class Loan_calculator_shortcode{
         $time = $_POST['time'] - 1;
         $fee = $_POST['fee'];
 
-        $factor = self::$factor[$fee][$date][$time];
+        $result = $this->average_to_loan_calculator($average, $date, $time, $fee);
 
-        $loan = ($average * $factor) / 100;
-
-        echo $loan;
+        echo $result;
 
         wp_die();
+    }
+
+    public function average_to_loan_calculator($average, $date, $time, $fee){
+        $factor = self::$factor[$fee][$date][$time];
+        $loan = ($average * $factor) / 100;
+
+        return $loan;
     }
 
     public function render_loan_calculator(){
