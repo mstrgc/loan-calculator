@@ -21,6 +21,5 @@
         <label><input type="radio" name="fee" value="4">4%</label>
         <label for="fee">کارمزد</label>
     </form>
-    <p id="test"></p>
     <p id="result"></p>
 </div>

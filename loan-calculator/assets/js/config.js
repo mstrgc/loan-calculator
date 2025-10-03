@@ -8,7 +8,9 @@ function calculate() {
 
     fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
         .then(response => response.text())
-        .then(result => { text_result.innerHTML = result; });
+        .then(result => {
+            text_result.innerHTML = loan_plugin_js.persian_numbers(result);
+        });
 }
 
 document.addEventListener('DOMContentLoaded', calculate);

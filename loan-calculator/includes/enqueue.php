@@ -16,17 +16,17 @@ class Loan_enqueue{
         );
 
         wp_enqueue_script(
-            'loan_config',
-            plugin_dir_url(__FILE__) . '../assets/js/config.js',
-            ['jquery'],
+            'loan_form',
+            plugin_dir_url(__FILE__) . '../assets/js/form.js',
+            [],
             null,
             true
         );
 
         wp_enqueue_script(
-            'loan_form',
-            plugin_dir_url(__FILE__) . '../assets/js/form.js',
-            [],
+            'loan_config',
+            plugin_dir_url(__FILE__) . '../assets/js/config.js',
+            ['loan_form', 'jquery'],
             null,
             true
         );

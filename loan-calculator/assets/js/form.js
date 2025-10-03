@@ -1,8 +1,6 @@
-function form_control() {
+window.loan_plugin_js = window.loan_plugin_js || {};
 
-}
-
-function persian_numbers(numbers) {
+loan_plugin_js.persian_numbers = function(numbers) {
     persian_numbers = {
         0: '۰',
         1: '۱',
@@ -19,11 +17,8 @@ function persian_numbers(numbers) {
     result = '';
 
     for (let i = 0; i < numbers.length; i++) {
-        num = Array.from(numbers)[i];
+        num = Array.from(String(numbers))[i];
         result += persian_numbers[num];
     }
-
-    document.getElementById('test').innerHTML = result;
+    return result;
 }
-
-persian_numbers('99999');
