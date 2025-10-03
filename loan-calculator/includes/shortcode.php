@@ -69,7 +69,7 @@ class Loan_calculator_shortcode{
                 $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
             }
 
-            echo json_encode($result = ['message' => $result, 'status' => 'success']);
+            echo json_encode($result = ['message' => strval($result), 'status' => 'success']);
         }
         wp_die();
     }
