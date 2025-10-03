@@ -23,6 +23,14 @@ class Loan_enqueue{
             true
         );
 
+        wp_enqueue_script(
+            'loan_form',
+            plugin_dir_url(__FILE__) . '../assets/js/form.js',
+            [],
+            null,
+            true
+        );
+
         wp_localize_script('loan_config', 'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );

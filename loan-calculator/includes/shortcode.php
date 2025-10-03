@@ -52,11 +52,16 @@ class Loan_calculator_shortcode{
 
     public function calculator() {
         if(isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'])){
-            $loan_or_average = $_POST['loan_or_average'];
-            $price = $_POST['price'];
-            $date = $_POST['date'];
-            $time = $_POST['time'] - 1;
-            $fee = $_POST['fee'];
+            $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
+            $price = sanitize_text_field($_POST['price']);
+            $date = sanitize_text_field($_POST['date']);
+            $time = sanitize_text_field($_POST['time']) - 1;
+            $fee = sanitize_text_field($_POST['fee']);
+
+            if($price < 1000000){
+                echo $result = 'مبلغ نمی تواند از 1 میلیون تومان کمتر باشد';
+                wp_die();
+            }
 
             if($loan_or_average == 'average'){
                 $result = $this->average_to_loan_calculator($price, $date, $time, $fee);

@@ -1,4 +1,4 @@
-<div>
+<div id="loan_calculator_container">
     <form id="loan_form">
         <?php wp_nonce_field() ?>
         <input type="radio" name="loan_or_average" value="average" id="average" checked>
