@@ -16,11 +16,14 @@ function persian_numbers(numbers) {
         9: '۹'
     };
 
-    for (let i = Array(numbers); i <= numbers.length; i++) {
-        numbers = numbers.replace(i, persian_numbers[i]);
+    result = '';
+
+    for (let i = 0; i < numbers.length; i++) {
+        num = Array.from(numbers)[i];
+        result += persian_numbers[num];
     }
 
-    document.getElementById('test').innerHTML = numbers;
+    document.getElementById('test').innerHTML = result;
 }
 
-persian_numbers(99999);
+persian_numbers('99999');
