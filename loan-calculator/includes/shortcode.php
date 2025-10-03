@@ -59,7 +59,7 @@ class Loan_calculator_shortcode{
             $fee = sanitize_text_field($_POST['fee']);
 
             if($price < 1000000){
-                echo $result = 'مبلغ نمی تواند از 1 میلیون تومان کمتر باشد';
+                echo json_encode($result = ['message' =>'مبلغ نمی تواند از 1 میلیون تومان کمتر باشد', 'status' => 'error']);
                 wp_die();
             }
 
@@ -69,7 +69,7 @@ class Loan_calculator_shortcode{
                 $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
             }
 
-            echo $result;
+            echo json_encode($result = ['message' => $result, 'status' => 'success']);
         }
         wp_die();
     }

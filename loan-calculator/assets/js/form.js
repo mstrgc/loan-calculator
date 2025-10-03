@@ -1,6 +1,6 @@
 window.loan_plugin_js = window.loan_plugin_js || {};
 
-loan_plugin_js.persian_numbers = function(numbers) {
+loan_plugin_js.persian_numbers = function(input) {
     persian_numbers = {
         0: '۰',
         1: '۱',
@@ -16,8 +16,8 @@ loan_plugin_js.persian_numbers = function(numbers) {
 
     result = '';
 
-    for (let i = 0; i < numbers.length; i++) {
-        num = Array.from(String(numbers))[i];
+    for (let i = 0; i < input.length; i++) {
+        num = Array.from(String(input))[i];
         result += persian_numbers[num];
     }
     return result;
