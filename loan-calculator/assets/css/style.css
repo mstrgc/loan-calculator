@@ -1,3 +1,34 @@
-#loan_calculator_container {
+#loan_calculator_container{
     direction: rtl;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#loan_form{
+    display: flex;
+    flex-direction: row;
+}
+
+.loan_calculator_section1{
+    background: rgb(0, 74, 133);
+    width: auto;
+    height: 100%;
+}
+.loan_calculator_section2{
+    background: rgb(0, 74, 133);
+}
+
+.loan_calculator_section3{
+    background: linear-gradient(
+    to bottom,
+    #3082c7 0%,
+    #3bbaed 10%,
+    #a6d7ea 15%,
+    #fff 25%,
+    #fff 100%
+  );
 }
