@@ -25,7 +25,7 @@ loan_plugin_js.persian_numbers = function(input) {
         }
     }
 
-    let reversed_result = result.split('').reverse().join('');
+    let reversed_result = result.split('').reverse().join('').replaceAll(',', '');
     result = reversed_result.match(/.{1,3}/g);
     return result.join(',').split('').reverse().join('');
 };
