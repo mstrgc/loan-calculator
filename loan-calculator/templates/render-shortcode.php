@@ -24,14 +24,33 @@
                 <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="4">۴%</label>
             </div>
             <br>
-            <label for="date">مدت بازپرداخت: <span id="date_span">۶</span> ماه</label>
+            <label for="date">مدت بازپرداخت: <span id="date_span">۶ ماه</span></label>
             <input type="range" name="date" id="date" min="6" max="60" step="6" value="6">
             <br>
-            <label for="time">مدت زمان واریز به حساب: <span id="time_span">۱</span> ماه</label>
+            <label for="time">مدت زمان واریز به حساب: <span id="time_span">۱ ماه</span></label>
             <input type="range" name="time" id="time" min="1" max="12" value="1">
         </div>
         <div class="loan_calculator_section3">
-            <p id="result"></p>
+            <div>
+                <p class="loan_section3_key">میانگین حساب ~</p>
+                <p class="loan_section3_value"><span id="average_result"></span> تومان</p>
+            </div>
+            <div>
+                <p class="loan_section3_key">تسهیلات درخواستی ~</p>
+                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
+            </div>
+            <div>
+                <p id="result"></p>
+            </div>
+            <div>
+                <p id="result"></p>
+            </div>
+            <div>
+                <p id="result"></p>
+            </div>
+            <div>
+                <p id="result"></p>
+            </div>
         </div>
     </form>
 </div>

@@ -67,6 +67,7 @@ class Loan_calculator_shortcode{
                 $result = $this->average_to_loan_calculator($price, $date, $time, $fee);
             } elseif($loan_or_average == 'loan'){
                 $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
+                //echo json_encode($result = ['message' => strval($result), 'status' => 'success', 'type' => 'loan']);
             }
 
             echo json_encode($result = ['message' => strval($result), 'status' => 'success']);

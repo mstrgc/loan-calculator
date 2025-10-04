@@ -37,6 +37,9 @@
 }
 
 .loan_calculator_section3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background: #012846;
     width: 33%;
     height: 100%;
@@ -97,3 +100,20 @@
 
 /*** section 2 radio inputs ***/
 
+#date_span, #time_span{
+    color: yellow;
+}
+
+/*** section 3 ***/
+
+.loan_section3_key{
+  float: inline-start;
+}
+
+.loan_section3_value{
+  float: inline-end;
+}
+
+.loan_calculator_section3>div{
+    border-bottom: 1px solid white;
+}
