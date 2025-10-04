@@ -15,6 +15,9 @@
 }
 
 .loan_calculator_section1{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     background: #1e76bf;
     width: 33%;
     height: 100%;
@@ -23,6 +26,9 @@
 }
 
 .loan_calculator_section2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background: #1562a2;
     width: 33%;
     height: 100%;
@@ -48,7 +54,7 @@
 
 /*** section 1 radio inputs ***/
 
-.section1_select{
+.section_select{
     width: 90%;
     margin: 0 auto;
     display: flex;
@@ -58,17 +64,31 @@
     overflow: hidden;
 }
 
-.section1_select_option{
+.section_select_option{
     width: 50%;
     margin: 0;
-}
-
-.section1_select_option:last-of-type{
     border-right: 1px solid white;
 }
 
-.section1_select_option:has(.loan_radio_input:checked){
+.section_select_option:first-of-type{
+    border-right: none;
+}
+
+.section_select_option:has(.loan_radio_input:checked){
     background: #012846;
+}
+
+#display_price{
+    direction: ltr;
+    color: white;
+    background: #1e76bf;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#display_price:focus{
+    outline: none;
 }
 
 /*** section 2 radio inputs ***/

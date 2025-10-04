@@ -1,4 +1,5 @@
 let text_result = document.getElementById('result');
+let text_error = document.getElementById('error');
 let price_value = document.getElementById('display_price');
 
 price_value.addEventListener('input', function () {
@@ -18,8 +19,9 @@ function calculate() {
     .then(result => {
         if (result['status'] == 'success') {
             text_result.innerHTML = loan_plugin_js.persian_numbers(result['message']);
+            text_error.innerHTML = null;
         } else {
-            text_result.innerHTML = result['message'];
+            text_error.innerHTML = result['message'];
         }
     });
 }
