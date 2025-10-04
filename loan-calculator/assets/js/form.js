@@ -56,3 +56,15 @@ loan_plugin_js.english_numbers = function(input) {
     }
     return result;
 };
+
+loan_plugin_js. label_date_time = function(){
+    let date_span = document.getElementById('date_span');
+    let time_span = document.getElementById('time_span');
+
+    let date_input = document.getElementById('date').value;
+    let time_input = document.getElementById('time').value;
+
+    date_span.innerHTML = loan_plugin_js.persian_numbers(date_input);
+    time_span.innerHTML = loan_plugin_js.persian_numbers(time_input);
+    return;
+}

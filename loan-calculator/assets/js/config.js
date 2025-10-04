@@ -22,9 +22,11 @@ function calculate() {
             text_error.innerHTML = null;
         } else {
             text_error.innerHTML = result['message'];
+            text_result.innerHTML = '۰';
         }
     });
 }
 
 document.addEventListener('DOMContentLoaded', calculate);
 document.getElementById('loan_form').addEventListener('input', calculate);
+document.addEventListener('input', loan_plugin_js.label_date_time);
