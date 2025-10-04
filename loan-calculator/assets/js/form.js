@@ -14,7 +14,7 @@ loan_plugin_js.persian_numbers = function(input) {
         9: '۹'
     };
 
-    result = '';
+    let result = '';
 
     for (let i = 0; i < input.length; i++) {
         num = Array.from(String(input))[i];
@@ -24,7 +24,10 @@ loan_plugin_js.persian_numbers = function(input) {
             result += num;
         }
     }
-    return result;
+
+    let reversed_result = result.split('').reverse().join('');
+    result = reversed_result.match(/.{1,3}/g);
+    return result.join(',').split('').reverse().join('');
 };
 
 loan_plugin_js.english_numbers = function(input) {
@@ -41,7 +44,7 @@ loan_plugin_js.english_numbers = function(input) {
         '۹': 9
     };
 
-    result = '';
+    let result = '';
 
     for (let i = 0; i < input.length; i++) {
         num = Array.from(String(input))[i];
