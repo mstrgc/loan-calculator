@@ -20,7 +20,7 @@ loan_plugin_js.persian_numbers = function(input) {
         num = Array.from(String(input))[i];
         if(persian_number.hasOwnProperty(num)){
             result += persian_number[num];
-        } else {
+        } else if(Object.values(persian_number).includes(num)) {
             result += num;
         }
     }
@@ -50,7 +50,7 @@ loan_plugin_js.english_numbers = function(input) {
         num = Array.from(String(input))[i];
         if(english_number.hasOwnProperty(num)){
             result += english_number[num];
-        } else {
+        } else if(Number(num)) {
             result += num;
         }
     }

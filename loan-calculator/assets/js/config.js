@@ -12,7 +12,6 @@ function calculate() {
 
     loan_form_data.append('action', 'calculator');
     loan_form_data.append('price', loan_plugin_js.english_numbers(price_value.value));
-    console.log(loan_form_data.get('price'));
 
     fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
     .then(response => response.json())

@@ -7,8 +7,7 @@
         <input type="radio" name="loan_or_average" value="loan" id="loan">
         <label for="loan">وام</label>
         <br>
-        <input type="text" name="display_price" id="display_price" value="1000000">
-        <input type="text" name="price" id="price" value="1000000">
+        <input type="text" name="display_price" id="display_price" value="۱,۰۰۰,۰۰۰">
         <label for="price">مبلغ</label>
         <br>
         <input type="range" name="date" id="date" min="6" max="60" step="6" value="6">
@@ -17,9 +16,9 @@
         <input type="range" name="time" id="time" min="1" max="12" value="1">
         <label for="time">مدت زمان واریز به حساب</label>
         <br>
-        <label><input type="radio" name="fee" value="0" checked>0%</label>
-        <label><input type="radio" name="fee" value="2">2%</label>
-        <label><input type="radio" name="fee" value="4">4%</label>
+        <label><input type="radio" name="fee" value="0" checked>۰%</label>
+        <label><input type="radio" name="fee" value="2">۲%</label>
+        <label><input type="radio" name="fee" value="4">۴%</label>
         <label for="fee">کارمزد</label>
     </form>
     <p id="result"></p>
