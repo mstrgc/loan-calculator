@@ -18,7 +18,11 @@ loan_plugin_js.persian_numbers = function(input) {
 
     for (let i = 0; i < input.length; i++) {
         num = Array.from(String(input))[i];
-        result += persian_numbers[num];
+        if(persian_numbers[num]){
+            result += persian_numbers[num];
+        } else {
+            result += num;
+        }
     }
     return result;
 }

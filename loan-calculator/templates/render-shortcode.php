@@ -7,6 +7,7 @@
         <input type="radio" name="loan_or_average" value="loan" id="loan">
         <label for="loan">وام</label>
         <br>
+        <input type="text" name="display_price" id="display_price" value="1000000">
         <input type="text" name="price" id="price" value="1000000">
         <label for="price">مبلغ</label>
         <br>
