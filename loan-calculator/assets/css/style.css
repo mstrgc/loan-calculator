@@ -19,6 +19,19 @@
     text-align: center;
 }
 
+input{
+    outline: none;
+}
+
+label{
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 5px;
+}
+
+/*** section 1 ***/
+
 .loan_calculator_section1{
     display: flex;
     flex-direction: column;
@@ -26,42 +39,9 @@
     background: #1e76bf;
     width: 33%;
     height: 100%;
-    padding: 20px 50px;
+    padding: 20px 40px;
     box-sizing: border-box;
 }
-
-.loan_calculator_section2{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background: #1562a2;
-    width: 33%;
-    height: 100%;
-    padding: 20px 50px;
-    box-sizing: border-box;
-}
-
-.loan_calculator_section3{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    background: #012846;
-    width: 33%;
-    height: 100%;
-    padding: 20px 50px;
-    box-sizing: border-box;
-}
-
-.loan_radio_input{
-    display: none;
-}
-
-.loan_radio_label{
-    padding: 5px;
-    margin: 0;
-}
-
-/*** section 1 radio inputs ***/
 
 .section_select{
     width: 100%;
@@ -99,15 +79,33 @@
     box-sizing: border-box;
 }
 
-input{
-    outline: none;
-}
-
 #error{
     height: 20px;
+    color: red;
 }
 
-/*** section 2 radio inputs ***/
+.loan_radio_input{
+    display: none;
+}
+
+.loan_radio_label{
+    padding: 5px;
+    margin: 0;
+}
+
+
+/*** section 2 ***/
+
+.loan_calculator_section2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #1562a2;
+    width: 33%;
+    height: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
 
 .loan_calculator_section2>div{
     margin-top: 20px;
@@ -135,6 +133,17 @@ input{
 
 /*** section 3 ***/
 
+.loan_calculator_section3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background: #012846;
+    width: 33%;
+    height: 100%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
 .loan_section3_key{
     float: inline-start;
     margin: 0;
@@ -152,11 +161,4 @@ input{
 
 .loan_calculator_section3>div:last-of-type{
     border: none;
-}
-
-label{
-    display: block;
-    width: 100%;
-    text-align: right;
-    padding: 5px;
 }
