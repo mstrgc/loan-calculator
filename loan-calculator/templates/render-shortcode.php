@@ -28,10 +28,18 @@
             <div>
                 <label for="date">مدت بازپرداخت: <span class="date_span">۶ ماه</span></label>
                 <input type="range" class="loan_input" name="date" id="date" min="6" max="60" step="6" value="6">
+                <div class="loan_range_span">
+                    <span>۶</span>
+                    <span>۶۰</span>
+                </div>
             </div>
             <div>
                 <label for="time">مدت زمان واریز به حساب: <span class="time_span">۱ ماه</span></label>
                 <input type="range" class="loan_input" name="time" id="time" min="1" max="12" value="1">
+                <div class="loan_range_span">
+                    <span>۱</span>
+                    <span>۱۲</span>
+                </div>
             </div>
         </div>
         <div class="loan_calculator_section3">

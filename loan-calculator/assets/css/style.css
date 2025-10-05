@@ -109,12 +109,28 @@ input{
 
 /*** section 2 radio inputs ***/
 
+.loan_calculator_section2>div{
+    margin-top: 20px;
+}
+
 #date_span, #time_span{
     color: yellow;
 }
 
 .loan_calculator_section2>label>span{
     color: yellow;
+}
+
+.loan_calculator_section2>div>input[type='range']{
+    width: 100%;
+    accent-color: #ff5500;
+}
+
+.loan_range_span{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #b3b3b3;
 }
 
 /*** section 3 ***/
