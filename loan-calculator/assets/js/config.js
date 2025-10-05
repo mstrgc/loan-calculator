@@ -13,15 +13,7 @@ function calculate() {
 
     fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
     .then(response => response.json())
-    .then(result => {
-        if (result['status'] == 'success') {
-            loan_plugin_js.display_result(result);
-        } else {
-            text_error.innerHTML = result['message'];
-            average_result.innerHTML = '۰';
-            loan_result.innerHTML = '۰';
-        }
-    });
+    .then(result => {loan_plugin_js.display_result(result)});
 }
 
 document.addEventListener('DOMContentLoaded', calculate);
