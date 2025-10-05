@@ -59,7 +59,7 @@ class Loan_calculator_shortcode{
             $fee = sanitize_text_field($_POST['fee']);
 
             if($price < 1000000){
-                echo json_encode($result = ['message' =>'مبلغ نمی تواند از 1 میلیون تومان کمتر باشد', 'status' => 'error']);
+                echo json_encode($result = ['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                 wp_die();
             }
 

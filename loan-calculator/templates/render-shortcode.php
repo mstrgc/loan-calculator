@@ -11,24 +11,28 @@
                 </label>
             </div>
             <div>
-                <label for="price">مبلغ (تومان):</label>
+                <label for="display_price">مبلغ (تومان):</label>
                 <input type="text" name="display_price" id="display_price" value="۱,۰۰۰,۰۰۰">
                 <p id="error"></p>
             </div>
         </div>
         <div class="loan_calculator_section2">
-            <label for="fee">کارمزد تسهیلات:</label>
-            <div class="section_select">
-                <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="0" checked>۰%</label>
-                <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="2">۲%</label>
-                <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="4">۴%</label>
+            <div>
+                <label for="fee">کارمزد تسهیلات:</label>
+                <div class="section_select">
+                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="0" checked>۰ درصد</label>
+                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="2">۲ درصد</label>
+                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="4">۴ درصد</label>
+                </div>
             </div>
-            <br>
-            <label for="date">مدت بازپرداخت: <span id="date_span">۶ ماه</span></label>
-            <input type="range" class="loan_input" name="date" id="date" min="6" max="60" step="6" value="6">
-            <br>
-            <label for="time">مدت زمان واریز به حساب: <span id="time_span">۱ ماه</span></label>
-            <input type="range" class="loan_input" name="time" id="time" min="1" max="12" value="1">
+            <div>
+                <label for="date">مدت بازپرداخت: <span class="date_span">۶ ماه</span></label>
+                <input type="range" class="loan_input" name="date" id="date" min="6" max="60" step="6" value="6">
+            </div>
+            <div>
+                <label for="time">مدت زمان واریز به حساب: <span class="time_span">۱ ماه</span></label>
+                <input type="range" class="loan_input" name="time" id="time" min="1" max="12" value="1">
+            </div>
         </div>
         <div class="loan_calculator_section3">
             <div>
@@ -45,15 +49,15 @@
             </div>
             <div>
                 <p class="loan_section3_key">کارمزد تسهیلات:</p>
-                <p class="loan_section3_value"><span id=""></span> درصد</p>
+                <p class="loan_section3_value"><span id="fee_result"></span> درصد</p>
             </div>
             <div>
                 <p class="loan_section3_key">مدت بازپرداخت :</p>
-                <p class="loan_section3_value"><span id="loan_result1"></span> ماه</p>
+                <p class="loan_section3_value"><span class="date_span"></span></p>
             </div>
             <div>
                 <p class="loan_section3_key">مدت زمان واریز به حساب:</p>
-                <p class="loan_section3_value"><span id="loan_result2"></span> ماه</p>
+                <p class="loan_section3_value"><span class="time_span"></span></p>
             </div>
         </div>
     </form>

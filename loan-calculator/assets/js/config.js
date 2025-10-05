@@ -11,6 +11,8 @@ function calculate() {
     loan_form_data.append('action', 'calculator');
     loan_form_data.append('price', loan_plugin_js.english_numbers(price_value.value));
 
+    loan_plugin_js.label_date_time_fee();
+
     fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
     .then(response => response.json())
     .then(result => {loan_plugin_js.display_result(result)});
@@ -18,4 +20,3 @@ function calculate() {
 
 document.addEventListener('DOMContentLoaded', calculate);
 document.getElementById('loan_form').addEventListener('input', calculate);
-document.addEventListener('input', loan_plugin_js.label_date_time);

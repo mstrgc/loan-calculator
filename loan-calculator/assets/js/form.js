@@ -26,9 +26,13 @@ loan_plugin_js.persian_numbers = function(input) {
         }
     }
 
-    let reversed_result = result.split('').reverse().join('').replaceAll(',', '');
-    result = reversed_result.match(/.{1,3}/g);
-    return result.join(',').split('').reverse().join('');
+    comma_separated_result = function() {
+        let reversed_result = result.split('').reverse().join('').replaceAll(',', '');
+        result = reversed_result.match(/.{1,3}/g);
+        return result.join(',').split('').reverse().join('');
+    }
+
+    return comma_separated_result();
 };
 
 loan_plugin_js.english_numbers = function(input) {
@@ -58,15 +62,26 @@ loan_plugin_js.english_numbers = function(input) {
     return Number(result);
 };
 
-loan_plugin_js.label_date_time = function(){
-    let date_span = document.getElementById('date_span');
-    let time_span = document.getElementById('time_span');
+loan_plugin_js.label_date_time_fee = function(){
+    let date_span = document.getElementsByClassName('date_span');
+    let time_span = document.getElementsByClassName('time_span');
+    let fee_span = document.getElementById('fee_result');
 
     let date_input = document.getElementById('date').value;
     let time_input = document.getElementById('time').value;
+    let fee_input = document.querySelectorAll('input[name="fee"]');
 
-    date_span.innerHTML = loan_plugin_js.persian_numbers(date_input) + ' ماه';
-    time_span.innerHTML = loan_plugin_js.persian_numbers(time_input) + ' ماه';
+    for(i = 0; i < date_span.length; i++){
+        date_span[i].innerHTML = loan_plugin_js.persian_numbers(date_input) + ' ماه';
+        time_span[i].innerHTML = loan_plugin_js.persian_numbers(time_input) + ' ماه';
+    };
+
+    fee_input.forEach(fee_percent => {
+        if(fee_percent.checked){
+            fee_span.innerHTML = this.persian_numbers(fee_percent.value);
+        }
+    });
+
     return;
 }
 
@@ -90,13 +105,6 @@ loan_plugin_js.display_result = function(result){
         }
 
         text_error.innerHTML = null;
-
-        document.querySelectorAll('.loan_input').forEach((input, index) => {
-            let result = document.getElementById('loan_result' + (index + 1));
-            result.innerHTML = input.value;
-        });
-
-
 
     } else {
         text_error.innerHTML = result['message'];

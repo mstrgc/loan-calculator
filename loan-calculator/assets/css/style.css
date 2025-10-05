@@ -6,13 +6,17 @@
     margin: 0 auto;
     color: white;
     text-align: center;
-    font-size: 14px;
+    font-size: 20px;
 }
 
 #loan_form{
     display: flex;
     flex-direction: row;
     width: 100%;
+}
+
+#loan_form input{
+    text-align: center;
 }
 
 .loan_calculator_section1{
@@ -22,8 +26,8 @@
     background: #1e76bf;
     width: 33%;
     height: 100%;
-    padding: 10px auto;
-    padding: 10px;
+    padding: 10px 50px;
+    box-sizing: border-box;
 }
 
 .loan_calculator_section2{
@@ -33,7 +37,8 @@
     background: #1562a2;
     width: 33%;
     height: 100%;
-    padding: 10px;
+    padding: 10px 50px;
+    box-sizing: border-box;
 }
 
 .loan_calculator_section3{
@@ -43,7 +48,8 @@
     background: #012846;
     width: 33%;
     height: 100%;
-    padding: 10px;
+    padding: 10px 50px;
+    box-sizing: border-box;
 }
 
 .loan_radio_input{
@@ -58,7 +64,7 @@
 /*** section 1 radio inputs ***/
 
 .section_select{
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -71,6 +77,7 @@
     width: 50%;
     margin: 0;
     border-right: 1px solid white;
+    text-align: center;
 }
 
 .section_select_option:first-of-type{
@@ -86,11 +93,13 @@
     color: white;
     background: #1e76bf;
     border: 1px solid white;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#display_price:focus{
+input{
     outline: none;
 }
 
@@ -101,6 +110,10 @@
 /*** section 2 radio inputs ***/
 
 #date_span, #time_span{
+    color: yellow;
+}
+
+.loan_calculator_section2>label>span{
     color: yellow;
 }
 
@@ -116,4 +129,15 @@
 
 .loan_calculator_section3>div{
     border-bottom: 1px solid white;
+}
+
+.loan_calculator_section3>div:last-of-type{
+    border: none;
+}
+
+label{
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 5px;
 }
