@@ -1,11 +1,7 @@
-let average_result = document.getElementById('average_result');
-let loan_result = document.getElementById('loan_result');
-let text_error = document.getElementById('error');
 let price_value = document.getElementById('display_price');
 
 price_value.addEventListener('input', function () {
     this.value = loan_plugin_js.persian_numbers(this.value);
-
 });
 
 function calculate() {
@@ -19,15 +15,7 @@ function calculate() {
     .then(response => response.json())
     .then(result => {
         if (result['status'] == 'success') {
-            if(document.getElementById('loan').checked){
-                average_result.innerHTML = loan_plugin_js.persian_numbers(result['message']);
-                loan_result.innerHTML = price_value.value;
-                text_error.innerHTML = null;
-            } else if(document.getElementById('average').checked){
-                loan_result.innerHTML = loan_plugin_js.persian_numbers(result['message']);
-                average_result.innerHTML = price_value.value;
-                text_error.innerHTML = null;
-            }
+            loan_plugin_js.display_result(result);
         } else {
             text_error.innerHTML = result['message'];
             average_result.innerHTML = '۰';

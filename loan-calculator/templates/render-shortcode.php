@@ -40,16 +40,20 @@
                 <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
             </div>
             <div>
-                <p id="result"></p>
+                <p class="loan_section3_key">مبلغ مازاد تسهیلات:</p>
+                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
             </div>
             <div>
-                <p id="result"></p>
+                <p class="loan_section3_key">کارمزد تسهیلات:</p>
+                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
             </div>
             <div>
-                <p id="result"></p>
+                <p class="loan_section3_key">مدت بازپرداخت :</p>
+                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
             </div>
             <div>
-                <p id="result"></p>
+                <p class="loan_section3_key">مدت زمان واریز به حساب:</p>
+                <p class="loan_section3_value"></p>
             </div>
         </div>
     </form>

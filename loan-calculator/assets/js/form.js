@@ -57,7 +57,7 @@ loan_plugin_js.english_numbers = function(input) {
     return result;
 };
 
-loan_plugin_js. label_date_time = function(){
+loan_plugin_js.label_date_time = function(){
     let date_span = document.getElementById('date_span');
     let time_span = document.getElementById('time_span');
 
@@ -67,4 +67,19 @@ loan_plugin_js. label_date_time = function(){
     date_span.innerHTML = loan_plugin_js.persian_numbers(date_input) + ' ماه';
     time_span.innerHTML = loan_plugin_js.persian_numbers(time_input) + ' ماه';
     return;
+}
+
+loan_plugin_js.display_result = function(result){
+    let average_result = document.getElementById('average_result');
+    let loan_result = document.getElementById('loan_result');
+    let text_error = document.getElementById('error');
+
+    if(document.getElementById('loan').checked){
+        average_result.innerHTML = loan_plugin_js.persian_numbers(result['message']);
+        loan_result.innerHTML = price_value.value;
+    } else if(document.getElementById('average').checked){
+        loan_result.innerHTML = loan_plugin_js.persian_numbers(result['message']);
+        average_result.innerHTML = price_value.value;
+    }
+    text_error.innerHTML = null;
 }
