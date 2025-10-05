@@ -3,12 +3,12 @@
         <?php wp_nonce_field() ?>
         <div class="loan_calculator_section1">
             <div class="section_select">
-                    <label class="loan_radio_label section_select_option" for="average">
-                        میانگین حساب<input class="loan_radio_input" type="radio" name="loan_or_average" value="average" id="average" checked>
-                    </label>
-                    <label class="loan_radio_label section_select_option" for="loan">
-                        <input class="loan_radio_input" type="radio" name="loan_or_average" value="loan" id="loan">تسهیلات درخواستی
-                    </label>
+                <label class="loan_radio_label section_select_option" for="loan">
+                    <input class="loan_radio_input" type="radio" name="loan_or_average" value="loan" id="loan" checked>تسهیلات درخواستی
+                </label>
+                <label class="loan_radio_label section_select_option" for="average">
+                    میانگین حساب<input class="loan_radio_input" type="radio" name="loan_or_average" value="average" id="average">
+                </label>
             </div>
             <div>
                 <label for="price">مبلغ (تومان):</label>
@@ -25,10 +25,10 @@
             </div>
             <br>
             <label for="date">مدت بازپرداخت: <span id="date_span">۶ ماه</span></label>
-            <input type="range" name="date" id="date" min="6" max="60" step="6" value="6">
+            <input type="range" class="loan_input" name="date" id="date" min="6" max="60" step="6" value="6">
             <br>
             <label for="time">مدت زمان واریز به حساب: <span id="time_span">۱ ماه</span></label>
-            <input type="range" name="time" id="time" min="1" max="12" value="1">
+            <input type="range" class="loan_input" name="time" id="time" min="1" max="12" value="1">
         </div>
         <div class="loan_calculator_section3">
             <div>
@@ -45,15 +45,15 @@
             </div>
             <div>
                 <p class="loan_section3_key">کارمزد تسهیلات:</p>
-                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
+                <p class="loan_section3_value"><span id=""></span> درصد</p>
             </div>
             <div>
                 <p class="loan_section3_key">مدت بازپرداخت :</p>
-                <p class="loan_section3_value"><span id="loan_result"></span> تومان</p>
+                <p class="loan_section3_value"><span id="loan_result1"></span> ماه</p>
             </div>
             <div>
                 <p class="loan_section3_key">مدت زمان واریز به حساب:</p>
-                <p class="loan_section3_value"></p>
+                <p class="loan_section3_value"><span id="loan_result2"></span> ماه</p>
             </div>
         </div>
     </form>

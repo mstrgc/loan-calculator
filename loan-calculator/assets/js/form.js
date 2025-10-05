@@ -88,7 +88,16 @@ loan_plugin_js.display_result = function(result){
             average_result.innerHTML = price_value.value;
             surplus_result.innerHTML = (result['message'] < 300000000 ? '۰' : this.persian_numbers(result['message'] - 300000000));
         }
+
         text_error.innerHTML = null;
+
+        document.querySelectorAll('.loan_input').forEach((input, index) => {
+            let result = document.getElementById('loan_result' + (index + 1));
+            result.innerHTML = input.value;
+        });
+
+
+
     } else {
         text_error.innerHTML = result['message'];
         average_result.innerHTML = '۰';
