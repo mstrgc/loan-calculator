@@ -26,7 +26,7 @@
     background: #1e76bf;
     width: 33%;
     height: 100%;
-    padding: 10px 50px;
+    padding: 20px 50px;
     box-sizing: border-box;
 }
 
@@ -37,7 +37,7 @@
     background: #1562a2;
     width: 33%;
     height: 100%;
-    padding: 10px 50px;
+    padding: 20px 50px;
     box-sizing: border-box;
 }
 
@@ -48,7 +48,7 @@
     background: #012846;
     width: 33%;
     height: 100%;
-    padding: 10px 50px;
+    padding: 20px 50px;
     box-sizing: border-box;
 }
 
@@ -120,15 +120,18 @@ input{
 /*** section 3 ***/
 
 .loan_section3_key{
-  float: inline-start;
+    float: inline-start;
+    margin: 0;
 }
 
 .loan_section3_value{
-  float: inline-end;
+    float: inline-end;
+    margin: 0;
 }
 
 .loan_calculator_section3>div{
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #ffffff36;
+    padding-bottom: 5px;
 }
 
 .loan_calculator_section3>div:last-of-type{
