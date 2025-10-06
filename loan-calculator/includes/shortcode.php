@@ -51,18 +51,22 @@ class Loan_calculator_shortcode{
     ];
 
     public function calculator() {
+        //validate nonce
         if(isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'])){
+            //get form values
             $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
             $price = sanitize_text_field($_POST['price']);
             $date = sanitize_text_field($_POST['date']);
             $time = sanitize_text_field($_POST['time']) - 1;
             $fee = sanitize_text_field($_POST['fee']);
 
+            //check minimum price
             if($price < 1000000){
                 echo json_encode($result = ['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                 wp_die();
             }
 
+            //check which value to calculate
             if($loan_or_average == 'average'){
                 $result = $this->average_to_loan_calculator($price, $date, $time, $fee);
             } elseif($loan_or_average == 'loan'){
@@ -76,6 +80,7 @@ class Loan_calculator_shortcode{
     }
 
     public function average_to_loan_calculator($price, $date, $time, $fee): int{
+        //get factor percent and calculate loan
         $factor = self::$factor[$fee][$date][$time];
         $loan = ($price * $factor) / 100;
 
@@ -83,6 +88,7 @@ class Loan_calculator_shortcode{
     }
 
     public function loan_to_average_calculator($price, $date, $time, $fee): int{
+        //get factor percent and calculate average
         $factor = self::$factor[$fee][$date][$time];
         $average = ($price / $factor) * 100;
 
@@ -90,6 +96,7 @@ class Loan_calculator_shortcode{
     }
 
     public function render_loan_calculator(){
+        //render page
         ob_start();
         include plugin_dir_path(__FILE__) . '../templates/render-shortcode.php';
         return ob_get_clean();
