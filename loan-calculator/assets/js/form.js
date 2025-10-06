@@ -79,14 +79,14 @@ loan_plugin_js.label_date_time_fee = function(){
 
     //display date and time values to selected elements
     for(i = 0; i < date_span.length; i++){
-        date_span[i].innerHTML = loan_plugin_js.persian_numbers(date_input) + ' ماه';
-        time_span[i].innerHTML = loan_plugin_js.persian_numbers(time_input) + ' ماه';
+        date_span[i].textContent = loan_plugin_js.persian_numbers(date_input) + ' ماه';
+        time_span[i].textContent = loan_plugin_js.persian_numbers(time_input) + ' ماه';
     };
 
     //display fee value in result section
     fee_input.forEach(fee_percent => {
         if(fee_percent.checked){
-            fee_span.innerHTML = this.persian_numbers(fee_percent.value);
+            fee_span.textContent = this.persian_numbers(fee_percent.value);
         }
     });
 
@@ -103,25 +103,25 @@ loan_plugin_js.display_result = function(result){
     if (result['status'] == 'success') {
         if(document.getElementById('loan').checked){
             //show calculated average if loan option is choosen
-            average_result.innerHTML = this.persian_numbers(result['message']);
+            average_result.textContent = this.persian_numbers(result['message']);
             //calculate and separate loan and surplus loan value
-            loan_result.innerHTML = (this.english_numbers(price_value.value) <= 300000000 ? price_value.value : this.persian_numbers(300000000));
-            surplus_result.innerHTML = (this.english_numbers(price_value.value) < 300000000 ? '۰' : this.persian_numbers(this.english_numbers(price_value.value) - 300000000));
+            loan_result.textContent = (this.english_numbers(price_value.value) <= 300000000 ? price_value.value : this.persian_numbers(300000000));
+            surplus_result.textContent = (this.english_numbers(price_value.value) < 300000000 ? '۰' : this.persian_numbers(this.english_numbers(price_value.value) - 300000000));
         
         } else if(document.getElementById('average').checked){
             //calculate and separate loan and surplus loan value
-            loan_result.innerHTML = (result['message'] <= 300000000 ? this.persian_numbers(result['message']) : this.persian_numbers(300000000));
-            surplus_result.innerHTML = (result['message'] < 300000000 ? '۰' : this.persian_numbers(result['message'] - 300000000));
+            loan_result.textContent = (result['message'] <= 300000000 ? this.persian_numbers(result['message']) : this.persian_numbers(300000000));
+            surplus_result.textContent = (result['message'] < 300000000 ? '۰' : this.persian_numbers(result['message'] - 300000000));
 
-            average_result.innerHTML = price_value.value;
+            average_result.textContent = price_value.value;
         }
 
-        text_error.innerHTML = null;
+        text_error.textContent = null;
 
     } else {
         //display errors
-        text_error.innerHTML = result['message'];
-        average_result.innerHTML = '۰';
-        loan_result.innerHTML = '۰';
+        text_error.textContent = result['message'];
+        average_result.textContent = '۰';
+        loan_result.textContent = '۰';
     }
 }

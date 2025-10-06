@@ -69,13 +69,13 @@ class Loan_calculator_shortcode{
 
             //check which value to calculate
             if($loan_or_average == 'average'){
-                $result = $this->average_to_loan_calculator($price, $date, $time, $fee);
+                $calculated_result = $this->average_to_loan_calculator($price, $date, $time, $fee);
             } elseif($loan_or_average == 'loan'){
-                $result = $this->loan_to_average_calculator($price, $date, $time, $fee);
-                //echo json_encode($result = ['message' => strval($result), 'status' => 'success', 'type' => 'loan']);
+                $calculated_result = $this->loan_to_average_calculator($price, $date, $time, $fee);
             }
 
-            echo json_encode($result = ['message' => strval($result), 'status' => 'success']);
+            $message = wp_kses($calculated_result, []);
+            echo json_encode($result = ['message' => $message, 'status' => 'success']);
         }
         wp_die();
     }
