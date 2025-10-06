@@ -53,7 +53,10 @@ class Loan_calculator_shortcode{
 
     public function calculator() {
         //validate nonce
-        if(isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'])){
+        if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
+            echo json_encode($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
+            wp_die();
+        } else {
             //get form values
             $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
             $price = sanitize_text_field($_POST['price']);
@@ -77,6 +80,7 @@ class Loan_calculator_shortcode{
             $message = wp_kses($calculated_result, []);
             echo json_encode($result = ['message' => $message, 'status' => 'success']);
         }
+
         wp_die();
     }
 

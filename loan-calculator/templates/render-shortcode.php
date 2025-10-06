@@ -1,6 +1,6 @@
 <div id="loan_calculator_container">
     <form id="loan_form">
-        <?php wp_nonce_field() ?>
+        <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
         <div class="loan_calculator_section1">
             <div class="section_select">
                 <label class="loan_radio_label section_select_option" for="loan">
