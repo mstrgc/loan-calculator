@@ -20,7 +20,7 @@ function calculate() {
 
     fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
     .then(response => response.json())
-    .then(result => {loan_plugin_js.display_result(result)});
+    .then(result => {loan_plugin_js.display_result(result.data)});
 }
 
 document.addEventListener('DOMContentLoaded', calculate);

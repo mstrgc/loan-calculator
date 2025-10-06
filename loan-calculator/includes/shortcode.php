@@ -54,8 +54,7 @@ class Loan_calculator_shortcode{
     public function calculator() {
         //validate nonce
         if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
-            echo json_encode($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
-            wp_die();
+            wp_send_json_error($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
         } else {
             //get form values
             $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
@@ -66,8 +65,7 @@ class Loan_calculator_shortcode{
 
             //check minimum price
             if($price < 1000000){
-                echo json_encode($result = ['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
-                wp_die();
+                wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
             }
 
             //check which value to calculate
@@ -78,9 +76,8 @@ class Loan_calculator_shortcode{
             }
 
             $message = wp_kses($calculated_result, []);
-            echo json_encode($result = ['message' => $message, 'status' => 'success']);
+            wp_send_json_success(['message' => $message, 'status' => 'success']);
         }
-
         wp_die();
     }
 
