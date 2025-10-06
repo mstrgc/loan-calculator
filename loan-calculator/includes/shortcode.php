@@ -3,6 +3,7 @@
 if(!defined('ABSPATH')){
     exit;
 }
+
 class Loan_calculator_shortcode{
 
     public function __construct(){
