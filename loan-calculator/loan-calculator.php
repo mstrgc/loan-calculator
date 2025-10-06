@@ -13,6 +13,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/shortcode.php';
 require_once plugin_dir_path(__FILE__) . 'includes/enqueue.php';
 
 class Loan_calculator{
+    //add singleton pattern
     private static $instance = null;
 
     public static function get_instance() {
