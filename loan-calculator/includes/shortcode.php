@@ -93,7 +93,12 @@ class Loan_calculator_shortcode{
     public function average_to_loan_calculator($price, $date, $time, $fee): int{
         //get factor percent and calculate loan
         $factor = self::$factor[$fee][$date][$time];
-        $loan = ($price * $factor) / 100;
+        if($factor){
+            $loan = ($price * $factor) / 100;
+        } else {
+            wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
+        }
+        
 
         return $loan;
     }
@@ -101,7 +106,11 @@ class Loan_calculator_shortcode{
     public function loan_to_average_calculator($price, $date, $time, $fee): int{
         //get factor percent and calculate average
         $factor = self::$factor[$fee][$date][$time];
-        $average = ($price / $factor) * 100;
+        if($factor){
+            $average = ($price / $factor) * 100;
+        } else {
+            wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
+        }
 
         return $average;
     }
