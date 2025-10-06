@@ -26,6 +26,14 @@ class Loan_calculator{
     public function __construct(){
         new Loan_calculator_shortcode();
         new Loan_enqueue();
+        add_action('send_headers', [$this, 'add_security_headers']);
+    }
+
+    public function add_security_headers() {
+        header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';");
+        header("X-Content-Type-Options: nosniff");
+        header("X-Frame-Options: SAMEORIGIN");
+        header("X-XSS-Protection: 1; mode=block");
     }
 }
 
