@@ -49,7 +49,7 @@ label{
     display: flex;
     flex-direction: row;
     border: 1px solid white;
-    border-radius: 15px;
+    border-radius: 40px;
     overflow: hidden;
 }
 
