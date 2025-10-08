@@ -120,7 +120,7 @@ class Loan_calculator_shortcode{
         wp_die();
     }
 
-    public function average_to_loan_calculator($inputs): int{
+    public function average_to_loan_calculator($inputs){
         //get factor percent and calculate loan
         if(self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
             $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
@@ -129,10 +129,10 @@ class Loan_calculator_shortcode{
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
         }
 
-        return $loan;
+        return intval($loan);
     }
 
-    public function loan_to_average_calculator($inputs): int{
+    public function loan_to_average_calculator($inputs){
         //get factor percent and calculate average
         if(self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
             $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
@@ -141,7 +141,7 @@ class Loan_calculator_shortcode{
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
         }
 
-        return $average;
+        return intval($average);
     }
 
     public function render_loan_calculator(){
