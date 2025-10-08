@@ -35,7 +35,7 @@ function calculate() {
         })
 
         .catch((error) => {
-            document.getElementById('error').textContent = error;
+            document.getElementById('error').textContent = error.message;
         });
 
     } catch(error) {

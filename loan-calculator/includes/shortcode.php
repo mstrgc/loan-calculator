@@ -59,7 +59,7 @@ class Loan_calculator_shortcode{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
                 wp_send_json_error($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
-                throw new Exception('خطا در تایید nonce');
+                throw new Exception('nonce validation failed');
             } else {
                 //get form values
                 $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
@@ -69,13 +69,6 @@ class Loan_calculator_shortcode{
                     'time' => filter_input(INPUT_POST, 'time', FILTER_VALIDATE_INT),
                     'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT)
                 ];
-
-                //check minimum price
-                if(!is_int($int_inputs['price'])){
-                    throw new Exception('خطا در تایید تایپ $price');
-                } elseif($int_inputs['price'] < 1000000) {
-                    wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
-                }
 
                 $allowed_inputs = [
                     'date' => [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
@@ -87,14 +80,14 @@ class Loan_calculator_shortcode{
                     if($name == 'price'){
                         if(!is_int($value)){
                             wp_send_json_error(['message' =>'مبلغ باید شامل اعداد باشد', 'status' => 'error']);
-                            throw new Exception('خطا در تایید تایپ $price');
+                            throw new Exception('$price type validation failed');
                         } elseif($int_inputs['price'] < 1000000) {
                             wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                         }
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
                             wp_send_json_error(['message' =>'ورودی نامعتبر', 'status' => 'error']);
-                            throw new Exception('خطا در تایید ورودی ورودی:' . $name);
+                            throw new Exception('input validation failed. input: ' . $name);
                         };
                     }
                 };
@@ -108,7 +101,7 @@ class Loan_calculator_shortcode{
                     $calculated_result = $this->loan_to_average_calculator($int_inputs);
                 } else {
                     wp_send_json_error(['message' => 'تسهیلات درخواستی یا میانگین حساب را انتخاب کنید', 'status' => 'error']);
-                    throw new Exception('ورودی نامعتبر loan_average ورودی: ' . $loan_or_average);
+                    throw new Exception('invalid loan_average input: ' . $loan_or_average);
                 }
 
                 $message = wp_kses($calculated_result, []);
