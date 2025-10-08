@@ -1,4 +1,6 @@
 #loan_calculator_container{
+    container-type: inline-size;
+    container-name: loan_calculator_container;
     direction: rtl;
     width: 100%;
     display: flex;
@@ -7,6 +9,7 @@
     color: white;
     text-align: center;
     font-size: 20px;
+    white-space: nowrap;
 }
 
 #loan_form{
@@ -39,7 +42,7 @@ label{
     background: #1e76bf;
     width: 33%;
     height: 100%;
-    padding: 20px 40px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -100,7 +103,7 @@ label{
     background: #1562a2;
     width: 33%;
     height: 100%;
-    padding: 20px 40px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -138,7 +141,7 @@ label{
     background: #012846;
     width: 33%;
     height: 100%;
-    padding: 20px 40px;
+    padding: 30px;
     box-sizing: border-box;
 }
 
@@ -163,12 +166,33 @@ label{
 
 /*** responsive ***/
 
-@media screen and (max-width: 1024px){
+@container loan_calculator_container (max-width: 1024px){
     #loan_form{
         flex-direction: column;
     }
 
     #loan_form>div{
+        width: 100%;
+    }
+
+    .loan_calculator_section2{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .loan_calculator_section2>div{
+        margin-top: auto;
+        width: 30%;
+    }
+}
+
+@container loan_calculator_container (max-width: 768px){
+    .loan_calculator_section2{
+        flex-direction: column;
+    }
+
+    .loan_calculator_section2>div{
+        margin-top: 20px;
         width: 100%;
     }
 }
