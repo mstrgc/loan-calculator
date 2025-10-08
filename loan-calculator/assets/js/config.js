@@ -23,20 +23,23 @@ function calculate() {
     try{
         let response = fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data });
 
-        if(!response.ok){
-            console.log(response);
-            throw new Error('ارتباط با سرور برقرار نشد');
-        }
+        response.then(function(resp) {
+            if(!resp.ok){
+                throw new Error('ارتباط با سرور برقرار نشد');
+            }
+            return resp.json();
+        })
 
-        try{
-            response = response.json();
-        } catch(ParseError){
-            response.catch(document.getElementById('error').textContent = 'خطا در نمایش نتایج');
-        }
+        .then(result => {
+            window.loan_plugin_js.display_result(result.data);
+        })
 
-        response.then(result => {window.loan_plugin_js.display_result(result.data)});            
+        .catch((error) => {
+            document.getElementById('error').textContent = error;
+        });
+
     } catch(error) {
-        return document.getElementById('error').textContent = ' در نمایش نتایج';
+        return document.getElementById('error').textContent = 'خطا در نمایش نتایج';
     }
 }
 
