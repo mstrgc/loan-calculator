@@ -63,33 +63,48 @@ class Loan_calculator_shortcode{
                 //get form values
                 $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
                 $int_inputs = [
-                    'price' => filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
-                    'date' => filter_input(INPUT_POST, 'date', FILTER_VALIDATE_INT);
-                    'time' => filter_input(INPUT_POST, 'time', FILTER_VALIDATE_INT);
-                    'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT);
+                    'price' => filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT),
+                    'date' => filter_input(INPUT_POST, 'date', FILTER_VALIDATE_INT),
+                    'time' => filter_input(INPUT_POST, 'time', FILTER_VALIDATE_INT),
+                    'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT)
                 ];
 
                 //check minimum price
                 if(!is_int($int_inputs['price'])){
                     throw new Exception('خطا در تایید تایپ $price');
-                } elseif($price < 1000000) {
+                } elseif($int_inputs['price'] < 1000000) {
                     wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                 }
 
-                $allowed_dates = [6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
-                $allowed_times = range(1, 12);
-                $allowed_fees = [0, 2, 4];
+                $allowed_inputs = [
+                    'date' => [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
+                    'time' => range(1, 12),
+                    'fee' => [0, 2, 4]
+                ];
 
-                //check if data is allowed
-                $date = !in_array($date, $allowed_dates) ? $allowed_dates[0] : $date;
-                $time = !in_array($time, $allowed_times) ? $allowed_times[0] : $time - 1;
-                $fee = !in_array($fee, $allowed_fees) ? $allowed_fees[0] : $fee;
+                foreach($int_inputs as $name => $value) {
+                    if($name == 'price'){
+                        if(!is_int($value)){
+                            wp_send_json_error(['message' =>'مبلغ باید شامل اعداد باشد', 'status' => 'error']);
+                            throw new Exception('خطا در تایید تایپ $price');
+                        } elseif($int_inputs['price'] < 1000000) {
+                            wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
+                        }
+                    } else {
+                        if(!in_array($value, $allowed_inputs[$name])){
+                            $value = $allowed_inputs[$name][0];
+                            throw new Exception('خطا در تایید ورودی ' . $name);
+                        };
+                    }
+                };
+
+                $int_inputs['time'] -= 1;
 
                 //check which value to calculate
                 if($loan_or_average == 'average'){
-                    $calculated_result = $this->average_to_loan_calculator($price, $date, $time, $fee);
+                    $calculated_result = $this->average_to_loan_calculator($int_inputs);
                 } elseif($loan_or_average == 'loan'){
-                    $calculated_result = $this->loan_to_average_calculator($price, $date, $time, $fee);
+                    $calculated_result = $this->loan_to_average_calculator($int_inputs);
                 }
 
                 $message = wp_kses($calculated_result, []);
@@ -101,24 +116,23 @@ class Loan_calculator_shortcode{
         wp_die();
     }
 
-    public function average_to_loan_calculator($price, $date, $time, $fee): int{
+    public function average_to_loan_calculator($inputs): int{
         //get factor percent and calculate loan
-        if(self::$factor[$fee][$date][13]){
-            $factor = self::$factor[$fee][$date][$time];
-            $loan = ($price * $factor) / 100;
+        if(self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+            $loan = ($inputs['price'] * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
         }
-        
 
         return $loan;
     }
 
-    public function loan_to_average_calculator($price, $date, $time, $fee): int{
+    public function loan_to_average_calculator($inputs): int{
         //get factor percent and calculate average
-        if(self::$factor[$fee][$date][$time]){
-            $factor = self::$factor[$fee][$date][$time];
-            $average = ($price / $factor) * 100;
+        if(self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+            $average = ($inputs['price'] / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
         }
