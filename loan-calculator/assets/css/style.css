@@ -75,14 +75,15 @@ label{
     background: #1e76bf;
     border: 1px solid white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 15px 20px;
     width: 100%;
     text-align: left !important;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 #error{
-    height: 20px;
+    height: 10px;
     color: red;
 }
 
@@ -105,6 +106,10 @@ label{
 
 .loan_calculator_section2>div{
     margin-top: 20px;
+}
+
+.loan_calculator_section2 .section_select_option{
+    padding: 10px;
 }
 
 .loan_calculator_section2>div>label>span{
