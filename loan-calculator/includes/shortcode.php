@@ -54,41 +54,50 @@ class Loan_calculator_shortcode{
     ];
 
     public function calculator() {
-        //validate nonce
-        if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
-            wp_send_json_error($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
-        } else {
-            //get form values
-            $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
-            $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
-            $date = filter_input(INPUT_POST, 'date', FILTER_VALIDATE_INT);
-            $time = filter_input(INPUT_POST, 'time', FILTER_VALIDATE_INT);
-            $fee = filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT);
+        try{
+            //validate nonce
+            if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
+                wp_send_json_error($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
+                throw new Exception('خطا در تایید nonce');
+            } else {
+                //get form values
+                $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
+                $int_inputs = [
+                    'price' => filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
+                    'date' => filter_input(INPUT_POST, 'date', FILTER_VALIDATE_INT);
+                    'time' => filter_input(INPUT_POST, 'time', FILTER_VALIDATE_INT);
+                    'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT);
+                ];
 
-            //check minimum price
-            if(!is_int($price) || $price < 1000000){
-                wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
+                //check minimum price
+                if(!is_int($int_inputs['price'])){
+                    throw new Exception('خطا در تایید تایپ $price');
+                } elseif($price < 1000000) {
+                    wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
+                }
+
+                $allowed_dates = [6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
+                $allowed_times = range(1, 12);
+                $allowed_fees = [0, 2, 4];
+
+                //check if data is allowed
+                $date = !in_array($date, $allowed_dates) ? $allowed_dates[0] : $date;
+                $time = !in_array($time, $allowed_times) ? $allowed_times[0] : $time - 1;
+                $fee = !in_array($fee, $allowed_fees) ? $allowed_fees[0] : $fee;
+
+                //check which value to calculate
+                if($loan_or_average == 'average'){
+                    $calculated_result = $this->average_to_loan_calculator($price, $date, $time, $fee);
+                } elseif($loan_or_average == 'loan'){
+                    $calculated_result = $this->loan_to_average_calculator($price, $date, $time, $fee);
+                }
+
+                $message = wp_kses($calculated_result, []);
+                wp_send_json_success(['message' => $message, 'status' => 'success']);
             }
+        } catch (Exception) {
 
-            $allowed_dates = [6, 12, 18, 24, 30, 36, 42, 48, 54, 60];
-            $allowed_times = range(1, 12);
-            $allowed_fees = [0, 2, 4];
-
-            //check if data is allowed
-            $date = !in_array($date, $allowed_dates) ? $allowed_dates[0] : $date;
-            $time = !in_array($time, $allowed_times) ? $allowed_times[0] : $time - 1;
-            $fee = !in_array($fee, $allowed_fees) ? $allowed_fees[0] : $fee;
-
-            //check which value to calculate
-            if($loan_or_average == 'average'){
-                $calculated_result = $this->average_to_loan_calculator($price, $date, $time, $fee);
-            } elseif($loan_or_average == 'loan'){
-                $calculated_result = $this->loan_to_average_calculator($price, $date, $time, $fee);
-            }
-
-            $message = wp_kses($calculated_result, []);
-            wp_send_json_success(['message' => $message, 'status' => 'success']);
-        }
+        };
         wp_die();
     }
 
