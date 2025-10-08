@@ -1,5 +1,7 @@
 <?php
 
+use BcMath\Number;
+
 if(!defined('ABSPATH')){
     exit;
 }
@@ -64,7 +66,7 @@ class Loan_calculator_shortcode{
             $fee = filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT);
 
             //check minimum price
-            if($price < 1000000){
+            if(!is_int($price) || $price < 1000000){
                 wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
             }
 
@@ -92,8 +94,8 @@ class Loan_calculator_shortcode{
 
     public function average_to_loan_calculator($price, $date, $time, $fee): int{
         //get factor percent and calculate loan
-        $factor = self::$factor[$fee][$date][$time];
-        if($factor){
+        if(self::$factor[$fee][$date][13]){
+            $factor = self::$factor[$fee][$date][$time];
             $loan = ($price * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -105,8 +107,8 @@ class Loan_calculator_shortcode{
 
     public function loan_to_average_calculator($price, $date, $time, $fee): int{
         //get factor percent and calculate average
-        $factor = self::$factor[$fee][$date][$time];
-        if($factor){
+        if(self::$factor[$fee][$date][$time]){
+            $factor = self::$factor[$fee][$date][$time];
             $average = ($price / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
