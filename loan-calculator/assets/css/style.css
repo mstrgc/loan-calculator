@@ -58,6 +58,7 @@ label{
     margin: 0;
     border-right: 1px solid white;
     text-align: center;
+    padding: 15px;
 }
 
 .section_select_option:first-of-type{
@@ -89,12 +90,6 @@ label{
     display: none;
 }
 
-.loan_radio_label{
-    padding: 5px;
-    margin: 0;
-}
-
-
 /*** section 2 ***/
 
 .loan_calculator_section2{
@@ -112,17 +107,14 @@ label{
     margin-top: 20px;
 }
 
-#date_span, #time_span{
-    color: yellow;
-}
-
-.loan_calculator_section2>label>span{
+.loan_calculator_section2>div>label>span{
     color: yellow;
 }
 
 .loan_calculator_section2>div>input[type='range']{
     width: 100%;
     accent-color: #ff5500;
+    cursor: pointer;
 }
 
 .loan_range_span{
@@ -157,9 +149,21 @@ label{
 
 .loan_calculator_section3>div{
     border-bottom: 1px solid #ffffff36;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .loan_calculator_section3>div:last-of-type{
     border: none;
+}
+
+/*** responsive ***/
+
+@media screen and (max-width: 1024px){
+    #loan_form{
+        flex-direction: column;
+    }
+
+    #loan_form>div{
+        width: 100%;
+    }
 }

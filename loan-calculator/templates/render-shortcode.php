@@ -3,10 +3,10 @@
         <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
         <div class="loan_calculator_section1">
             <div class="section_select">
-                <label class="loan_radio_label section_select_option" for="loan">
+                <label class="section_select_option" for="loan">
                     <input class="loan_radio_input" type="radio" name="loan_or_average" value="loan" id="loan" checked>تسهیلات درخواستی
                 </label>
-                <label class="loan_radio_label section_select_option" for="average">
+                <label class="section_select_option" for="average">
                     میانگین حساب<input class="loan_radio_input" type="radio" name="loan_or_average" value="average" id="average">
                 </label>
             </div>
@@ -20,9 +20,9 @@
             <div>
                 <label for="fee">کارمزد تسهیلات:</label>
                 <div class="section_select">
-                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="0" checked>۰ درصد</label>
-                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="2">۲ درصد</label>
-                    <label class="loan_radio_label section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="4">۴ درصد</label>
+                    <label class="section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="0" checked>۰ درصد</label>
+                    <label class="section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="2">۲ درصد</label>
+                    <label class="section_select_option"><input class="loan_radio_input" type="radio" name="fee" value="4">۴ درصد</label>
                 </div>
             </div>
             <div>
