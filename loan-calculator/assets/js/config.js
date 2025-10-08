@@ -3,6 +3,8 @@ let price_value = document.getElementById('display_price');
 //display price input in persian
 price_value.addEventListener('input', function () {
     this.value = window.loan_plugin_js.persian_numbers(this.value);
+    //calculate by any input in price input
+    calculate();
 });
 
 function calculate() {
@@ -24,4 +26,4 @@ function calculate() {
 }
 
 document.addEventListener('DOMContentLoaded', calculate);
-document.getElementById('loan_form').addEventListener('input', calculate);
+document.getElementById('loan_form').addEventListener('change', calculate);

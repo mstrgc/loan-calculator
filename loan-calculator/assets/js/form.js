@@ -1,5 +1,6 @@
 (function(window, document) {
     'use strict';
+    
     //add namespace
     window.loan_plugin_js = window.loan_plugin_js || {};
 
