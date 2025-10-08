@@ -93,7 +93,7 @@ class Loan_calculator_shortcode{
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
                             wp_send_json_error(['message' =>'ورودی نامعتبر', 'status' => 'error']);
-                            throw new Exception('خطا در تایید ورودی ' . $name);
+                            throw new Exception('خطا در تایید ورودی ورودی:' . $name);
                         };
                     }
                 };
@@ -105,6 +105,9 @@ class Loan_calculator_shortcode{
                     $calculated_result = $this->average_to_loan_calculator($int_inputs);
                 } elseif($loan_or_average == 'loan'){
                     $calculated_result = $this->loan_to_average_calculator($int_inputs);
+                } else {
+                    wp_send_json_error(['message' => 'تسهیلات درخواستی یا میانگین حساب را انتخاب کنید', 'status' => 'error']);
+                    throw new Exception('ورودی نامعتبر loan_average ورودی: ' . $loan_or_average);
                 }
 
                 $message = wp_kses($calculated_result, []);
