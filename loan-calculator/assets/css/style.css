@@ -119,10 +119,15 @@ label{
     color: yellow;
 }
 
-.loan_calculator_section2>div>input[type='range']{
+.range_input{
     width: 100%;
     accent-color: #ff5500;
-    cursor: pointer;
+}
+
+.range_input:active::-webkit-slider-thumb{
+    border-radius: 50px;
+    box-shadow: 0 0 0 10px #ff55003c;
+    transition: box-shadow .3s;
 }
 
 .loan_range_span{
