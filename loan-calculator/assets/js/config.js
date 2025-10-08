@@ -20,9 +20,24 @@ function calculate() {
     //display date, time, fee values in result section
     window.loan_plugin_js.label_date_time_fee();
 
-    fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data })
-    .then(response => response.json())
-    .then(result => {window.loan_plugin_js.display_result(result.data)});
+    try{
+        let response = fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data });
+
+        if(!response.ok){
+            console.log(response);
+            throw new Error('ارتباط با سرور برقرار نشد');
+        }
+
+        try{
+            response = response.json();
+        } catch(ParseError){
+            response.catch(document.getElementById('error').textContent = 'خطا در نمایش نتایج');
+        }
+
+        response.then(result => {window.loan_plugin_js.display_result(result.data)});            
+    } catch(error) {
+        return document.getElementById('error').textContent = ' در نمایش نتایج';
+    }
 }
 
 document.addEventListener('DOMContentLoaded', calculate);
