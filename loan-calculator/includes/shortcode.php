@@ -92,7 +92,7 @@ class Loan_calculator_shortcode{
                         }
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
-                            $value = $allowed_inputs[$name][0];
+                            wp_send_json_error(['message' =>'ورودی نامعتبر', 'status' => 'error']);
                             throw new Exception('خطا در تایید ورودی ' . $name);
                         };
                     }
@@ -110,8 +110,8 @@ class Loan_calculator_shortcode{
                 $message = wp_kses($calculated_result, []);
                 wp_send_json_success(['message' => $message, 'status' => 'success']);
             }
-        } catch (Exception) {
-
+        } catch (Exception $error) {
+            error_log('Loan calculator plugin error: ' . $error->getMessage());
         };
         wp_die();
     }
