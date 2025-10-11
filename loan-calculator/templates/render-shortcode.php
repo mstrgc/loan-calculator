@@ -12,7 +12,7 @@
             </div>
             <div>
                 <label for="display_price">مبلغ (تومان):</label>
-                <input type="text" name="display_price" id="display_price" value="۱,۰۰۰,۰۰۰">
+                <input type="text" name="display_price" id="display_price" value="۱,۰۰۰,۰۰۰" maxlength="15">
                 <p id="error"></p>
             </div>
         </div>

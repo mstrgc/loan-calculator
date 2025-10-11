@@ -12,7 +12,6 @@ class Loan_calculator_shortcode{
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
         add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
         add_action('wp_ajax_calculator', [$this, 'calculator']);
-        add_action('init', [$this, 'setup_rate_limit']);
     }
 
     public static $factor = [
@@ -142,32 +141,5 @@ class Loan_calculator_shortcode{
         ob_start();
         include plugin_dir_path(__FILE__) . '../templates/render-shortcode.php';
         return ob_get_clean();
-    }
-
-    public function setup_rate_limit() {
-        if(!session_id()) {
-            session_start();
-        }
-
-        $current_time = time();
-        $rate_limit_window = 60;
-        $max_requests = 30;
-
-        if(!isset($_SESSION['loan_calculator_plugin_requests'])) {
-            $_SESSION['loan_calculator_plugin_requests'] = [];
-        }
-
-        $_SESSION['loan_calculator_plugin_requests'] = array_filter(
-            $_SESSION['loan_calculator_plugin_requests'],
-            function($timestamp) use ($current_time, $rate_limit_window) {
-                return ($current_time - $timestamp) < $rate_limit_window; 
-            }
-        );
-
-        if(count($_SESSION['loan_calculator_plugin_requests']) >= $max_requests) {
-            wp_send_json_error(['message' => 'تعداد درخواست بیش از حد محاز است, کمی صبر کنید سپس دوباره امتحان کنید', 'status' => 'error']);
-        }
-
-        $_SESSION['loan_calculator_plugin_requests'][] = $current_time;
     }
 }
