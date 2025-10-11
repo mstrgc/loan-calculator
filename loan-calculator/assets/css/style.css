@@ -62,6 +62,7 @@ label{
     border-right: 1px solid white;
     text-align: center;
     padding: 15px;
+    cursor: pointer;
 }
 
 .section_select_option:first-of-type{
@@ -131,20 +132,23 @@ label{
     width: 100%;
     accent-color: #ff5500;
     background: transparent;
+    cursor: pointer;
 }
 
 /*** webkit input range ***/
 
-.range_input:hover::-webkit-slider-thumb{
+.range_input::-webkit-slider-thumb{
     border-radius: 50px;
+    box-shadow: 0 0 0 0 #ff55003c;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.range_input:hover::-webkit-slider-thumb{
     box-shadow: 0 0 0 7px #ff55003c;
-    transition: box-shadow .3s;
 }
 
 .range_input:active::-webkit-slider-thumb{
-    border-radius: 50px;
     box-shadow: 0 0 0 10px #ff55003c;
-    transition: box-shadow .3s;
 }
 
 /*** mozilla input range ***/
@@ -165,19 +169,17 @@ label{
 
 .range_input::-moz-range-thumb{
     background: #ff5500;
+    border-radius: 50px;
+    box-shadow: 0 0 0 0 #ff55003c;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-
 .range_input:hover::-moz-range-thumb{
-    border-radius: 50px;
     box-shadow: 0 0 0 7px #ff55003c;
-    transition: box-shadow .3s;
 }
 
 .range_input:active::-moz-range-thumb{
-    border-radius: 50px;
     box-shadow: 0 0 0 10px #ff55003c;
-    transition: box-shadow .3s;
 }
 
 /*** section 3 ***/
