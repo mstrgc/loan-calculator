@@ -156,6 +156,10 @@ label{
     flex-wrap: wrap;
 }
 
+.input_container p{
+    margin: 0;
+}
+
 .range_input{
     -moz-appearance: none;
     width: 100%;
