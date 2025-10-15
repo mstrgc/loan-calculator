@@ -11,4 +11,8 @@ class Calculator_exception extends Exception{
         parent::__construct($logMessage ?: '', $code, $previous);
         $this->user_error = $user_error;
     }
+
+    public function get_error(){
+        return $this->user_error;
+    }
 }
