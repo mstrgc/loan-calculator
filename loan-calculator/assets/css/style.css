@@ -20,6 +20,7 @@
 
 #loan_form input{
     text-align: center;
+    outline: none;
 }
 
 label{

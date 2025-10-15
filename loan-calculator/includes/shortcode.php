@@ -57,8 +57,7 @@ class Loan_calculator_shortcode{
         try{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
-                wp_send_json_error($result = ['message' => 'خطا در تایید فرم', 'status' => 'error']);
-                throw new Exception('nonce validation failed');
+                throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
                 //get form values
                 $loan_or_average = sanitize_text_field($_POST['loan_or_average']);
@@ -110,8 +109,9 @@ class Loan_calculator_shortcode{
                 }
 
             }
-        } catch (Exception $error) {
+        } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
+            wp_send_json_error(['message' => $error->get_error()]);
         };
         wp_die();
     }
