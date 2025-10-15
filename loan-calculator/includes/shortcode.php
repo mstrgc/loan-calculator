@@ -12,7 +12,6 @@ class Loan_calculator_shortcode{
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
         add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
         add_action('wp_ajax_calculator', [$this, 'calculator']);
-        $this->include_factor();
     }
 
     public function calculator() {
@@ -51,6 +50,11 @@ class Loan_calculator_shortcode{
                 };
 
                 $int_inputs['time'] -= 1;
+                $this->include_factor();
+
+                if(!isset($this->factor) || !is_array($this->factor)){
+                    throw new Calculator_exception('خطا در محاسبه تسهیلات', 'factor is not available');
+                }
 
                 //check which value to calculate
                 if($loan_or_average == 'average'){
