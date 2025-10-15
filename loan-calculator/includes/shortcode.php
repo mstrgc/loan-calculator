@@ -103,8 +103,12 @@ class Loan_calculator_shortcode{
                     throw new Exception('invalid loan_average input: ' . $loan_or_average);
                 }
 
-                $message = wp_kses($calculated_result, []);
-                wp_send_json_success(['message' => $message, 'status' => 'success']);
+                if(filter_var($calculated_result, FILTER_VALIDATE_INT)){
+                    wp_send_json_success(['message' => $calculated_result, 'status' => 'success']);
+                } else {
+                    wp_send_json_error(['message' => 'نتیجه نامعتبر', 'status' => 'error']);
+                }
+
             }
         } catch (Exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
