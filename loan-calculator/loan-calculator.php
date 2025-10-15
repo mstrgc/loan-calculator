@@ -37,4 +37,4 @@ class Loan_calculator{
     }
 }
 
-add_action('plugin_loaded', ['Loan_calculator', 'get_instance']);
+add_action('plugins_loaded', ['Loan_calculator', 'get_instance']);
