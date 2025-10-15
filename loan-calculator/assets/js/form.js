@@ -4,6 +4,8 @@
     //add namespace
     window.loan_plugin_js = window.loan_plugin_js || {};
 
+    loan_plugin_js.text_error = document.getElementById('error');
+
     loan_plugin_js.persian_numbers = function(input) {
         let persian_number = {
             0: '۰',
@@ -19,27 +21,37 @@
         };
 
         let result = '';
-        input = String(input);
 
         //convert numbers to persian numbers
-        for (let i = 0; i < input.length; i++) {
-            let num = Array.from(input)[i];
-            if(persian_number.hasOwnProperty(num)){
-                result += persian_number[num];
-            } else if(Object.values(persian_number).includes(num)) {
-                //pass numbers if already persian
-                result += num;
+        let converter = function(valid_input) {
+            for (let i = 0; i < valid_input.length; i++) {
+                let num = Array.from(valid_input)[i];
+                //ignore unmatched characters and remove them
+                if(persian_number.hasOwnProperty(num)){
+                    result += persian_number[num];
+                } else if(Object.values(persian_number).includes(num)) {
+                    //pass numbers if already persian
+                    result += num;
+                }
             }
-        }
+        };
 
         //add thousand separator to numbers
-        let comma_separated_result = function() {
-            let reversed_result = result.split('').reverse().join('').replaceAll(',', '');
-            result = reversed_result.match(/.{1,3}/g);
-            return result.join(',').split('').reverse().join('');
+        let comma_separated_result = function(valid_input) {
+            let reversed_result = valid_input.split('').reverse().join('').replaceAll(',', '');
+            let separated_result = reversed_result.match(/.{1,3}/g);
+            return separated_result.join(',').split('').reverse().join('');
+        };
+
+        if(typeof input === 'string'){
+            converter(input);
+        } else if(typeof input === 'number'){
+            converter(String(input));
+        } else {
+            return this.text_error.textContent = 'ورودی مبلغ باید فقط شامل اعداد باشد';
         }
 
-        return comma_separated_result();
+        return comma_separated_result(result);
     };
 
     loan_plugin_js.english_numbers = function(input) {
@@ -58,16 +70,22 @@
 
         let result = '';
 
-        //convert persian numbers to english numbers
-        for (let i = 0; i < input.length; i++) {
-            let num = Array.from(input)[i];
-            if(english_number.hasOwnProperty(num)){
-                result += english_number[num];
-            } else if(Number(num)) {
-                //pass numbers if already english
-                result += num;
+        if(typeof input === 'string'){
+            //convert persian numbers to english numbers
+            for(let i = 0; i < input.length; i++){
+                let num = Array.from(input)[i];
+                //ignore unmatched characters and remove them
+                if(english_number.hasOwnProperty(num)){
+                    result += english_number[num];
+                } else if(Number(num)) {
+                    //pass numbers if already english
+                    result += num;
+                }
             }
+        } else {
+            this.text_error.textContent = 'ورودی مبلغ باید فقط شامل اعداد باشد';
         }
+
         return Number(result);
     };
 
@@ -101,8 +119,6 @@
         let loan_result = document.getElementById('loan_result');
         let surplus_result = document.getElementById('surplus_result');
 
-        let text_error = document.getElementById('error');
-
         if (result['status'] == 'success') {
             if(document.getElementById('loan').checked){
                 //show calculated average if loan option is choosen
@@ -119,11 +135,11 @@
                 average_result.textContent = price_value.value;
             }
 
-            text_error.textContent = null;
+            this.text_error.textContent = null;
 
         } else {
             //display errors
-            text_error.textContent = result['message'];
+            this.text_error.textContent = result['message'];
             average_result.textContent = '۰';
             loan_result.textContent = '۰';
         }
