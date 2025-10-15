@@ -12,6 +12,7 @@ class Loan_calculator_shortcode{
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
         add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
         add_action('wp_ajax_calculator', [$this, 'calculator']);
+        $this->include_factor();
     }
 
     public function calculator() {
@@ -76,8 +77,8 @@ class Loan_calculator_shortcode{
 
     public function average_to_loan_calculator($inputs){
         //get factor percent and calculate loan
-        if($this->$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($this->factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $this->factor[$inputs['fee']][$inputs['date']][$inputs['time']];
             $loan = ($inputs['price'] * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -88,8 +89,8 @@ class Loan_calculator_shortcode{
 
     public function loan_to_average_calculator($inputs){
         //get factor percent and calculate average
-        if(self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = self::$factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($this->factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $this->factor[$inputs['fee']][$inputs['date']][$inputs['time']];
             $average = ($inputs['price'] / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -118,10 +119,10 @@ class Loan_calculator_shortcode{
                 throw new Exception('factor data has invalid data type');
             }
 
-            $this->$factor = $data;
-        } catch(Calculator_exception $error){
+            $this->factor = $data;
+
+        } catch(Exception $error){
             error_log($error->getMessage());
         }
-        wp_die();
     }
 }
