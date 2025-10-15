@@ -77,15 +77,13 @@ class Loan_calculator_shortcode{
                 foreach($int_inputs as $name => $value) {
                     if($name == 'price'){
                         if(!is_int($value)){
-                            wp_send_json_error(['message' =>'مبلغ باید شامل اعداد باشد', 'status' => 'error']);
-                            throw new Exception('$price type validation failed');
+                            throw new Calculator_exception('مبلغ باید شامل اعداد باشد', '$price type validation failed');
                         } elseif($int_inputs['price'] < 1000000) {
                             wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                         }
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
-                            wp_send_json_error(['message' =>'ورودی نامعتبر', 'status' => 'error']);
-                            throw new Exception('input validation failed. input: ' . $name);
+                            throw new Calculator_exception('ورودی نامعتبر', 'input validation failed. input: ' . $name);
                         };
                     }
                 };
@@ -98,8 +96,7 @@ class Loan_calculator_shortcode{
                 } elseif($loan_or_average == 'loan'){
                     $calculated_result = $this->loan_to_average_calculator($int_inputs);
                 } else {
-                    wp_send_json_error(['message' => 'تسهیلات درخواستی یا میانگین حساب را انتخاب کنید', 'status' => 'error']);
-                    throw new Exception('invalid loan_average input: ' . $loan_or_average);
+                    throw new Calculator_exception('تسهیلات درخواستی یا میانگین حساب را انتخاب کنید', 'invalid loan_average input: ' . $loan_or_average);
                 }
 
                 if(filter_var($calculated_result, FILTER_VALIDATE_INT)){
