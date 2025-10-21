@@ -103,7 +103,11 @@ class Loan_calculator_shortcode{
         return intval($average);
     }
 
-    public function render_loan_calculator(){
+    public function render_loan_calculator($bank_name){
+        if($bank_name="melli"){
+            return;
+        }
+
         //render page
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../templates/render-shortcode.php';
