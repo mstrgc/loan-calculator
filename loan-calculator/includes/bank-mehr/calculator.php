@@ -15,7 +15,7 @@ class Mehr_loan_calculator{
 
     public function render(){
         ob_start();
-        echo '<p>test</p>';
+        include_once plugin_dir_path(__FILE__) . '../../templates/bank-mehr-ui.php';
         return ob_get_clean();
     }
 }
