@@ -9,6 +9,7 @@ class Melli_script_enqueue{
     public function __construct(){
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
+    
     public function enqueue_assets(){
         wp_enqueue_style(
             'style',
@@ -31,7 +32,9 @@ class Melli_script_enqueue{
             true
         );
 
-        wp_localize_script('loan_config', 'loan_config_variables',
+        wp_localize_script(
+            'loan_config',
+            'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );
     }

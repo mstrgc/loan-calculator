@@ -1,16 +1,29 @@
 <?php
 
-use BcMath\Number;
-
 if(!defined('ABSPATH')){
     exit;
 }
 
 class Melli_loan_calculator{
 
+    private static $instance = null;
+
+    public static function get_instance() {
+        if(is_null(self::$instance)){
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
     public function __construct(){
         add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
         add_action('wp_ajax_calculator', [$this, 'calculator']);
+    }
+
+    public function enqueue(){
+        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
+        $styles =  new Melli_script_enqueue();
+        return $styles->enqueue_assets();
     }
 
     public function calculator() {
@@ -102,15 +115,8 @@ class Melli_loan_calculator{
         return intval($average);
     }
 
-    public function enqueue(){
-        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
-        $styles =  new Melli_script_enqueue();
-        return $styles->enqueue_assets();
-    }
-
     public function render(){
         $this->enqueue();
-
         //render page
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-melli-ui.php';

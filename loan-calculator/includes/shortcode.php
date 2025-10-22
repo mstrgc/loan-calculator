@@ -1,7 +1,5 @@
 <?php
 
-use BcMath\Number;
-
 if(!defined('ABSPATH')){
     exit;
 }
@@ -20,9 +18,9 @@ class Loan_calculator_shortcode{
             'Loan_calculator'
         );
 
-        if($parameters['bank_name']='melli'){
+        if($parameters['bank_name'] == 'melli'){
             require_once plugin_dir_path(__FILE__) . 'bank-melli/calculator.php';
-            $calculator = new Melli_loan_calculator();
+            $calculator = Melli_loan_calculator::get_instance();
             return $calculator->render();
         }
     }

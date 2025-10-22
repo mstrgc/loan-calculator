@@ -14,6 +14,7 @@ function calculate() {
 
     //add php calculator function to formdata
     loan_form_data.append('action', 'calculator');
+    
     //convert price value to english
     loan_form_data.append('price', window.loan_plugin_js.english_numbers(price_value.value));
 
