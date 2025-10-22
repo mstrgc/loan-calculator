@@ -102,7 +102,14 @@ class Melli_loan_calculator{
         return intval($average);
     }
 
+    public function enqueue(){
+        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
+        $styles =  new Melli_script_enqueue();
+        return $styles->enqueue_assets();
+    }
+
     public function render(){
+        $this->enqueue();
 
         //render page
         ob_start();

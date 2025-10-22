@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-class Loan_enqueue{
+class Melli_script_enqueue{
 
     public function __construct(){
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
@@ -12,12 +12,12 @@ class Loan_enqueue{
     public function enqueue_assets(){
         wp_enqueue_style(
             'style',
-            plugin_dir_url(__FILE__) . '../assets/css/style.css'
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/css/style.css'
         );
 
         wp_enqueue_script(
             'loan_form',
-            plugin_dir_url(__FILE__) . '../assets/js/form.js',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/form.js',
             [],
             null,
             true
@@ -25,7 +25,7 @@ class Loan_enqueue{
 
         wp_enqueue_script(
             'loan_config',
-            plugin_dir_url(__FILE__) . '../assets/js/config.js',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/config.js',
             ['loan_form', 'jquery'],
             null,
             true
