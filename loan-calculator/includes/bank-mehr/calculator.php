@@ -16,7 +16,7 @@ class Mehr_loan_calculator{
     public function render(){
         ob_start();
         echo '<p>test</p>';
-        ob_get_clean();
+        return ob_get_clean();
     }
 }
 

@@ -22,6 +22,10 @@ class Loan_calculator_shortcode{
             require_once plugin_dir_path(__FILE__) . 'bank-melli/calculator.php';
             $calculator = new Melli_loan_calculator();
             return $calculator->render();
+        } elseif($parameters['bank_name'] == 'mehr'){
+            require_once plugin_dir_path(__FILE__) . 'bank-mehr/calculator.php';
+            $calculator = new Mehr_loan_calculator();
+            return $calculator->render();
         }
     }
 }
