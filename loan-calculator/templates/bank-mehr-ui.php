@@ -15,5 +15,6 @@
             <label for="mehr_fee"><input type="radio" name="mehr_fee" value="3">3 درصد</label>
             <label for="mehr_fee"><input type="radio" name="mehr_fee" value="4">۴ درصد</label>
         </div>
+        <button>محاسبه</button>
     </form>
 </div>
