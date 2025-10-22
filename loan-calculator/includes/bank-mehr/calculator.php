@@ -12,6 +12,12 @@ class Mehr_loan_calculator{
         }
         return self::$instance;
     }
+
+    public function render(){
+        ob_start();
+        echo '<p>test</p>';
+        ob_get_clean();
+    }
 }
 
 add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);
