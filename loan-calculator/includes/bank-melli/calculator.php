@@ -16,8 +16,8 @@ class Melli_loan_calculator{
     }
 
     public function __construct(){
-        add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
-        add_action('wp_ajax_calculator', [$this, 'calculator']);
+        add_action('wp_ajax_nopriv_melli_calculator', [$this, 'melli_calculator']);
+        add_action('wp_ajax_melli_calculator', [$this, 'melli_calculator']);
     }
 
     public function enqueue(){
@@ -26,7 +26,7 @@ class Melli_loan_calculator{
         return $styles->enqueue_assets();
     }
 
-    public function calculator() {
+    public function melli_calculator() {
         try{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
@@ -117,6 +117,7 @@ class Melli_loan_calculator{
 
     public function render(){
         $this->enqueue();
+
         //render page
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-melli-ui.php';
@@ -143,3 +144,6 @@ class Melli_loan_calculator{
         }
     }
 }
+
+//initiate class so ajax hooks load and work
+add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);

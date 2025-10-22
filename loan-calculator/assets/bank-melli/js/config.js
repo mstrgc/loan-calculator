@@ -13,7 +13,7 @@ function calculate() {
     let loan_form_data = new FormData(loan_form);
 
     //add php calculator function to formdata
-    loan_form_data.append('action', 'calculator');
+    loan_form_data.append('action', 'melli_calculator');
     
     //convert price value to english
     loan_form_data.append('price', window.loan_plugin_js.english_numbers(price_value.value));
@@ -22,7 +22,7 @@ function calculate() {
     window.loan_plugin_js.label_date_time_fee();
 
     try{
-        let response = fetch(loan_config_variables.admin_ajax_url, { method: 'post', body: loan_form_data });
+        let response = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data, credentials: 'same-origin', cache: 'no-cache'});
 
         response.then(function(resp) {
             if(!resp.ok){
