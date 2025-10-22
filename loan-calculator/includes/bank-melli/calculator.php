@@ -9,7 +9,6 @@ if(!defined('ABSPATH')){
 class Melli_loan_calculator{
 
     public function __construct(){
-        add_action('init', [$this, 'render_loan_calculator']);
         add_action('wp_ajax_nopriv_calculator', [$this, 'calculator']);
         add_action('wp_ajax_calculator', [$this, 'calculator']);
     }
@@ -103,7 +102,7 @@ class Melli_loan_calculator{
         return intval($average);
     }
 
-    public function render_loan_calculator(){
+    public function render(){
 
         //render page
         ob_start();

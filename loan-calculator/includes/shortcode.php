@@ -20,9 +20,10 @@ class Loan_calculator_shortcode{
             'Loan_calculator'
         );
 
-        if($parameters['bank_name']="melli"){
+        if($parameters['bank_name']='melli'){
             require_once plugin_dir_path(__FILE__) . 'bank-melli/calculator.php';
-            new Melli_loan_calculator();
+            $calculator = new Melli_loan_calculator();
+            return $calculator->render();
         }
     }
 }
