@@ -13,7 +13,15 @@ class Mehr_loan_calculator{
         return self::$instance;
     }
 
+    public function enqueue(){
+        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
+        $styles =  new Mehr_script_enqueue();
+        return $styles->enqueue_assets();
+    }
+
     public function render(){
+        $this->enqueue();
+        
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-mehr-ui.php';
         return ob_get_clean();
