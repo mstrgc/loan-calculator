@@ -20,11 +20,9 @@ class Mehr_loan_calculator{
 
     public function mehr_calculator() {
         try{
-            //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
-                //get form values
                 $inputs = [
                     'price' => filter_input(INPUT_POST, 'mehr_price', FILTER_VALIDATE_INT),
                     'payment' => filter_input(INPUT_POST, 'mehr_payment', FILTER_VALIDATE_INT),
@@ -32,6 +30,19 @@ class Mehr_loan_calculator{
                     'mehr_fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
                 ];
 
+                $data = $this->include_data();
+
+                foreach($inputs as $name => $value) {
+                    if($name == 'price' || 'debt_price'){
+                        if(!is_int($value)){
+                            wp_send_json_error(['message' => 'مبلغ باید شامل اعداد باشد']);
+                        }
+                    } else {
+                        if(!in_array($value, $data['allowed_inputs'][$name])){
+                            wp_send_json_error(['message' => 'ورودی نامعتبر']);
+                        };
+                    }
+                };
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
@@ -52,6 +63,23 @@ class Mehr_loan_calculator{
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-mehr-ui.php';
         return ob_get_clean();
+    }
+
+    public function include_data(){
+        //add factor data
+        $data_file = plugin_dir_path(__FILE__) . 'data.php';
+        try{
+            if(!file_exists($data_file)){
+                throw new Exception('factor data is not found');
+            }
+
+            $data = include_once $data_file;
+            
+            return $data;
+
+        } catch(Exception $error){
+            error_log($error->getMessage());
+        }
     }
 }
 

@@ -13,8 +13,11 @@ $factors = [
 ];
 
 $allowed_inputs = [
-    $allowed_inputs = [
-        'payment' => [24, 30, 36, 42, 48, 54, 60],
-        'fee' => [0, 1, 2, 3, 4]
-    ]
+    'payment' => [24, 30, 36, 42, 48, 54, 60],
+    'fee' => [0, 1, 2, 3, 4]
+];
+
+return [
+    'factors' => $factors,
+    'allowed_inputs' => $allowed_inputs,
 ];
