@@ -52,7 +52,7 @@ class Melli_loan_calculator{
                         if(!is_int($value)){
                             throw new Calculator_exception('مبلغ باید شامل اعداد باشد', '$price type validation failed');
                         } elseif($int_inputs['price'] < 1000000) {
-                            wp_send_json_error(['message' =>'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
+                            wp_send_json_error(['message' => 'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
                         }
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
@@ -145,5 +145,4 @@ class Melli_loan_calculator{
     }
 }
 
-//initiate class so ajax hooks load and work
 add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);

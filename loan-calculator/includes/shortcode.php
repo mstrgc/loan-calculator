@@ -24,7 +24,7 @@ class Loan_calculator_shortcode{
         if($parameters['bank_name'] == 'melli'){
             return Melli_loan_calculator::get_instance()->render();
         } elseif($parameters['bank_name'] == 'mehr'){
-            return Melli_loan_calculator::get_instance()->render();
+            return Mehr_loan_calculator::get_instance()->render();
         }
     }
 }

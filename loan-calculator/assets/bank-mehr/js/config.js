@@ -4,9 +4,14 @@ function calculate() {
 
     loan_form_data.append('action', 'mehr_calculator');
 
-    fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data})
+    let request = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data});
 
-    .then();
+    request.then(function(response){
+        return response.json();
+    })
+    .then(response => {
+        document.getElementById('result').textContent = response['message'];
+    });
 }
 
-document.getElementById('submit_fom').addEventListener('click', calculate);
+document.getElementById('mehr_submit_button').addEventListener('click', calculate);

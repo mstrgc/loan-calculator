@@ -19,7 +19,8 @@ class Mehr_loan_calculator{
     }
 
     public function mehr_calculator(){
-        return wp_send_json_success('recieved!');
+        wp_send_json_success(['message' => 'recieved!'], '200');
+        wp_die();
     }
 
     public function enqueue(){
