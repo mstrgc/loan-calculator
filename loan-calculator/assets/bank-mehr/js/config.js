@@ -10,7 +10,7 @@ function calculate() {
         return response.json();
     })
     .then(response => {
-        document.getElementById('result').textContent = response['message'];
+        document.getElementById('result').textContent = response.data['message'];
     });
 }
 
