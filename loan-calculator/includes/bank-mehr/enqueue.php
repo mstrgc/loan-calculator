@@ -15,5 +15,13 @@ class Mehr_script_enqueue{
             'style',
             plugin_dir_url(__FILE__) . '../../assets/bank-mehr/css/style.css'
         );
+
+        wp_enqueue_script(
+            'loan_config',
+            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/js/config.js',
+            ['loan_form', 'jquery'],
+            null,
+            true
+        );
     }
 }

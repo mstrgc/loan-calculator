@@ -1,4 +1,5 @@
-function calculate() {
+function calculate(e) {
+    e.preventDefault();
     let loan_form = document.getElementById('loan_form');
     let loan_form_data = new FormData(loan_form);
 
