@@ -9,10 +9,8 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-require_once plugin_dir_path(__FILE__) . 'includes/shortcode.php';
 require_once plugin_dir_path(__FILE__) . 'includes/calculator-exception.php';
-require_once plugin_dir_path(__FILE__) . 'includes/bank-melli/calculator.php';
-
+require_once plugin_dir_path(__FILE__) . 'includes/shortcode.php';
 
 class Loan_calculator{
     //add singleton pattern
