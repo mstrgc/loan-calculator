@@ -133,6 +133,7 @@ class Melli_loan_calculator{
             }
 
             $data = include_once $factor_file;
+            
             if(!is_array($data)){
                 throw new Exception('factor data has invalid data type');
             }
