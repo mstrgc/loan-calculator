@@ -43,7 +43,7 @@
                 <label for="mehr_fee"><input type="radio" name="mehr_fee" value="3">3 درصد</label>
                 <label for="mehr_fee"><input type="radio" name="mehr_fee" value="4">۴ درصد</label>
             </div>
-            <button type="submit">محاسبه</button>
+            <button type="button">محاسبه</button>
         </form>
     </div>
     <div class="loan_result_container">

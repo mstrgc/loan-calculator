@@ -23,5 +23,11 @@ class Mehr_script_enqueue{
             null,
             true
         );
+
+        wp_localize_script(
+            'loan_config',
+            'loan_config_variables',
+            ['admin_ajax_url' => admin_url('admin-ajax.php')]
+        );
     }
 }
