@@ -13,6 +13,15 @@ class Mehr_loan_calculator{
         return self::$instance;
     }
 
+    public function __construct(){
+        add_action('wp_ajax_nopriv_mehr_calculator', [$this, 'mehr_calculator']);
+        add_action('wp_ajax_mehr_calculator', [$this, 'mehr_calculator']);
+    }
+
+    public function mehr_calculator(){
+        return wp_send_json_success('recieved!');
+    }
+
     public function enqueue(){
         require_once plugin_dir_path(__FILE__) . 'enqueue.php';
         $styles =  new Mehr_script_enqueue();
