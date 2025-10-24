@@ -4,6 +4,9 @@ if(!defined('ABSPATH')){
     exit;
 }
 
+require_once plugin_dir_path(__FILE__) . 'bank-melli/calculator.php';
+require_once plugin_dir_path(__FILE__) . 'bank-mehr/calculator.php';
+
 class Loan_calculator_shortcode{
 
     public function __construct(){
@@ -15,17 +18,13 @@ class Loan_calculator_shortcode{
         $parameters = shortcode_atts(
             ['bank_name' => ''],
             $parameter,
-            'Loan_calculator'
+            'loan_calculator'
         );
 
         if($parameters['bank_name'] == 'melli'){
-            require_once plugin_dir_path(__FILE__) . 'bank-melli/calculator.php';
-            $calculator = new Melli_loan_calculator();
-            return $calculator->render();
+            return Melli_loan_calculator::get_instance()->render();
         } elseif($parameters['bank_name'] == 'mehr'){
-            require_once plugin_dir_path(__FILE__) . 'bank-mehr/calculator.php';
-            $calculator = new Mehr_loan_calculator();
-            return $calculator->render();
+            return Melli_loan_calculator::get_instance()->render();
         }
     }
 }
