@@ -46,8 +46,9 @@ class Mehr_loan_calculator{
                     }
                 };
 
-                $result = $this->average_deposit($inputs);
-                wp_send_json_success(['message' => $result]);
+                $deposit = $this->average_deposit($inputs);
+                $payment = $this->payment_calculator($inputs);
+                wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
 
             }
         } catch (Calculator_exception $error) {
@@ -70,6 +71,15 @@ class Mehr_loan_calculator{
             $result[] = intval($deposit / 1000000) * 1000000;
         }
 
+        return $result;
+    }
+
+    public function payment_calculator($input){
+        $price = $input['price'];
+        $debt_price = $input['debt_price'];
+        $payment = $input['payment'];
+
+        $result = (round(((($price / $payment) * 109.1) / 100) / 100000)) * 100000;
         return $result;
     }
 

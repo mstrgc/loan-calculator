@@ -10,7 +10,7 @@ function calculate() {
         return response.json();
     })
     .then(response => {
-        document.getElementById('result').textContent = display_result(response.data['message']);
+        document.getElementById('result').textContent = display_result(response.data['deposit']);
     });
 }
 
