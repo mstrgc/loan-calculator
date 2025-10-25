@@ -21,10 +21,22 @@ class Loan_calculator_shortcode{
             'loan_calculator'
         );
 
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_essentials']);
+
         if($parameters['bank_name'] == 'melli'){
             return Melli_loan_calculator::get_instance()->render();
         } elseif($parameters['bank_name'] == 'mehr'){
             return Mehr_loan_calculator::get_instance()->render();
         }
+    }
+
+    public function enqueue_essentials(){
+        wp_enqueue_script(
+            'number_converter',
+            plugin_dir_url(__FILE__) . '../assets/js/converter.js',
+            [],
+            null,
+            true
+        );
     }
 }
