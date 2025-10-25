@@ -47,15 +47,15 @@
         </form>
     </div>
     <div class="loan_result_container">
-        <p id="mehr_placeholder">موردی وارد نشده است</p>
-        <table class="loan_result_table">
+        <table id="loan_result_table">
             <thead>
                 <th>مدت ماه انتظار</th>
                 <th>معدل حساب</th>
                 <th>شرح تسهیلات</th>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="mehr_result_tbody">
+                <span id="mehr_placeholder">موردی وارد نشده است</span>
+                <!--<tr>
                     <td>1</td>
                     <td class="mehr_deposit_result"></td>
                     <td class="mehr_deposit_description"></td>
@@ -114,7 +114,7 @@
                     <td>12</td>
                     <td class="mehr_deposit_result"></td>
                     <td class="mehr_deposit_description"></td>
-                </tr>
+                </tr>-->
             </tbody>
         </table>
     </div>

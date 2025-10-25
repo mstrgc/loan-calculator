@@ -15,14 +15,25 @@ function calculate() {
 }
 
 function display_result(input) {
-    deposit_result_row = document.querySelectorAll('td.mehr_deposit_result');
+    /*deposit_result_row = document.querySelectorAll('td.mehr_deposit_result');
 
     for(let i = 0; i < input.length; i++) {
         deposit_result_row[i].textContent = input[i];
     }
 
-    document.getElementById('')
-    return;
+    document.getElementById('mehr_placeholder').remove();
+    return;*/
+
+    tags = '';
+
+    tbody = document.getElementById('mehr_result_tbody');
+
+    for(let i = 0; i < input.length; i++) {
+        tags += (
+            '<tr><td>' + (i + 1) + '</td><td>' + input[i] + '</td><td></td></tr>'
+        );
+    }
+    tbody.innerHTML = tags;
 }
 
 document.getElementById('mehr_submit_button').addEventListener('click', calculate);

@@ -27,10 +27,12 @@ class Mehr_loan_calculator{
                     'price' => filter_input(INPUT_POST, 'mehr_price', FILTER_VALIDATE_INT),
                     'payment' => filter_input(INPUT_POST, 'mehr_payment', FILTER_VALIDATE_INT),
                     'debt_price' => filter_input(INPUT_POST, 'mehr_debt_price', FILTER_VALIDATE_INT),
-                    'mehr_fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
+                    'fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
                 ];
 
-                $data = $this->include_data();
+                $this->include_data();
+
+                $data = $this->bank_data;
 
                 foreach($inputs as $name => $value) {
                     if($name == 'price' || 'debt_price'){
@@ -43,12 +45,32 @@ class Mehr_loan_calculator{
                         };
                     }
                 };
+
+                $result = $this->average_deposit($inputs);
+                wp_send_json_success(['message' => $result]);
+
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
             wp_send_json_error(['message' => $error->get_error()]);
         };
         wp_die();
+    }
+
+    public function average_deposit($input){
+        $this->include_data();
+        $data = $this->bank_data;
+
+        $result = [];
+
+        $factors = $data['factors'][$input['fee']][$input['payment']];
+
+        foreach($factors as $factor){
+            $deposit = ($input['price'] / $factor) * 100;
+            $result[] = intval($deposit / 1000000) * 1000000;
+        }
+
+        return $result;
     }
 
     public function enqueue(){
@@ -79,7 +101,7 @@ class Mehr_loan_calculator{
                 throw new Exception('factor data has invalid data type');
             }
             
-            return $data;
+            $this->bank_data = $data;
 
         } catch(Exception $error){
             error_log($error->getMessage());
