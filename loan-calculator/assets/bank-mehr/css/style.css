@@ -7,17 +7,18 @@
     flex-direction: row;
     margin: 0 auto;
     text-align: right;
-    font-size: 20px;
-    white-space: nowrap;
+    font-size: 14px;
     accent-color: #76c000;
 }
 
 .loan_form_container{
     width: 50%;
+    margin: 20px;
 }
 
 .loan_result_container{
     width: 50%;
+    margin: 20px;
 }
 
 #loan_form{
@@ -41,7 +42,48 @@
     justify-content: space-between;
 }
 
+.input_title>p{
+    margin: 0;
+}
+
 .fee_radio_input{
     display: flex;
     justify-content: space-around;
+}
+
+/*** result section ***/
+
+#loan_result_table{
+    width: 100%;
+    border: none;
+}
+
+#loan_result_table>thead{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#loan_result_table>thead>tr{
+    background: #78bd20;
+    width: 100%;
+    border: none;
+    padding: 20px;
+    margin: 0;
+}
+
+th{
+    border: none;
+}
+
+tr{
+    background: #f4f3ef;
+}
+
+tr:nth-child(odd){
+    background: #c7dbd2;
+}
+
+td{
+    text-align: center;
 }

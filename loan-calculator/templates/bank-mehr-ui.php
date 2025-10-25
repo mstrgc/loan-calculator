@@ -49,9 +49,11 @@
     <div class="loan_result_container">
         <table id="loan_result_table">
             <thead>
-                <th>مدت ماه انتظار</th>
-                <th>معدل حساب</th>
-                <th>شرح تسهیلات</th>
+                <tr>
+                    <th>مدت ماه انتظار</th>
+                    <th>معدل حساب</th>
+                    <th>شرح تسهیلات</th>
+                </tr>
             </thead>
             <tbody id="mehr_result_tbody">
                 <span id="mehr_placeholder">موردی وارد نشده است</span>
