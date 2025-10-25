@@ -10,8 +10,19 @@ function calculate() {
         return response.json();
     })
     .then(response => {
-        document.getElementById('result').textContent = response.data['message'];
+        document.getElementById('result').textContent = display_result(response.data['message']);
     });
+}
+
+function display_result(input) {
+    deposit_result_row = document.querySelectorAll('td.mehr_deposit_result');
+
+    for(let i = 0; i < input.length; i++) {
+        deposit_result_row[i].textContent = input[i];
+    }
+
+    document.getElementById('')
+    return;
 }
 
 document.getElementById('mehr_submit_button').addEventListener('click', calculate);
