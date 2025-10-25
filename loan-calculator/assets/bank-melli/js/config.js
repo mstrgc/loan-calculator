@@ -2,7 +2,7 @@ let price_value = document.getElementById('display_price');
 
 //display price input in persian
 price_value.addEventListener('input', function () {
-    this.value = window.loan_plugin_js.persian_numbers(this.value);
+    this.value = window.number_converter.persian_numbers(this.value);
     //calculate by any input in price input
     calculate();
 });
@@ -16,7 +16,7 @@ function calculate() {
     loan_form_data.append('action', 'melli_calculator');
     
     //convert price value to english
-    loan_form_data.append('price', window.loan_plugin_js.english_numbers(price_value.value));
+    loan_form_data.append('price', window.number_converter.english_numbers(price_value.value));
 
     //display date, time, fee values in result section
     window.loan_plugin_js.label_date_time_fee();
