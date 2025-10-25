@@ -10,7 +10,7 @@ function calculate() {
         return response.json();
     })
     .then(response => {
-        document.getElementById('result').textContent = display_result(response.data['deposit']);
+        document.getElementById('result').textContent = display_result(response.data);
     });
 }
 
@@ -19,9 +19,9 @@ function display_result(input) {
 
     tbody = document.getElementById('mehr_result_tbody');
 
-    for(let i = 0; i < input.length; i++) {
+    for(let i = 0; i < input['deposit'].length; i++) {
         tags += (
-            '<tr><td>' + (i + 1) + '</td><td>' + input[i] + '</td><td></td></tr>'
+            '<tr><td>' + (i + 1) + '</td><td>' + input['deposit'][i] + '</td><td>' + input['payment'] + '</td></tr>'
         );
     }
     document.getElementById('mehr_placeholder').style = 'display: none;';
