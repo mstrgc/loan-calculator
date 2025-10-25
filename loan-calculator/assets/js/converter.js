@@ -2,11 +2,11 @@
     'use strict';
     
     //add namespace
-    window.loan_plugin_js = window.loan_plugin_js || {};
+    window.number_converter = window.number_converter || {};
 
-    loan_plugin_js.text_error = document.getElementById('error');
+    number_converter.text_error = document.getElementById('error');
 
-    loan_plugin_js.persian_numbers = function(input) {
+    number_converter.persian_numbers = function(input) {
         let persian_number = {
             0: '۰',
             1: '۱',
@@ -54,7 +54,7 @@
         return comma_separated_result(result);
     };
 
-    loan_plugin_js.english_numbers = function(input) {
+    number_converter.english_numbers = function(input) {
         let english_number = {
             '۰': 0,
             '۱': 1,

@@ -19,9 +19,14 @@ function display_result(input) {
 
     tbody = document.getElementById('mehr_result_tbody');
 
+    payment_value = document.getElementById('mehr_payment').value;
+    price_value = document.getElementById('mehr_price').value;
+
+    payment_description = 'تسهيلات به مبلغ ' + window.number_converter.persian_numbers(price_value) + ' با بازپرداخت ' + window.number_converter.persian_numbers(payment_value) + ' قسط ۱ ماهه با مبلغ تقريبي ' + window.number_converter.persian_numbers(input['payment']) + ' ريال';
+
     for(let i = 0; i < input['deposit'].length; i++) {
         tags += (
-            '<tr><td>' + (i + 1) + '</td><td>' + input['deposit'][i] + '</td><td>' + input['payment'] + '</td></tr>'
+            '<tr><td>' + window.number_converter.persian_numbers(i + 1) + '</td><td>' + window.number_converter.persian_numbers(input['deposit'][i]) + '</td><td>' + payment_description + '</td></tr>'
         );
     }
     document.getElementById('mehr_placeholder').style = 'display: none;';

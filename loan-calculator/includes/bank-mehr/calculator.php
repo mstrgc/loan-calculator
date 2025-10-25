@@ -48,7 +48,7 @@ class Mehr_loan_calculator{
 
                 $deposit = $this->average_deposit($inputs);
                 $payment = $this->payment_calculator($inputs);
-                wp_send_json_success(['deposit' => $deposit, 'payment' => 'تسهيلات به مبلغ ' . $inputs['price'] . ' با بازپرداخت ' . $inputs['payment'] . ' قسط 1 ماهه با مبلغ تقريبي ' . $payment . ' ريال']);
+                wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
 
             }
         } catch (Calculator_exception $error) {
