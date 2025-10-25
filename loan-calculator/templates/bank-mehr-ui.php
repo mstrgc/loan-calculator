@@ -55,66 +55,6 @@
             </thead>
             <tbody id="mehr_result_tbody">
                 <span id="mehr_placeholder">موردی وارد نشده است</span>
-                <!--<tr>
-                    <td>1</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td class="mehr_deposit_result"></td>
-                    <td class="mehr_deposit_description"></td>
-                </tr>-->
             </tbody>
         </table>
     </div>
