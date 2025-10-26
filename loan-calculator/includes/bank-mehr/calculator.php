@@ -51,8 +51,12 @@ class Mehr_loan_calculator{
 
                 $deposit = $this->average_deposit($inputs);
                 $payment = $this->payment_calculator($inputs);
-                wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
 
+                if(!$payment){
+                    wp_send_json_error(['message' => 'وامی با این شرایط موجود نیست']);
+                } else{
+                    wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
+                }
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
@@ -83,6 +87,11 @@ class Mehr_loan_calculator{
         $payment = $input['payment'];
 
         $result = (ceil((($price / $payment)) / 100000)) * 100000;
+
+        if($result < $debt_price){
+            return false;
+        }
+        
         return $result;
     }
 
