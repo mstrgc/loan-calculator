@@ -1,24 +1,33 @@
+let error_text = document.getElementById('mehr_placeholder');
+
 function calculate() {
     let loan_form = document.getElementById('loan_form');
     let loan_form_data = new FormData(loan_form);
 
     loan_form_data.append('action', 'mehr_calculator');
 
-    let request = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data});
+    try{
+        let request = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data});
 
-    request.then(function(response){
-        return response.json();
-    })
-    .then(response => {
-        display_result(response);
-    });
+        request.then(function(response){
+            if(!resp.ok){
+                throw new Error('ارتباط با سرور برقرار نشد');
+            }
+            return response.json();
+        })
+        .then(response => {
+            display_result(response);
+        });
+
+    } catch(error){
+        error_text.textContent = error.message;
+    }
 }
 
 function display_result(input) {
     let tbody = document.getElementById('mehr_result_tbody');
 
     if(input.success == false){
-        let error_text = document.getElementById('mehr_placeholder');
         tbody.innerHTML = '';
         error_text.style = 'display: block';
         error_text.textContent = input.data['message'];
@@ -47,4 +56,3 @@ function sync_label(input){
 }
 
 document.getElementById('mehr_submit_button').addEventListener('click', calculate);
-//document.getElementById('loan_form').addEventListener('input', sync_input_label);
