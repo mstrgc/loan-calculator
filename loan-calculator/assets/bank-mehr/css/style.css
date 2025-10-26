@@ -8,17 +8,17 @@
     margin: 0 auto;
     text-align: right;
     font-size: 14px;
-    accent-color: #76c000;
+    accent-color: #78bd20;
 }
 
 .loan_form_container{
     width: 50%;
-    margin: 20px;
+    padding: 10px;
 }
 
 .loan_result_container{
     width: 50%;
-    margin: 20px;
+    padding: 10px;
 }
 
 #loan_form{
@@ -35,6 +35,7 @@
 .input_container{
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .input_title, .input_span{
@@ -42,13 +43,35 @@
     justify-content: space-between;
 }
 
+.input_span{
+    color: #ccc;
+}
+
 .input_title>p{
+    width: 17%;
     margin: 0;
+    border: 1px solid #888;
+    border-radius: 6px;
+    padding: 2px 10px;
+    text-align: left;
+}
+
+.input_title>p>span{
+    float: right;
 }
 
 .fee_radio_input{
+    margin: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+#mehr_submit_button{
+    outline: none;
+    background: #78bd20;
+    padding: 10px 0;
+    border: none;
+    border-radius: 6px;
 }
 
 /*** result section ***/
@@ -56,6 +79,7 @@
 #loan_result_table{
     width: 100%;
     border: none;
+    border-collapse: collapse;
 }
 
 #loan_result_table>thead{
@@ -67,13 +91,21 @@
 #loan_result_table>thead>tr{
     background: #78bd20;
     width: 100%;
-    border: none;
     padding: 20px;
     margin: 0;
 }
 
 th{
-    border: none;
+    color: white;
+    text-align: center;
+}
+
+td{
+    text-align: center;
+}
+
+th:last-of-type, td:last-of-type{
+    text-align: right;
 }
 
 tr{
@@ -82,8 +114,4 @@ tr{
 
 tr:nth-child(odd){
     background: #c7dbd2;
-}
-
-td{
-    text-align: center;
 }

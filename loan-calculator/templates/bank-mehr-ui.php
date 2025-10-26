@@ -29,7 +29,7 @@
                     <label for="mehr_debt_price">حداکثر توانایی باز پرداخت</label>
                     <p><span id="debt_price_input_indicator">۱,۰۰۰,۰۰۰</span> ریال</p>
                 </div>
-                <input type="range" name="mehr_debt_price" id="mehr_debt_price" min="1000000" max="500000000" step="5000000" value="1000000">
+                <input type="range" name="mehr_debt_price" id="mehr_debt_price" min="1000000" max="500000000" step="500000" value="1000000">
                 <div class="input_span">
                     <span>۱,۰۰۰,۰۰۰</span>
                     <span>۵۰۰,۰۰۰,۰۰۰</span>
@@ -58,8 +58,8 @@
                 </tr>
             </thead>
             <tbody id="mehr_result_tbody">
-                <span id="mehr_placeholder">موردی وارد نشده است</span>
             </tbody>
         </table>
+        <span id="mehr_placeholder">موردی وارد نشده است</span>
     </div>
 </div>

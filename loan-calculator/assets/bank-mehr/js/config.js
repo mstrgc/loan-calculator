@@ -33,4 +33,16 @@ function display_result(input) {
     tbody.innerHTML = tags;
 }
 
+function sync_input_label() {
+    price_value = document.getElementById('mehr_price').value;
+    document.getElementById('price_input_indicator').textContent = window.number_converter.persian_numbers(price_value);
+
+    payment_value = document.getElementById('mehr_payment').value;
+    document.getElementById('payment_input_indicator').textContent = window.number_converter.persian_numbers(payment_value);
+
+    debt_price_value = document.getElementById('mehr_debt_price').value;
+    document.getElementById('debt_price_input_indicator').textContent = window.number_converter.persian_numbers(debt_price_value);
+}
+
 document.getElementById('mehr_submit_button').addEventListener('click', calculate);
+document.getElementById('loan_form').addEventListener('input', sync_input_label);
