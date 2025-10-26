@@ -5,43 +5,45 @@
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_price">مبلغ تسهیلات</label>
-                    <p>20,000,000 ریال</p>
+                    <p><span id="price_input_indicator">۲۰,۰۰۰,۰۰۰</span> ریال</p>
                 </div>
                 <input type="range" name="mehr_price" id="mehr_price" min="20000000" max="4000000000" step="5000000" value="20000000">
                 <div class="input_span">
-                    <span>20,000,000</span>
-                    <span>4,000,000,000</span>
+                    <span>۲۰,۰۰۰,۰۰۰</span>
+                    <span>۴,۰۰۰,۰۰۰,۰۰۰</span>
                 </div>
             </div>
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_payment">تعداد اقساط</label>
-                    <p>24 عدد</p>
+                    <p><span id="payment_input_indicator">۲۴</span> عدد</p>
                 </div>
                 <input type="range" name="mehr_payment" id="mehr_payment" min="24" max="60" step="6" value="24">
                 <div class="input_span">
-                    <span>24</span>
-                    <span>60</span>
+                    <span>۲۴</span>
+                    <span>۶۰</span>
                 </div>
             </div>
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_debt_price">حداکثر توانایی باز پرداخت</label>
-                    <p>1,000,000 ریال</p>
+                    <p><span id="debt_price_input_indicator">۱,۰۰۰,۰۰۰</span> ریال</p>
                 </div>
                 <input type="range" name="mehr_debt_price" id="mehr_debt_price" min="1000000" max="500000000" step="5000000" value="1000000">
                 <div class="input_span">
-                    <span>1,000,000</span>
-                    <span>500,000,000</span>
+                    <span>۱,۰۰۰,۰۰۰</span>
+                    <span>۵۰۰,۰۰۰,۰۰۰</span>
                 </div>
             </div>
-            <label for="fee">انتخاب كارمزد</label>
-            <div class="fee_radio_input">
-                <label for="mehr_fee"><input type="radio" name="mehr_fee" value="0" checked>۰ درصد</label>
-                <label for="mehr_fee"><input type="radio" name="mehr_fee" value="1">1 درصد</label>
-                <label for="mehr_fee"><input type="radio" name="mehr_fee" value="2">۲ درصد</label>
-                <label for="mehr_fee"><input type="radio" name="mehr_fee" value="3">3 درصد</label>
-                <label for="mehr_fee"><input type="radio" name="mehr_fee" value="4">۴ درصد</label>
+            <div class="input_container">
+                <label for="fee">انتخاب كارمزد</label>
+                <div class="fee_radio_input">
+                    <label for="mehr_fee"><input type="radio" name="mehr_fee" value="0" checked>۰ درصد</label>
+                    <label for="mehr_fee"><input type="radio" name="mehr_fee" value="1">۱ درصد</label>
+                    <label for="mehr_fee"><input type="radio" name="mehr_fee" value="2">۲ درصد</label>
+                    <label for="mehr_fee"><input type="radio" name="mehr_fee" value="3">۳ درصد</label>
+                    <label for="mehr_fee"><input type="radio" name="mehr_fee" value="4">۴ درصد</label>
+                </div>
             </div>
             <button id="mehr_submit_button" type="button">محاسبه</button>
         </form>
