@@ -30,9 +30,11 @@ class Mehr_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
                 ];
 
-                $this->include_data();
-
-                $data = $this->bank_data['allowed_inputs'];
+                if($this->bank_data){
+                    $data = $this->bank_data['allowed_inputs'];
+                } else{
+                    $this->include_data();
+                }
 
                 foreach($inputs as $name => $value) {
                     if($name == 'price' || 'debt_price'){
@@ -129,7 +131,7 @@ class Mehr_loan_calculator{
             if(!is_array($data)){
                 throw new Exception('factor data has invalid data type');
             }
-            
+
             $this->bank_data = $data;
 
         } catch(Exception $error){
