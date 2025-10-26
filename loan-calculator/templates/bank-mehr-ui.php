@@ -18,7 +18,7 @@
                     <label for="mehr_payment">تعداد اقساط</label>
                     <p><span id="payment_input_indicator">۲۴</span> عدد</p>
                 </div>
-                <input type="range" name="mehr_payment" id="mehr_payment" min="24" max="60" step="6" value="24">
+                <input type="range" name="mehr_payment" id="mehr_payment" min="24" max="60" step="2" value="24">
                 <div class="input_span">
                     <span>۲۴</span>
                     <span>۶۰</span>
