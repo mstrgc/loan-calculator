@@ -60,6 +60,6 @@
             <tbody id="mehr_result_tbody">
             </tbody>
         </table>
-        <span id="mehr_placeholder">موردی وارد نشده است</span>
+        <p id="mehr_placeholder">موردی وارد نشده است</p>
     </div>
 </div>
