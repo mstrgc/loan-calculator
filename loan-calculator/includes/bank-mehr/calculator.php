@@ -86,9 +86,10 @@ class Mehr_loan_calculator{
         $debt_price = $input['debt_price'];
         $payment = $input['payment'];
 
+        //get maximum payment price
         $result = (ceil((($price / $payment)) / 100000)) * 100000;
 
-        if($result < $debt_price){
+        if($result > $debt_price){
             return false;
         }
         
