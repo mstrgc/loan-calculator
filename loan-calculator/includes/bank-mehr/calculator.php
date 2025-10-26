@@ -54,6 +54,8 @@ class Mehr_loan_calculator{
 
                 if(!$payment){
                     wp_send_json_error(['message' => 'وامی با این شرایط موجود نیست']);
+                } elseif(!$deposit){
+                    throw new Calculator_exception('خطا در دریافت اطلاعات', 'could not reterive mehr bank factor data');
                 } else{
                     wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
                 }
@@ -67,15 +69,19 @@ class Mehr_loan_calculator{
 
     public function average_deposit($input){
         $this->include_data();
-        $data = $this->bank_data;
+        //$data = $this->bank_data;
 
         $result = [];
 
-        $factors = $data['factors'][$input['fee']][$input['payment']];
+        if($this->bank_data['factors'][$input['fee']][$input['payment']]){
+            $factors = $this->bank_data['factors'][$input['fee']][$input['payment']];
 
-        foreach($factors as $factor){
-            $deposit = ($input['price'] / $factor) * 100;
-            $result[] = intval($deposit / 1000000) * 1000000;
+            foreach($factors as $factor){
+                $deposit = ($input['price'] / $factor) * 100;
+                $result[] = intval($deposit / 1000000) * 1000000;
+            }
+        } else{
+            return false;
         }
 
         return $result;
