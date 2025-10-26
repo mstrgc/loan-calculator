@@ -46,6 +46,11 @@ class Mehr_loan_calculator{
                     }
                 };
 
+                //notice: 0, 1 and 2, 3 fee factors are equal
+                if($inputs['fee'] % 2 != 0){
+                    $inputs['fee'] -= 1;
+                }
+
                 $deposit = $this->average_deposit($inputs);
                 $payment = $this->payment_calculator($inputs);
                 wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
