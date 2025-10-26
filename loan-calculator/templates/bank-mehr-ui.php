@@ -5,9 +5,9 @@
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_price">مبلغ تسهیلات</label>
-                    <p><span id="price_input_indicator">۲۰,۰۰۰,۰۰۰</span> ریال</p>
+                    <p><span id="mehr_price_indicator">۲۰,۰۰۰,۰۰۰</span> ریال</p>
                 </div>
-                <input type="range" name="mehr_price" id="mehr_price" min="20000000" max="4000000000" step="5000000" value="20000000">
+                <input type="range" name="mehr_price" id="mehr_price" min="20000000" max="4000000000" step="5000000" value="20000000" oninput="sync_label('mehr_price')">
                 <div class="input_span">
                     <span>۲۰,۰۰۰,۰۰۰</span>
                     <span>۴,۰۰۰,۰۰۰,۰۰۰</span>
@@ -16,9 +16,9 @@
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_payment">تعداد اقساط</label>
-                    <p><span id="payment_input_indicator">۲۴</span> عدد</p>
+                    <p><span id="mehr_payment_indicator">۲۴</span> عدد</p>
                 </div>
-                <input type="range" name="mehr_payment" id="mehr_payment" min="24" max="60" step="2" value="24">
+                <input type="range" name="mehr_payment" id="mehr_payment" min="24" max="60" step="2" value="24" oninput="sync_label('mehr_payment')">
                 <div class="input_span">
                     <span>۲۴</span>
                     <span>۶۰</span>
@@ -27,9 +27,9 @@
             <div class="input_container">
                 <div class="input_title">
                     <label for="mehr_debt_price">حداکثر توانایی باز پرداخت</label>
-                    <p><span id="debt_price_input_indicator">۱,۰۰۰,۰۰۰</span> ریال</p>
+                    <p><span id="mehr_debt_price_indicator">۱,۰۰۰,۰۰۰</span> ریال</p>
                 </div>
-                <input type="range" name="mehr_debt_price" id="mehr_debt_price" min="1000000" max="500000000" step="500000" value="1000000">
+                <input type="range" name="mehr_debt_price" id="mehr_debt_price" min="1000000" max="500000000" step="500000" value="1000000" oninput="sync_label('mehr_debt_price')">
                 <div class="input_span">
                     <span>۱,۰۰۰,۰۰۰</span>
                     <span>۵۰۰,۰۰۰,۰۰۰</span>

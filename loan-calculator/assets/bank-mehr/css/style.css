@@ -48,7 +48,7 @@
 }
 
 .input_title>p{
-    width: 17%;
+    width: 20%;
     margin: 0;
     border: 1px solid #888;
     border-radius: 6px;
@@ -93,19 +93,36 @@
     width: 100%;
     padding: 20px;
     margin: 0;
+    border-radius: 6px;
+}
+
+#loan_result_table th:first-child{
+  border-radius: 0 6px 0 0;
+}
+
+#loan_result_table th:last-child{
+  border-radius: 6px 0 0 0;
 }
 
 th{
     color: white;
     text-align: center;
+    width: 15%;
+    padding: 10px;
+}
+
+th:last-of-type{
+    width: 70%;
 }
 
 td{
     text-align: center;
+    padding: 10px;
 }
 
 th:last-of-type, td:last-of-type{
     text-align: right;
+    max-width: max-content;
 }
 
 tr{
