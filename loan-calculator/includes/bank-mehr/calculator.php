@@ -30,12 +30,11 @@ class Mehr_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
                 ];
 
-                if($this->bank_data){
-                    $data = $this->bank_data['allowed_inputs'];
-                } else{
+                if(is_null($this->bank_data)){
                     $this->include_data();
                 }
-
+                $data = $this->bank_data['allowed_inputs'];
+                    
                 foreach($inputs as $name => $value) {
                     if($name == 'price' || 'debt_price'){
                         if(!is_int($value)){
