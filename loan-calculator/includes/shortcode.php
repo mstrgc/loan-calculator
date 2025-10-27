@@ -21,13 +21,27 @@ class Loan_calculator_shortcode{
             'loan_calculator'
         );
 
+        //enqueue global scripts
         add_action('wp_enqueue_scripts', [$this, 'enqueue_essentials']);
 
-        if($parameters['bank_name'] == 'melli'){
-            return Melli_loan_calculator::get_instance()->render();
-        } elseif($parameters['bank_name'] == 'mehr'){
-            return Mehr_loan_calculator::get_instance()->render();
+        $available_banks = ['melli', 'mehr'];
+
+        try{
+            if(in_array($parameters['bank_name'], $available_banks)){
+                $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
+                return $class_name::get_instance()->render();
+                
+            } else{
+                throw new Calculator_exception('محاسبه گر وامی با این نام وجود ندارد', 'could not find a calculator with the given parameter.');
+            }
+        } catch(Calculator_exception $error){
+            error_log('Loan calculator plugin error: ' . $error->getMessage());
+            ob_start();
+            echo '<p>' . $error->get_error() . '</p>';
+            return ob_get_clean();
         }
+
+        
     }
 
     public function enqueue_essentials(){
