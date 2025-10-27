@@ -41,12 +41,6 @@ class Melli_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT)
                 ];
 
-                $allowed_inputs = [
-                    'date' => [6, 12, 18, 24, 30, 36, 42, 48, 54, 60],
-                    'time' => range(1, 12),
-                    'fee' => [0, 2, 4]
-                ];
-
                 foreach($int_inputs as $name => $value) {
                     if($name == 'price'){
                         if(!is_int($value)){
