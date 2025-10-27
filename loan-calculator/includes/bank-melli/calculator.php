@@ -61,11 +61,6 @@ class Melli_loan_calculator{
                 };
 
                 $int_inputs['time'] -= 1;
-                $this->include_factor();
-
-                if(!isset($this->factor) || !is_array($this->factor)){
-                    throw new Calculator_exception('خطا در محاسبه تسهیلات', 'factor is not available');
-                }
 
                 //check which value to calculate
                 if($loan_or_average == 'average'){
@@ -92,8 +87,8 @@ class Melli_loan_calculator{
 
     public function average_to_loan_calculator($inputs){
         //get factor percent and calculate loan
-        if($this->factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = $this->factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']];
             $loan = ($inputs['price'] * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -104,8 +99,8 @@ class Melli_loan_calculator{
 
     public function loan_to_average_calculator($inputs){
         //get factor percent and calculate average
-        if($this->factor[$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = $this->factor[$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']];
             $average = ($inputs['price'] / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -123,7 +118,7 @@ class Melli_loan_calculator{
         return ob_get_clean();
     }
 
-    public function include_factor(){
+    public function include_data(){
         //add factor data
         $factor_file = plugin_dir_path(__FILE__) . 'data.php';
         try{
@@ -137,7 +132,7 @@ class Melli_loan_calculator{
                 throw new Exception('factor data has invalid data type');
             }
 
-            $this->factor = $data;
+            $this->bank_data = $data;
 
         } catch(Exception $error){
             error_log($error->getMessage());

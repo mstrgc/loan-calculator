@@ -69,9 +69,6 @@ class Mehr_loan_calculator{
     }
 
     public function average_deposit($input){
-        $this->include_data();
-        //$data = $this->bank_data;
-
         $result = [];
 
         if($this->bank_data['factors'][$input['fee']][$input['payment']]){
