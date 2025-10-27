@@ -33,7 +33,7 @@ class Mehr_loan_calculator{
                 if(is_null($this->bank_data)){
                     $this->include_data();
                 }
-                $data = $this->bank_data['allowed_inputs'];
+                $allowed_inputs = $this->bank_data['allowed_inputs'];
                     
                 foreach($inputs as $name => $value) {
                     if($name == 'price' || 'debt_price'){
@@ -41,7 +41,7 @@ class Mehr_loan_calculator{
                             wp_send_json_error(['message' => 'مبلغ باید شامل اعداد باشد']);
                         }
                     } else {
-                        if(!in_array($value, $data[$name])){
+                        if(!in_array($value, $allowed_inputs[$name])){
                             wp_send_json_error(['message' => 'ورودی نامعتبر']);
                         };
                     }

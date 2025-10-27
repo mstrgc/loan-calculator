@@ -41,6 +41,11 @@ class Melli_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT)
                 ];
 
+                if(is_null($this->bank_data)){
+                    $this->include_data();
+                }
+                $allowed_inputs = $this->bank_data['allowed_inputs'];
+
                 foreach($int_inputs as $name => $value) {
                     if($name == 'price'){
                         if(!is_int($value)){
@@ -120,7 +125,7 @@ class Melli_loan_calculator{
 
     public function include_factor(){
         //add factor data
-        $factor_file = plugin_dir_path(__FILE__) . 'mellibank-factor-data.php';
+        $factor_file = plugin_dir_path(__FILE__) . 'data.php';
         try{
             if(!file_exists($factor_file)){
                 throw new Exception('factor data is not found');
