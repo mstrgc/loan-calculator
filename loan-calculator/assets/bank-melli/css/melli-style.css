@@ -88,7 +88,7 @@ label{
     outline: none;
 }
 
-#error{
+#error_text{
     height: 10px;
     color: red;
     margin: 20px 0;
@@ -251,11 +251,11 @@ label{
 /*** responsive ***/
 
 @container loan_calculator_container (max-width: 1024px){
-    #loan_form{
+    #melli_loan_form{
         flex-direction: column;
     }
 
-    #loan_form>div{
+    #melli_loan_form>div{
         width: 100%;
     }
 

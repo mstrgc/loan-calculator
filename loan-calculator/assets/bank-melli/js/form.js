@@ -36,6 +36,7 @@
         let loan_result = document.getElementById('loan_result');
         let surplus_result = document.getElementById('surplus_result');
 
+
         if (result['status'] == 'success') {
             if(document.getElementById('loan').checked){
                 //show calculated average if loan option is choosen
@@ -52,7 +53,7 @@
                 average_result.textContent = price_value.value;
             }
 
-            this.text_error.textContent = '';
+            this.text_error.textContent = null;
 
         } else {
             //display errors

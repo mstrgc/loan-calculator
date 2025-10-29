@@ -146,19 +146,19 @@ tr:nth-child(odd){
 /*** responsive ***/
 
 @container loan_container_wrapper (max-width: 826px){
-    #loan_calculator_container{
+    #mehr_loan_calculator_container{
         flex-direction: column;
         height: auto;
     }
 
-    .loan_form_container, .loan_result_container{
+    .mehr_loan_form_container, .mehr_loan_result_container{
         width: 100%;
         padding: 10px;
     }
 }
 
 @container loan_container_wrapper (max-width: 400px){
-    .loan_form_container, .loan_result_container{
+    .mehr_loan_form_container, .mehr_loan_result_container{
         width: 100%;
         padding: 0;
         margin: 10px auto;

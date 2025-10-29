@@ -9,7 +9,7 @@ price_value.addEventListener('input', function () {
 
 function calculate() {
     //create formdata from html form
-    let loan_form = document.getElementById('loan_form');
+    let loan_form = document.getElementById('melli_loan_form');
     let loan_form_data = new FormData(loan_form);
 
     //add php calculator function to formdata
@@ -45,4 +45,4 @@ function calculate() {
 }
 
 document.addEventListener('DOMContentLoaded', calculate);
-document.getElementById('loan_form').addEventListener('change', calculate);
+document.getElementById('melli_loan_form').addEventListener('change', calculate);

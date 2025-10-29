@@ -12,8 +12,8 @@ class Melli_script_enqueue{
     
     public function enqueue_assets(){
         wp_enqueue_style(
-            'style',
-            plugin_dir_url(__FILE__) . '../../assets/bank-melli/css/style.css'
+            'melli_style',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/css/melli-style.css'
         );
 
         wp_enqueue_script(
@@ -25,15 +25,15 @@ class Melli_script_enqueue{
         );
 
         wp_enqueue_script(
-            'loan_config',
-            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/config.js',
+            'melli_loan_config',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/melli-config.js',
             ['loan_form', 'jquery'],
             null,
             true
         );
 
         wp_localize_script(
-            'loan_config',
+            'melli_loan_config',
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );

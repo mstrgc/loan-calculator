@@ -1,5 +1,5 @@
-<div id="loan_calculator_container">
-    <form id="loan_form">
+<div id="melli_loan_calculator_container">
+    <form id="melli_loan_form">
         <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
         <div class="loan_calculator_section1">
             <div class="section_select">

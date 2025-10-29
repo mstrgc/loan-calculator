@@ -13,19 +13,19 @@ class Mehr_script_enqueue{
     public function enqueue_assets(){
         wp_enqueue_style(
             'style',
-            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/css/style.css'
+            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/css/mehr-style.css'
         );
 
         wp_enqueue_script(
-            'loan_config',
-            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/js/config.js',
+            'mehr_loan_config',
+            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/js/mehr-config.js',
             ['jquery'],
             null,
             true
         );
 
         wp_localize_script(
-            'loan_config',
+            'mehr_loan_config',
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );
