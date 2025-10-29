@@ -3,7 +3,7 @@
 
 //text_error = document.getElementById('error');
 
-String.prototype.to_persian = function() {
+function to_persian() {
     let persian_number = {
         0: '۰',
         1: '۱',
@@ -51,7 +51,10 @@ String.prototype.to_persian = function() {
     return comma_separated_result(result);
 };
 
-String.prototype.to_english = function(input) {
+String.prototype.to_persian = to_persian;
+Number.prototype.to_persian = to_persian;
+
+String.prototype.to_english = function() {
     let english_number = {
         '۰': 0,
         '۱': 1,
@@ -67,10 +70,10 @@ String.prototype.to_english = function(input) {
 
     let result = '';
 
-    if(typeof input === 'string'){
+    if(typeof this === 'string'){
         //convert persian numbers to english numbers
-        for(let i = 0; i < input.length; i++){
-            let num = Array.from(input)[i];
+        for(let i = 0; i < this.length; i++){
+            let num = Array.from(this)[i];
             //ignore unmatched characters and remove them
             if(english_number.hasOwnProperty(num)){
                 result += english_number[num];
