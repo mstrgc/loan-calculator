@@ -3,7 +3,7 @@
 
 //text_error = document.getElementById('error');
 
-function to_persian() {
+function to_persian(input) {
     let persian_number = {
         0: '۰',
         1: '۱',
@@ -40,10 +40,10 @@ function to_persian() {
         return separated_result.join(',').split('').reverse().join('');
     };
 
-    if(typeof this === 'string'){
-        converter(this);
-    } else if(typeof this === 'number'){
-        converter(String(this));
+    if(typeof input === 'string'){
+        converter(input);
+    } else if(typeof input === 'number'){
+        converter(String(input));
     } else {
         return ;//this.text_error.textContent = 'ورودی مبلغ باید فقط شامل اعداد باشد';
     }
@@ -51,8 +51,8 @@ function to_persian() {
     return comma_separated_result(result);
 };
 
-String.prototype.to_persian = to_persian;
-Number.prototype.to_persian = to_persian;
+Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
+Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
 
 function to_english() {
     let english_number = {
@@ -89,7 +89,7 @@ function to_english() {
     return Number(result);
 };
 
-String.prototype.to_english = to_english;
-Number.prototype.to_english = to_english;
+Object.defineProperty(String.prototype, 'to_english', {'value': function() {return to_english(this)}});
+Object.defineProperty(Number.prototype, 'to_english', {'value': function() {return to_english(this)}});
 
 })();
