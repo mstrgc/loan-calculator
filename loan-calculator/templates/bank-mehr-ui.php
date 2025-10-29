@@ -1,7 +1,7 @@
-<div id="loan_container_wrapper">
-    <div id="loan_calculator_container">
-        <div class="loan_form_container">
-            <form id="loan_form">
+<div id="mehr_loan_container_wrapper">
+    <div id="mehr_loan_calculator_container">
+        <div class="mehr_loan_form_container">
+            <form id="mehr_loan_form">
                 <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
                 <div class="input_container">
                     <div class="input_title">
@@ -49,7 +49,7 @@
                 <button id="mehr_submit_button" type="button">محاسبه</button>
             </form>
         </div>
-        <div class="loan_result_container">
+        <div class="mehr_loan_result_container">
             <table id="loan_result_table">
                 <thead>
                     <tr>

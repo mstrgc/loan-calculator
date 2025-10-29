@@ -1,4 +1,4 @@
-#loan_calculator_container{
+#melli_loan_calculator_container{
     container-type: inline-size;
     container-name: loan_calculator_container;
     direction: rtl;
@@ -12,13 +12,13 @@
     white-space: nowrap;
 }
 
-#loan_form{
+#melli_loan_form{
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-#loan_form input{
+#melli_loan_form input{
     text-align: center;
     outline: none;
 }

@@ -1,9 +1,9 @@
-#loan_container_wrapper{
+#mehr_loan_container_wrapper{
     container-type: inline-size;
     container-name: loan_container_wrapper;
 }
 
-#loan_calculator_container{
+#mehr_loan_calculator_container{
     direction: rtl;
     width: 100%;
     display: flex;
@@ -15,24 +15,24 @@
     height: 330px;
 }
 
-.loan_form_container{
+.mehr_loan_form_container{
     width: 50%;
     padding: 10px 0 10px 10px;
 }
 
-.loan_result_container{
+.mehr_loan_result_container{
     width: 50%;
     padding: 10px 10px 10px 0;
     overflow-y: auto;
 }
 
-#loan_form{
+#mehr_loan_form{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-#loan_form input{
+#mehr_loan_form input{
     text-align: center;
     outline: none;
 }

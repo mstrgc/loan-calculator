@@ -1,7 +1,7 @@
 let error_text = document.getElementById('error_text');
 
 function calculate() {
-    let loan_form = document.getElementById('loan_form');
+    let loan_form = document.getElementById('mehr_loan_form');
     let loan_form_data = new FormData(loan_form);
 
     loan_form_data.append('action', 'mehr_calculator');
@@ -49,7 +49,7 @@ function display_result(input) {
                 );
             }
 
-            document.getElementById('mehr_placeholder').style = 'display: none;';
+            document.getElementById('error_text').style = 'display: none;';
             tbody.innerHTML = tags;
         }
     }
