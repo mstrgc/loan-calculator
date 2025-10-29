@@ -61,7 +61,7 @@
                 <tbody id="mehr_result_tbody">
                 </tbody>
             </table>
-            <p id="mehr_placeholder">موردی وارد نشده است</p>
+            <p id="error_text">موردی وارد نشده است</p>
         </div>
     </div>
 </div>

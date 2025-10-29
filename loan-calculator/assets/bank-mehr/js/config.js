@@ -1,4 +1,4 @@
-let error_text = document.getElementById('mehr_placeholder');
+let error_text = document.getElementById('error_text');
 
 function calculate() {
     let loan_form = document.getElementById('loan_form');
