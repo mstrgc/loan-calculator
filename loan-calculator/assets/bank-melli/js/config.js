@@ -36,11 +36,11 @@ function calculate() {
         })
 
         .catch((error) => {
-            document.getElementById('error').textContent = error.message;
+            document.getElementById('error_text').textContent = error.message;
         });
 
     } catch(error) {
-        return document.getElementById('error').textContent = 'خطا در نمایش نتایج';
+        return document.getElementById('error_text').textContent = 'خطا در نمایش نتایج';
     }
 }
 

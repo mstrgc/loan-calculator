@@ -2,7 +2,7 @@
     'use strict';
 
     function error_handler(input, func){
-        if(typeof input =='string' || typeof input =='number'){
+        if(typeof input == 'string' || typeof input == 'number'){
             return func(input);
         } else{
             document.getElementById('error_text').textContent = 'ورودی مبلغ باید فقط شامل اعداد باشد';
@@ -56,11 +56,11 @@
     };
 
     if(!String.prototype.to_persian){
-        Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return error_handler(null , to_persian)}});
+        Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return error_handler(this , to_persian)}});
     }
 
     if(!Number.prototype.to_persian){
-        Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return error_handler(null , to_persian)}});
+        Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return error_handler(this , to_persian)}});
     }
 
     function to_english(input) {

@@ -13,7 +13,7 @@
             <div class="input_container price_input_container">
                 <label for="display_price">مبلغ (تومان):</label>
                 <input type="text" name="display_price" id="display_price" value="۱,۰۰۰,۰۰۰" maxlength="15">
-                <p id="error"></p>
+                <p id="error_text"></p>
             </div>
         </div>
         <div class="loan_calculator_section2">
