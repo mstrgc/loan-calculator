@@ -51,8 +51,13 @@ function to_persian(input) {
     return comma_separated_result(result);
 };
 
-Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
-Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
+if(!String.prototype.to_persian){
+    Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
+}
+
+if(!Number.prototype.to_persian){
+    Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return to_persian(this)}});
+}
 
 function to_english() {
     let english_number = {
@@ -89,7 +94,12 @@ function to_english() {
     return Number(result);
 };
 
-Object.defineProperty(String.prototype, 'to_english', {'value': function() {return to_english(this)}});
-Object.defineProperty(Number.prototype, 'to_english', {'value': function() {return to_english(this)}});
+if(!String.prototype.to_english){
+    Object.defineProperty(String.prototype, 'to_english', {'value': function() {return to_english(this)}});
+}
+
+if(!Number.prototype.to_english){
+    Object.defineProperty(Number.prototype, 'to_english', {'value': function() {return to_english(this)}});
+}
 
 })();
