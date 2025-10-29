@@ -63,7 +63,7 @@
         Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return error_handler(null , to_persian)}});
     }
 
-    function to_english() {
+    function to_english(input) {
         let english_number = {
             '۰': 0,
             '۱': 1,
@@ -79,10 +79,10 @@
 
         let result = '';
 
-        if(typeof this === 'string'){
+        if(typeof input === 'string'){
             //convert persian numbers to english numbers
-            for(let i = 0; i < this.length; i++){
-                let num = Array.from(this)[i];
+            for(let i = 0; i < input.length; i++){
+                let num = Array.from(input)[i];
                 //ignore unmatched characters and remove them
                 if(english_number.hasOwnProperty(num)){
                     result += english_number[num];

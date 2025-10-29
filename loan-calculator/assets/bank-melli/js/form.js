@@ -1,6 +1,6 @@
 (function(window, document) {
     'use strict';
-    
+
     //add namespace
     window.loan_plugin_js = window.loan_plugin_js || {};
 
@@ -17,14 +17,14 @@
 
         //display date and time values to selected elements
         for(let i = 0; i < date_span.length; i++){
-            date_span[i].textContent = window.number_converter.persian_numbers(date_input) + ' ماه';
-            time_span[i].textContent = window.number_converter.persian_numbers(time_input) + ' ماه';
+            date_span[i].textContent = date_input.to_persian() + ' ماه';
+            time_span[i].textContent = time_input.to_persian() + ' ماه';
         };
 
         //display fee value in result section
         fee_input.forEach(fee_percent => {
             if(fee_percent.checked){
-                fee_span.textContent = window.number_converter.persian_numbers(fee_percent.value);
+                fee_span.textContent = fee_percent.value.to_persian();
             }
         });
 
