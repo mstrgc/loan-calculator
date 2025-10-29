@@ -54,7 +54,7 @@ function to_persian() {
 String.prototype.to_persian = to_persian;
 Number.prototype.to_persian = to_persian;
 
-String.prototype.to_english = function() {
+function to_english() {
     let english_number = {
         '۰': 0,
         '۱': 1,
@@ -88,5 +88,8 @@ String.prototype.to_english = function() {
 
     return Number(result);
 };
+
+String.prototype.to_english = to_english;
+Number.prototype.to_english = to_english;
 
 })();
