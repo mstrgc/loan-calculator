@@ -24,14 +24,13 @@ async function ajax_handler(url, body){
     let result = await response.json();
 
     if(result.data){
-        console.log(result.data);
         return result.data;
     } else{
-        return false;
+        throw new Error('خطا در دریافت اطلاعات');
     }
 }
 
-function calculate() {
+async function calculate() {
     //create formdata from html form
     let loan_form = document.getElementById('melli_loan_form');
     let loan_form_data = new FormData(loan_form);
@@ -39,20 +38,18 @@ function calculate() {
     //add php calculator function to formdata
     loan_form_data.append('action', 'melli_calculator');
     
-    //convert price value to english
+    //convert price value to english and remove 
     loan_form_data.append('price', price_value.value.to_english());
     loan_form_data.delete('display_price');
 
     try{
-        request = ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
-
-        console.log(request);
+        request = await ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
         if(!request){
             throw new Error('خطا در ارسال درخواست');
-        } else{
-            window.loan_plugin_js.display_result(request);
         }
+        
+        window.loan_plugin_js.display_result(request);
 
     } catch(error) {
         return document.getElementById('error_text').textContent = error.message;
