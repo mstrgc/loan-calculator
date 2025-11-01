@@ -1,12 +1,7 @@
-(function(window, document) {
-    'use strict';
-
-    //add namespace
-    window.loan_plugin_js = window.loan_plugin_js || {};
-
+(function(global) {
     loan_plugin_js.text_error = document.getElementById('error_text');
 
-    loan_plugin_js.label_date_time_fee = function(){
+    function label_date_time_fee(){
         let date_span = document.getElementsByClassName('date_span');
         let time_span = document.getElementsByClassName('time_span');
         let fee_span = document.getElementById('fee_result');
@@ -31,7 +26,7 @@
         return;
     }
 
-    loan_plugin_js.display_result = function(result){
+    function display_result(result){
         let average_result = document.getElementById('average_result');
         let loan_result = document.getElementById('loan_result');
         let surplus_result = document.getElementById('surplus_result');
@@ -65,4 +60,9 @@
             loan_result.textContent = '۰';
         }
     }
-} (window, document));
+
+    global.loan_plugin_js = global.loan_plugin_js || {};
+    global.loan_plugin_js.label_date_time_fee = label_date_time_fee;
+    global.loan_plugin_js.display_result = display_result;
+
+})(window);
