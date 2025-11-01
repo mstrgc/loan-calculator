@@ -57,9 +57,9 @@ class Mehr_loan_calculator{
                     wp_send_json_error(['message' => 'وامی با این شرایط موجود نیست']);
                 } elseif(!$deposit){
                     throw new Calculator_exception('خطا در دریافت اطلاعات', 'could not reterive mehr bank factor data');
-                } else{
-                    wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
                 }
+                
+                wp_send_json_success(['deposit' => $deposit, 'payment' => $payment]);
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());

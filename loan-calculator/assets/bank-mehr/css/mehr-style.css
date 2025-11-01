@@ -80,6 +80,27 @@
     color: white;
 }
 
+/*** input range ***/
+
+#mehr_loan_form input[type='range']{
+    -moz-appearance: none;
+}
+
+#mehr_loan_form input[type='range']::-moz-range-thumb{
+    background-color: #78bd20;
+}
+
+#mehr_loan_form input[type='range']::-moz-range-progress{
+    background-color: #78bd20;
+    height: 6px;
+}
+
+#mehr_loan_form input[type='range']::-moz-range-track{
+    background-color:#ccc;
+    height: 6px;
+    border-radius: 6px;
+}
+
 /*** result section ***/
 
 #loan_result_table{
