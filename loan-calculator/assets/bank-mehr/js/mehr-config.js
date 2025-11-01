@@ -1,26 +1,22 @@
 let error_text = document.getElementById('error_text');
 
-function calculate() {
+async function calculate() {
     let loan_form = document.getElementById('mehr_loan_form');
     let loan_form_data = new FormData(loan_form);
 
     loan_form_data.append('action', 'mehr_calculator');
 
     try{
-        let request = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data});
+        let request = await window.loan_plugin_js.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
-        request.then(function(response){
-            if(!response.ok){
-                throw new Error('ارتباط با سرور برقرار نشد');
-            }
-            return response.json();
-        })
-        .then(response => {
-            display_result(response);
-        });
+        if(!request){
+            throw new Error('خطا در ارسال درخواست');
+        }
+
+        display_result(request);
 
     } catch(error){
-        error_text.textContent = error.message;
+        return error_text.textContent = error.message;
     }
 }
 
@@ -34,7 +30,7 @@ function display_result(input) {
     } else{
 
         if(input.data == null){
-            error_text.textContent = 'خطا در دریافت اطلاعات';
+            throw new Error('خطا در دریافت اطلاعات');
         } else{
             tags = '';
 

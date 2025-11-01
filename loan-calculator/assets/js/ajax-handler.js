@@ -21,8 +21,8 @@
         let result = await response.json();
 
         //validate and send result data
-        if(result.data){
-            return result.data;
+        if(result && result.data){
+            return result;
         } else{
             throw new Error('خطا در دریافت اطلاعات');
         }

@@ -26,7 +26,7 @@ async function calculate() {
             throw new Error('خطا در ارسال درخواست');
         }
 
-        window.loan_plugin_js.display_result(request);
+        window.loan_plugin_js.display_result(request.data);
 
     } catch(error) {
         return document.getElementById('error_text').textContent = error.message;
