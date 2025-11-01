@@ -71,11 +71,11 @@ class Melli_loan_calculator{
                     throw new Calculator_exception('تسهیلات درخواستی یا میانگین حساب را انتخاب کنید', 'invalid loan_average input: ' . $loan_or_average);
                 }
 
-                if(filter_var($calculated_result, FILTER_VALIDATE_INT)){
-                    wp_send_json_success(['message' => $calculated_result]);
-                } else {
-                    wp_send_json_error(['message' => 'نتیجه نامعتبر']);
+                if(!filter_var($calculated_result, FILTER_VALIDATE_INT)){
+                    wp_send_json_error(['message' => 'نتیجه نامعتبر']); 
                 }
+
+                wp_send_json_success(['message' => $calculated_result]);
 
             }
         } catch (Calculator_exception $error) {

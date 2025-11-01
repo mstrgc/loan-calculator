@@ -17,7 +17,7 @@ class Melli_script_enqueue{
         );
 
         wp_enqueue_script(
-            'loan_form',
+            'melli_loan_form',
             plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/form.js',
             [],
             null,
