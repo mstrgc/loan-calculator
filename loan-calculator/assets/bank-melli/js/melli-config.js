@@ -7,7 +7,7 @@ price_value.addEventListener('input', function () {
     calculate();
 });
 
-function ajax_handler(url, body){
+async function ajax_handler(url, body){
     let ajax_request = {
         method: 'POST',
         body: body,
@@ -15,17 +15,20 @@ function ajax_handler(url, body){
         cache: 'no-cache'
     }
 
-    let response = fetch(url, ajax_request);
+    let response = await fetch(url, ajax_request);
 
-    let result = null;
+    if(!response){
+        throw new Error('ارتباط با سرور برقرار نشد');
+    }
 
-    response.then(function(resp) {
-        if(!resp.ok){
-            throw new Error('ارتباط با سرور برقرار نشد');
-        }
-        return result = resp.json();
-    })
-    return result;
+    let result = await response.json();
+
+    if(result.data){
+        console.log(result.data);
+        return result.data;
+    } else{
+        return false;
+    }
 }
 
 function calculate() {
@@ -43,7 +46,7 @@ function calculate() {
     try{
         request = ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
-        console.log(ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data));
+        console.log(request);
 
         if(!request){
             throw new Error('خطا در ارسال درخواست');
