@@ -17,9 +17,17 @@ function calculate() {
     
     //convert price value to english
     loan_form_data.append('price', price_value.value.to_english());
+    loan_form_data.delete('display_price');
+
+    let ajax_request = {
+        method: 'POST',
+        body: loan_form_data,
+        credentials: 'same-origin',
+        cache: 'no-cache'
+    }
 
     try{
-        let response = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data, credentials: 'same-origin', cache: 'no-cache'});
+        let response = fetch(loan_config_variables.admin_ajax_url, ajax_request);
 
         response.then(function(resp) {
             if(!resp.ok){
