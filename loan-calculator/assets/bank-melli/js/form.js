@@ -1,5 +1,5 @@
 (function(global) {
-    loan_plugin_js.text_error = document.getElementById('error_text');
+    text_error = document.getElementById('error_text');
 
     function label_date_time_fee(){
         let date_span = document.getElementsByClassName('date_span');
@@ -51,18 +51,18 @@
             //display date, time, fee values in result section
             this.label_date_time_fee();
 
-            this.text_error.textContent = null;
+            text_error.textContent = null;
 
         } else {
             //display errors
-            this.text_error.textContent = result['message'];
+            text_error.textContent = result['message'];
             average_result.textContent = '۰';
             loan_result.textContent = '۰';
         }
     }
 
     global.loan_plugin_js = global.loan_plugin_js || {};
-    global.loan_plugin_js.label_date_time_fee = label_date_time_fee;
     global.loan_plugin_js.display_result = display_result;
+    global.loan_plugin_js.label_date_time_fee = label_date_time_fee;
 
 })(window);
