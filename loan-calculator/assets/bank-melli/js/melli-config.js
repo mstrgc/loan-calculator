@@ -7,29 +7,6 @@ price_value.addEventListener('input', function () {
     calculate();
 });
 
-async function ajax_handler(url, body){
-    let ajax_request = {
-        method: 'POST',
-        body: body,
-        credentials: 'same-origin',
-        cache: 'no-cache'
-    }
-
-    let response = await fetch(url, ajax_request);
-
-    if(!response){
-        throw new Error('ارتباط با سرور برقرار نشد');
-    }
-
-    let result = await response.json();
-
-    if(result.data){
-        return result.data;
-    } else{
-        throw new Error('خطا در دریافت اطلاعات');
-    }
-}
-
 async function calculate() {
     //create formdata from html form
     let loan_form = document.getElementById('melli_loan_form');
@@ -43,12 +20,12 @@ async function calculate() {
     loan_form_data.delete('display_price');
 
     try{
-        request = await ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
+        request = await window.loan_plugin_js.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
         if(!request){
             throw new Error('خطا در ارسال درخواست');
         }
-        
+
         window.loan_plugin_js.display_result(request);
 
     } catch(error) {
