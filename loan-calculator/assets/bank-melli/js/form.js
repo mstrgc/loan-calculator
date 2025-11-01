@@ -53,6 +53,9 @@
                 average_result.textContent = price_value.value;
             }
 
+            //display date, time, fee values in result section
+            this.label_date_time_fee();
+
             this.text_error.textContent = null;
 
         } else {

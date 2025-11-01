@@ -18,9 +18,6 @@ function calculate() {
     //convert price value to english
     loan_form_data.append('price', price_value.value.to_english());
 
-    //display date, time, fee values in result section
-    window.loan_plugin_js.label_date_time_fee();
-
     try{
         let response = fetch(loan_config_variables.admin_ajax_url, {method: 'POST', body: loan_form_data, credentials: 'same-origin', cache: 'no-cache'});
 
