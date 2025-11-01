@@ -93,12 +93,27 @@
 #mehr_loan_form input[type='range']::-moz-range-progress{
     background-color: #78bd20;
     height: 6px;
+    border-radius: 6px;
 }
 
 #mehr_loan_form input[type='range']::-moz-range-track{
     background-color:#ccc;
     height: 6px;
     border-radius: 6px;
+}
+
+#mehr_loan_form input[type='range']::-webkit-slider-thumb{
+    border-radius: 50px;
+    box-shadow: 0 0 0 0 #78bd203c;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#mehr_loan_form input[type='range']:hover::-webkit-slider-thumb{
+    box-shadow: 0 0 0 7px #78bd203c;
+}
+
+#mehr_loan_form input[type='range']:active::-webkit-slider-thumb{
+    box-shadow: 0 0 0 10px #78bd203c;
 }
 
 /*** result section ***/
