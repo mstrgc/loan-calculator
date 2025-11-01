@@ -7,6 +7,17 @@ price_value.addEventListener('input', function () {
     calculate();
 });
 
+function ajax_handler(url, body){
+    let ajax_request = {
+        method: 'POST',
+        body: body,
+        credentials: 'same-origin',
+        cache: 'no-cache'
+    }
+
+    fetch(url, ajax_request)
+}
+
 function calculate() {
     //create formdata from html form
     let loan_form = document.getElementById('melli_loan_form');
