@@ -31,19 +31,18 @@
         let loan_result = document.getElementById('loan_result');
         let surplus_result = document.getElementById('surplus_result');
 
-
-        if (result['status'] == 'success') {
+        if(result.success){
             if(document.getElementById('loan').checked){
                 //show calculated average if loan option is choosen
-                average_result.textContent = result['message'].to_persian();
+                average_result.textContent = result.data.message.to_persian();
                 //calculate and separate loan and surplus loan value
                 loan_result.textContent = (price_value.value.to_english() <= 300000000 ? price_value.value : (300000000).to_persian());
                 surplus_result.textContent = (price_value.value.to_english() < 300000000 ? '۰' : (price_value.value.to_english() - 300000000).to_persian());
             
             } else if(document.getElementById('average').checked){
                 //calculate and separate loan and surplus loan value
-                loan_result.textContent = (result['message'] <= 300000000 ? result['message'].to_persian() : (300000000).to_persian());
-                surplus_result.textContent = (result['message'] < 300000000 ? '۰' : (result['message'] - 300000000).to_persian());
+                loan_result.textContent = (result.data.message <= 300000000 ? result.data.message.to_persian() : (300000000).to_persian());
+                surplus_result.textContent = (result.data.message < 300000000 ? '۰' : (result.data.message - 300000000).to_persian());
 
                 average_result.textContent = price_value.value;
             }
@@ -55,7 +54,7 @@
 
         } else {
             //display errors
-            text_error.textContent = result['message'];
+            text_error.textContent = result.data.message;
             average_result.textContent = '۰';
             loan_result.textContent = '۰';
         }

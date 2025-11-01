@@ -51,7 +51,7 @@ class Melli_loan_calculator{
                         if(!is_int($value)){
                             throw new Calculator_exception('مبلغ باید شامل اعداد باشد', '$price type validation failed');
                         } elseif($int_inputs['price'] < 1000000) {
-                            wp_send_json_error(['message' => 'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد', 'status' => 'error']);
+                            wp_send_json_error(['message' => 'مبلغ نمی تواند از ۱ میلیون تومان کمتر باشد']);
                         }
                     } else {
                         if(!in_array($value, $allowed_inputs[$name])){
@@ -72,9 +72,9 @@ class Melli_loan_calculator{
                 }
 
                 if(filter_var($calculated_result, FILTER_VALIDATE_INT)){
-                    wp_send_json_success(['message' => $calculated_result, 'status' => 'success']);
+                    wp_send_json_success(['message' => $calculated_result]);
                 } else {
-                    wp_send_json_error(['message' => 'نتیجه نامعتبر', 'status' => 'error']);
+                    wp_send_json_error(['message' => 'نتیجه نامعتبر']);
                 }
 
             }
