@@ -15,7 +15,17 @@ function ajax_handler(url, body){
         cache: 'no-cache'
     }
 
-    fetch(url, ajax_request)
+    let response = fetch(url, ajax_request);
+
+    let result = null;
+
+    response.then(function(resp) {
+        if(!resp.ok){
+            throw new Error('ارتباط با سرور برقرار نشد');
+        }
+        return result = resp.json();
+    })
+    return result;
 }
 
 function calculate() {
@@ -30,33 +40,19 @@ function calculate() {
     loan_form_data.append('price', price_value.value.to_english());
     loan_form_data.delete('display_price');
 
-    let ajax_request = {
-        method: 'POST',
-        body: loan_form_data,
-        credentials: 'same-origin',
-        cache: 'no-cache'
-    }
-
     try{
-        let response = fetch(loan_config_variables.admin_ajax_url, ajax_request);
+        request = ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
-        response.then(function(resp) {
-            if(!resp.ok){
-                throw new Error('ارتباط با سرور برقرار نشد');
-            }
-            return resp.json();
-        })
+        console.log(ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data));
 
-        .then(result => {
-            window.loan_plugin_js.display_result(result.data);
-        })
-
-        .catch((error) => {
-            document.getElementById('error_text').textContent = error.message;
-        });
+        if(!request){
+            throw new Error('خطا در ارسال درخواست');
+        } else{
+            window.loan_plugin_js.display_result(request);
+        }
 
     } catch(error) {
-        return document.getElementById('error_text').textContent = 'خطا در نمایش نتایج';
+        return document.getElementById('error_text').textContent = error.message;
     }
 }
 
