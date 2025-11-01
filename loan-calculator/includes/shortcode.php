@@ -50,5 +50,13 @@ class Loan_calculator_shortcode{
             null,
             true
         );
+
+        wp_enqueue_script(
+            'ajax_handler',
+            plugin_dir_url(__FILE__) . '../assets/js/ajax-handler.js',
+            [],
+            null,
+            true
+        );
     }
 }
