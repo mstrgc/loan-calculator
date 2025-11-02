@@ -18,12 +18,7 @@ class Melli_loan_calculator{
     public function __construct(){
         add_action('wp_ajax_nopriv_melli_calculator', [$this, 'melli_calculator']);
         add_action('wp_ajax_melli_calculator', [$this, 'melli_calculator']);
-    }
-
-    public function enqueue(){
-        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
-        $styles =  new Melli_script_enqueue();
-        return $styles->enqueue_assets();
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     public function melli_calculator() {
@@ -110,8 +105,6 @@ class Melli_loan_calculator{
     }
 
     public function render(){
-        $this->enqueue();
-
         //render page
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-melli-ui.php';
@@ -137,6 +130,35 @@ class Melli_loan_calculator{
         } catch(Exception $error){
             error_log($error->getMessage());
         }
+    }
+
+    public function enqueue_assets(){
+        wp_enqueue_style(
+            'melli_style',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/css/melli-style.css'
+        );
+
+        wp_enqueue_script(
+            'melli_loan_form',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/form.js',
+            [],
+            null,
+            true
+        );
+
+        wp_enqueue_script(
+            'melli_loan_config',
+            plugin_dir_url(__FILE__) . '../../assets/bank-melli/js/melli-config.js',
+            [],
+            null,
+            true
+        );
+
+        wp_localize_script(
+            'melli_loan_config',
+            'loan_config_variables',
+            ['admin_ajax_url' => admin_url('admin-ajax.php')]
+        );
     }
 }
 
