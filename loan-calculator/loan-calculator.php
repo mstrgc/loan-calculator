@@ -9,9 +9,9 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-require_once plugin_dir_path(__FILE__) . 'includes/calculator-exception.php';
-require_once plugin_dir_path(__FILE__) . 'includes/bank-melli/calculator.php';
-require_once plugin_dir_path(__FILE__) . 'includes/bank-mehr/calculator.php';
+require_once plugin_dir_path(__FILE__) . 'exception/calculator-exception.php';
+require_once plugin_dir_path(__FILE__) . 'banks/bank-melli/calculator.php';
+require_once plugin_dir_path(__FILE__) . 'banks/bank-mehr/calculator.php';
 
 class Loan_calculator{
     //add singleton pattern
@@ -43,7 +43,6 @@ class Loan_calculator{
 
         try{
             if(in_array($parameters['bank_name'], $available_banks)){
-                require_once plugin_dir_path(__FILE__) . 'includes/bank-' . $parameters['bank_name'] . '/calculator.php';
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
                 return $class_name::get_instance()->render();
             } else{
@@ -60,7 +59,7 @@ class Loan_calculator{
     public function enqueue_essentials(){
         wp_enqueue_script(
             'number_converter',
-            plugin_dir_url(__FILE__) . 'assets/js/converter.js',
+            plugin_dir_url(__FILE__) . 'common/converter.js',
             [],
             null,
             true
@@ -68,7 +67,7 @@ class Loan_calculator{
 
         wp_enqueue_script(
             'ajax_handler',
-            plugin_dir_url(__FILE__) . 'assets/js/ajax-handler.js',
+            plugin_dir_url(__FILE__) . 'common/ajax-handler.js',
             [],
             null,
             true
