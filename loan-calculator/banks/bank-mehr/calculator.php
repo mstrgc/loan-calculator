@@ -103,7 +103,7 @@ class Mehr_loan_calculator{
 
     public function render(){        
         ob_start();
-        include_once plugin_dir_path(__FILE__) . '../../templates/bank-mehr-ui.php';
+        include_once plugin_dir_path(__FILE__) . 'ui.php';
         return ob_get_clean();
     }
 
@@ -131,12 +131,12 @@ class Mehr_loan_calculator{
     public function enqueue_assets(){
         wp_enqueue_style(
             'style',
-            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/css/mehr-style.css'
+            plugin_dir_url(__FILE__) . 'assets/mehr-style.css'
         );
 
         wp_enqueue_script(
             'mehr_loan_config',
-            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/js/mehr-config.js',
+            plugin_dir_url(__FILE__) . 'assets/mehr-config.js',
             ['jquery'],
             null,
             true
