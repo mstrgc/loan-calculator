@@ -60,3 +60,5 @@ class Loan_calculator_shortcode{
         );
     }
 }
+
+//test
