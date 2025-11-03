@@ -24,6 +24,8 @@ class Loan_calculator{
         return self::$instance;
     }
 
+    private $class;
+
     public function __construct(){
         add_shortcode('loan_calculator', [$this, 'render_loan_calculator']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_essentials']);
@@ -41,6 +43,7 @@ class Loan_calculator{
 
         try{
             if(in_array($parameters['bank_name'], $available_banks)){
+                require_once plugin_dir_path(__FILE__) . 'includes/bank-' . $parameters['bank_name'] . '/calculator.php';
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
                 return $class_name::get_instance()->render();
             } else{

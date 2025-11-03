@@ -21,7 +21,7 @@ class Mehr_loan_calculator{
 
     public function mehr_calculator() {
         try{
-            if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
+            if(!isset($_POST['mehr_loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['mehr_loan_calculator_nonce_field'], 'mehr_loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
                 $inputs = [
@@ -150,4 +150,4 @@ class Mehr_loan_calculator{
     }
 }
 
-//add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);
+add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);

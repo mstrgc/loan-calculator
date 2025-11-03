@@ -2,7 +2,7 @@
     <div id="mehr_loan_calculator_container">
         <div class="mehr_loan_form_container">
             <form id="mehr_loan_form">
-                <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
+                <?php wp_nonce_field('mehr_loan_calculator_nonce', 'mehr_loan_calculator_nonce_field') ?>
                 <div class="input_container">
                     <div class="input_title">
                         <label for="mehr_price">مبلغ تسهیلات</label>

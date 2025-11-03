@@ -22,7 +22,6 @@ class Melli_loan_calculator{
     }
 
     public function melli_calculator() {
-        error_log('test');
         try{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
@@ -163,4 +162,4 @@ class Melli_loan_calculator{
     }
 }
 
-//add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);
+add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);
