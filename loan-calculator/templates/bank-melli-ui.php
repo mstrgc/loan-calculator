@@ -3,12 +3,8 @@
         <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
         <div class="loan_calculator_section1">
             <div class="section_select">
-                <label class="section_select_option" for="loan">
-                    <input class="loan_radio_input" type="radio" name="loan_or_average" value="loan" id="loan" checked>تسهیلات درخواستی
-                </label>
-                <label class="section_select_option" for="average">
-                    میانگین حساب<input class="loan_radio_input" type="radio" name="loan_or_average" value="average" id="average">
-                </label>
+                <label class="section_select_option" for="loan"><input class="loan_radio_input" type="radio" name="loan_or_average" value="loan" id="loan" checked>تسهیلات درخواستی</label>
+                <label class="section_select_option" for="average"><input class="loan_radio_input" type="radio" name="loan_or_average" value="average" id="average">میانگین حساب</label>
             </div>
             <div class="input_container price_input_container">
                 <label for="display_price">مبلغ (تومان):</label>
@@ -26,7 +22,7 @@
                 </div>
             </div>
             <div class="input_container">
-                <label for="date"><p>مدت بازپرداخت: </p><p class="date_span">۶ ماه</p></label>
+                <label for="date"><span>مدت بازپرداخت: </span><span class="date_span">۶ ماه</span></label>
                 <input type="range" class="range_input" name="date" id="date" min="6" max="60" step="6" value="6">
                 <div class="loan_range_span">
                     <span>۶</span>
@@ -34,7 +30,7 @@
                 </div>
             </div>
             <div class="input_container">
-                <label for="time"><p>مدت زمان واریز به حساب: </p><p class="time_span">۱ ماه</p></label>
+                <label for="time"><span>مدت زمان واریز به حساب: </span><span class="time_span">۱ ماه</span></label>
                 <input type="range" class="range_input" name="time" id="time" min="1" max="12" value="1">
                 <div class="loan_range_span">
                     <span>۱</span>
