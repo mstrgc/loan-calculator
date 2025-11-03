@@ -16,6 +16,7 @@ class Mehr_loan_calculator{
     public function __construct(){
         add_action('wp_ajax_nopriv_mehr_calculator', [$this, 'mehr_calculator']);
         add_action('wp_ajax_mehr_calculator', [$this, 'mehr_calculator']);
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     public function mehr_calculator() {
@@ -100,15 +101,7 @@ class Mehr_loan_calculator{
         return $result;
     }
 
-    public function enqueue(){
-        require_once plugin_dir_path(__FILE__) . 'enqueue.php';
-        $styles =  new Mehr_script_enqueue();
-        return $styles->enqueue_assets();
-    }
-
-    public function render(){
-        $this->enqueue();
-        
+    public function render(){        
         ob_start();
         include_once plugin_dir_path(__FILE__) . '../../templates/bank-mehr-ui.php';
         return ob_get_clean();
@@ -134,6 +127,27 @@ class Mehr_loan_calculator{
             error_log($error->getMessage());
         }
     }
+
+    public function enqueue_assets(){
+        wp_enqueue_style(
+            'style',
+            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/css/mehr-style.css'
+        );
+
+        wp_enqueue_script(
+            'mehr_loan_config',
+            plugin_dir_url(__FILE__) . '../../assets/bank-mehr/js/mehr-config.js',
+            ['jquery'],
+            null,
+            true
+        );
+
+        wp_localize_script(
+            'mehr_loan_config',
+            'loan_config_variables',
+            ['admin_ajax_url' => admin_url('admin-ajax.php')]
+        );
+    }
 }
 
-add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);
+//add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);

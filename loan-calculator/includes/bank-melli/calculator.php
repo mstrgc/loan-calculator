@@ -16,12 +16,13 @@ class Melli_loan_calculator{
     }
 
     public function __construct(){
+        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         add_action('wp_ajax_nopriv_melli_calculator', [$this, 'melli_calculator']);
         add_action('wp_ajax_melli_calculator', [$this, 'melli_calculator']);
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
     public function melli_calculator() {
+        error_log('test');
         try{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
@@ -162,4 +163,4 @@ class Melli_loan_calculator{
     }
 }
 
-add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);
+//add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);

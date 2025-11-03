@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 <div class="input_container">
-                    <label for="fee">انتخاب كارمزد</label>
+                    <label for="mehr_fee">انتخاب كارمزد</label>
                     <div class="fee_radio_input">
                         <label for="mehr_fee"><input type="radio" name="mehr_fee" value="0" checked>۰ درصد</label>
                         <label for="mehr_fee"><input type="radio" name="mehr_fee" value="1">۱ درصد</label>
