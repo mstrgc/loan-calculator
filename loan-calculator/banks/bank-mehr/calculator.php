@@ -149,5 +149,3 @@ class Mehr_loan_calculator{
         );
     }
 }
-
-add_action('plugins_loaded', ['Mehr_loan_calculator', 'get_instance']);

@@ -4,7 +4,7 @@ async function calculate() {
     let loan_form = document.getElementById('mehr_loan_form');
     let loan_form_data = new FormData(loan_form);
 
-    loan_form_data.append('action', 'mehr_calculator');
+    loan_form_data.append('action', 'calculator');
 
     try{
         let request = await window.loan_plugin_js.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);

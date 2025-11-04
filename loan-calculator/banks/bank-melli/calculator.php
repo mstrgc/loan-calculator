@@ -161,5 +161,3 @@ class Melli_loan_calculator{
         );
     }
 }
-
-add_action('plugins_loaded', ['Melli_loan_calculator', 'get_instance']);
