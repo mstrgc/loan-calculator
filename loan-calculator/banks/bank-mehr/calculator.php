@@ -19,7 +19,7 @@ class Mehr_loan_calculator{
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
-    public function mehr_calculator() {
+    public function calculator() {
         try{
             if(!isset($_POST['mehr_loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['mehr_loan_calculator_nonce_field'], 'mehr_loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');

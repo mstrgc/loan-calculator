@@ -31,7 +31,7 @@ class Loan_calculator{
         add_action('wp_ajax_nopriv_calculator', [$this, 'ajax_handler']);
     }
 
-    public $active_class = 'nnn';
+    private $available_banks = ['melli', 'mehr'];
 
     public function render_loan_calculator($parameter){
 
@@ -41,12 +41,9 @@ class Loan_calculator{
             'loan_calculator'
         );
 
-        $available_banks = ['melli', 'mehr'];
-
         try{
-            if(in_array($parameters['bank_name'], $available_banks)){
+            if(in_array($parameters['bank_name'], $this->available_banks)){
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
-                $this->active_class = $class_name;
                 return $class_name::get_instance()->render();
             } else{
                 throw new Calculator_exception('محاسبه گر وامی با این نام وجود ندارد', 'could not find a calculator with the given parameter.');
@@ -60,19 +57,9 @@ class Loan_calculator{
     }
 
     public function ajax_handler() {
-        error_log($this->active_class . 'test');
-        $impl = isset($_POST['action']) ? sanitize_text_field($_POST['action']) : '';
-
-        if ($impl === 'mehr_calculator') {
-            
-            $handler = new $this->active_class;
-        }
-
-        if (method_exists($handler, 'mehr_calculator')) {
-            $handler->mehr_calculator();
-        } else {
-            wp_send_json_error(['message' => 'Handler method not found']);
-        }
+        $key = sanitize_text_field($_POST['key']) ?? '';
+        error_log($key . 'test');
+        $key::get_instance()->calculator();
     }
 
     public function enqueue_essentials(){
