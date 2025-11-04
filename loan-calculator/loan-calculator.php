@@ -81,4 +81,9 @@ class Loan_calculator{
     }
 }
 
+abstract class Data_handler{
+    abstract public function get_allowed_inputs();
+    abstract public function get_factors();
+}
+
 add_action('plugins_loaded', ['Loan_calculator', 'get_instance']);

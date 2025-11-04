@@ -1,9 +1,7 @@
 <?php 
 
-abstract class Data_handler{
-
-    abstract public function get_allowed_inputs();
-    abstract public function get_factors();
+if(!defined('ABSPATH')){
+    exit;
 }
 
 class Melli_data extends Data_handler{
