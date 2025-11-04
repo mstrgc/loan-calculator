@@ -8,7 +8,7 @@ async function calculate() {
     loan_form_data.append('key', 'mehr');
 
     try{
-        let request = await window.loan_plugin_js.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
+        let request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
 
         if(!request){
             throw new Error('خطا در ارسال درخواست');
