@@ -17,11 +17,9 @@ class Melli_loan_calculator{
 
     public function __construct(){
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
-        add_action('wp_ajax_nopriv_melli_calculator', [$this, 'melli_calculator']);
-        add_action('wp_ajax_melli_calculator', [$this, 'melli_calculator']);
     }
 
-    public function melli_calculator() {
+    public function calculator() {
         try{
             //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){

@@ -13,7 +13,8 @@ async function calculate() {
     let loan_form_data = new FormData(loan_form);
 
     //add php calculator function to formdata
-    loan_form_data.append('action', 'melli_calculator');
+    loan_form_data.append('action', 'calculator');
+    loan_form_data.append('key', 'melli');
     
     //convert price value to english and remove 
     loan_form_data.append('price', price_value.value.to_english());

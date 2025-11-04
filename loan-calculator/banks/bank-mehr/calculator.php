@@ -14,8 +14,6 @@ class Mehr_loan_calculator{
     }
 
     public function __construct(){
-        add_action('wp_ajax_nopriv_mehr_calculator', [$this, 'mehr_calculator']);
-        add_action('wp_ajax_mehr_calculator', [$this, 'mehr_calculator']);
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
