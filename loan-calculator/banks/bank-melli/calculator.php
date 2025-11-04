@@ -82,7 +82,6 @@ class Melli_loan_calculator{
         //get factor percent and calculate loan
         if($data[$inputs['fee']][$inputs['date']][$inputs['time']]){
             $factor = $data[$inputs['fee']][$inputs['date']][$inputs['time']];
-            error_log($factor);
             $loan = ($inputs['price'] * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -96,7 +95,6 @@ class Melli_loan_calculator{
         //get factor percent and calculate average
         if($data[$inputs['fee']][$inputs['date']][$inputs['time']]){
             $factor = $data[$inputs['fee']][$inputs['date']][$inputs['time']];
-            error_log($factor);
             $average = ($inputs['price'] / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
