@@ -72,16 +72,8 @@ class Loan_calculator{
 
     public function enqueue_essentials(){
         wp_enqueue_script(
-            'number_converter',
-            plugin_dir_url(__FILE__) . 'common/converter.js',
-            [],
-            null,
-            true
-        );
-
-        wp_enqueue_script(
-            'ajax_handler',
-            plugin_dir_url(__FILE__) . 'common/ajax-handler.js',
+            'common',
+            plugin_dir_url(__FILE__) . 'common/common.js',
             ['jquery'],
             null,
             true

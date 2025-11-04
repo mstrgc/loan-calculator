@@ -1,4 +1,4 @@
-(function(){
+(function(global){
     'use strict';
 
     function error_handler(input, func){
@@ -9,7 +9,8 @@
         }
     }
 
-    function to_persian(input) {
+    //convert numbers to persian numbers
+    function to_persian(input){
         let persian_number = {
             0: '۰',
             1: '۱',
@@ -63,7 +64,8 @@
         Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return error_handler(this , to_persian)}});
     }
 
-    function to_english(input) {
+    //convert numbers to english numbers
+    function to_english(input){
         let english_number = {
             '۰': 0,
             '۱': 1,
@@ -104,4 +106,39 @@
         Object.defineProperty(Number.prototype, 'to_english', {'value': function() {return error_handler(this, to_english)}});
     }
 
-})();
+    //ajax request handler
+    async function ajax_handler(url, body){
+        let ajax_request = {
+            method: 'POST',
+            body: body,
+            credentials: 'same-origin',
+            cache: 'no-cache'
+        }
+
+        //validate body
+        if(!(body instanceof FormData)){
+            throw new Error('خطا در ارسال اطلاعات');
+        }
+
+        let response = await fetch(url, ajax_request);
+
+        if(!response){
+            throw new Error('ارتباط با سرور برقرار نشد');
+        }
+
+        let result = await response.json();
+
+        console.log(result);
+
+        //validate and send result data
+        if(result && result.data){
+            return result;
+        } else{
+            throw new Error('خطا در دریافت اطلاعات');
+        }
+    }
+
+    //register namespace
+    global.lc_plugin = global.lc_plugin || {};
+    global.lc_plugin.ajax_handler = ajax_handler;
+})(window);
