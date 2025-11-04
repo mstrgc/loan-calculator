@@ -3,6 +3,8 @@
 if(!defined('ABSPATH')){
     exit;
 }
+
+require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/data.php';
 class Mehr_loan_calculator{
     private static $instance = null;
 
@@ -15,6 +17,7 @@ class Mehr_loan_calculator{
 
     public function __construct(){
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+        $this->data = new Mehr_data();
     }
 
     public function calculator() {
@@ -29,10 +32,7 @@ class Mehr_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'mehr_fee', FILTER_VALIDATE_INT)
                 ];
 
-                if(is_null($this->bank_data)){
-                    $this->include_data();
-                }
-                $allowed_inputs = $this->bank_data['allowed_inputs'];
+                $allowed_inputs = $this->data->get_allowed_inputs();
                     
                 foreach($inputs as $name => $value) {
                     if($name == 'price' || 'debt_price'){
@@ -68,10 +68,11 @@ class Mehr_loan_calculator{
     }
 
     public function average_deposit($input){
+        $data = $this->data->get_factors();
         $result = [];
 
-        if($this->bank_data['factors'][$input['fee']][$input['payment']]){
-            $factors = $this->bank_data['factors'][$input['fee']][$input['payment']];
+        if($data[$input['fee']][$input['payment']]){
+            $factors = $data[$input['fee']][$input['payment']];
 
             foreach($factors as $factor){
                 $deposit = ($input['price'] / $factor) * 100;
@@ -105,43 +106,22 @@ class Mehr_loan_calculator{
         return ob_get_clean();
     }
 
-    public function include_data(){
-        //add factor data
-        $data_file = LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/data.php';
-        try{
-            if(!file_exists($data_file)){
-                throw new Exception('factor data is not found');
-            }
-
-            $data = include_once $data_file;
-
-            if(!is_array($data)){
-                throw new Exception('factor data has invalid data type');
-            }
-
-            $this->bank_data = $data;
-
-        } catch(Exception $error){
-            error_log($error->getMessage());
-        }
-    }
-
     public function enqueue_assets(){
         wp_enqueue_style(
-            'style',
+            'mehr_style',
             LC_PLUGIN_MAIN_URL . 'banks/bank-mehr/assets/mehr-style.css'
         );
 
         wp_enqueue_script(
-            'mehr_loan_config',
+            'mehr_config',
             LC_PLUGIN_MAIN_URL . 'banks/bank-mehr/assets/mehr-config.js',
-            ['jquery'],
+            [],
             null,
             true
         );
 
         wp_localize_script(
-            'mehr_loan_config',
+            'mehr_config',
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );

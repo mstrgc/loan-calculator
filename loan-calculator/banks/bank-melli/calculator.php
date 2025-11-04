@@ -112,27 +112,6 @@ class Melli_loan_calculator{
         return ob_get_clean();
     }
 
-    public function include_data(){
-        //add factor data
-        $factor_file = LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/data.php';
-        try{
-            if(!file_exists($factor_file)){
-                throw new Exception('factor data is not found');
-            }
-
-            $data = include_once $factor_file;
-            
-            if(!is_array($data)){
-                throw new Exception('factor data has invalid data type');
-            }
-
-            $this->bank_data = $data;
-
-        } catch(Exception $error){
-            error_log($error->getMessage());
-        }
-    }
-
     public function enqueue_assets(){
         wp_enqueue_style(
             'melli_style',

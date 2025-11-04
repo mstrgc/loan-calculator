@@ -4,7 +4,7 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-class Melli_data extends Data_handler{
+class Mehr_data extends Data_handler{
     public function get_allowed_inputs(){
         return [
             'payment' => [24, 30, 36, 42, 48, 54, 60],
