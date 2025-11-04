@@ -9,6 +9,18 @@
         }
     }
 
+    function check_input(input){
+        let result = '';
+        let allowed_inputs = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', ',', '1','2','3','4','5','6','7','8','9'];
+        let array_input = Array.from(String(input));
+        array_input.forEach(word => {
+            if(allowed_inputs.includes(word)){
+                result += word;
+            }
+        });
+        console.log(result);
+    }
+
     //convert numbers to persian numbers
     function to_persian(input){
         let persian_number = {
@@ -139,4 +151,5 @@
     //register namespace
     global.lc_plugin = global.lc_plugin || {};
     global.lc_plugin.ajax_handler = ajax_handler;
+    global.lc_plugin.check_input = check_input;
 })(window);

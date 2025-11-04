@@ -1,5 +1,5 @@
 let price_value = document.getElementById('display_price');
-text_error = document.getElementById('error_text');
+let text_error = document.getElementById('error_text');
 
 //display price input in persian
 price_value.addEventListener('input', function () {
@@ -9,6 +9,7 @@ price_value.addEventListener('input', function () {
 });
 
 async function calculate() {
+    window.lc_plugin.check_input('hello123eee444');
     //create formdata from html form
     let loan_form = document.getElementById('melli_loan_form');
     let loan_form_data = new FormData(loan_form);
@@ -17,7 +18,7 @@ async function calculate() {
     loan_form_data.append('action', 'calculator');
     loan_form_data.append('key', 'melli');
     
-    //convert price value to english and remove 
+    //convert price value to english and remove
     loan_form_data.append('price', price_value.value.to_english());
     loan_form_data.delete('display_price');
 
