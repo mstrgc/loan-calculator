@@ -69,7 +69,6 @@ class Melli_loan_calculator{
                 }
 
                 wp_send_json_success(['message' => $calculated_result]);
-
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
@@ -105,13 +104,13 @@ class Melli_loan_calculator{
     public function render(){
         //render page
         ob_start();
-        include_once plugin_dir_path(__FILE__) . 'bank-melli-ui.php';
+        include_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/ui.php';
         return ob_get_clean();
     }
 
     public function include_data(){
         //add factor data
-        $factor_file = plugin_dir_path(__FILE__) . 'data.php';
+        $factor_file = LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/data.php';
         try{
             if(!file_exists($factor_file)){
                 throw new Exception('factor data is not found');
@@ -133,12 +132,12 @@ class Melli_loan_calculator{
     public function enqueue_assets(){
         wp_enqueue_style(
             'melli_style',
-            plugin_dir_url(__FILE__) . 'assets/melli-style.css'
+            LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/melli-style.css'
         );
 
         wp_enqueue_script(
             'melli_loan_form',
-            plugin_dir_url(__FILE__) . 'assets/form.js',
+            LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/form.js',
             [],
             null,
             true
@@ -146,7 +145,7 @@ class Melli_loan_calculator{
 
         wp_enqueue_script(
             'melli_loan_config',
-            plugin_dir_url(__FILE__) . 'assets/melli-config.js',
+            LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/melli-config.js',
             [],
             null,
             true

@@ -9,9 +9,12 @@ if(!defined('ABSPATH')){
     exit;
 }
 
-require_once plugin_dir_path(__FILE__) . 'exception/calculator-exception.php';
-require_once plugin_dir_path(__FILE__) . 'banks/bank-melli/calculator.php';
-require_once plugin_dir_path(__FILE__) . 'banks/bank-mehr/calculator.php';
+define('LC_PLUGIN_MAIN_PATH', plugin_dir_path(__FILE__ ));
+define('LC_PLUGIN_MAIN_URL', plugin_dir_url(__FILE__ ));
+
+require_once LC_PLUGIN_MAIN_PATH . 'exception/calculator-exception.php';
+require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/calculator.php';
+require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/calculator.php';
 
 class Loan_calculator{
     //add singleton pattern
