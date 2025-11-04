@@ -58,8 +58,8 @@ class Loan_calculator{
 
     public function ajax_handler() {
         $key = sanitize_text_field($_POST['key']) ?? '';
-        error_log($key . 'test');
-        $key::get_instance()->calculator();
+        $class = $key . '_loan_calculator';
+        $class::get_instance()->calculator();
     }
 
     public function enqueue_essentials(){
