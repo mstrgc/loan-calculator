@@ -3,14 +3,16 @@
 
     function check_input(input){
         let result = '';
-        let allowed_inputs = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', ',', '1','2','3','4','5','6','7','8','9'];
+        let allowed_inputs = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
         let array_input = Array.from(String(input));
+        
         array_input.forEach(word => {
             if(allowed_inputs.includes(word)){
                 result += word;
             }
         });
-        console.log(result);
+        
+        return result;
     }
 
     function comma_separated_result(input) {

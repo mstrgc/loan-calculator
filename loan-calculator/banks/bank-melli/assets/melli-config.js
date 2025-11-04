@@ -2,14 +2,14 @@ let price_value = document.getElementById('display_price');
 let text_error = document.getElementById('error_text');
 
 //display price input in persian
-price_value.addEventListener('input', function () {
+price_value.addEventListener('input', function(){
+    this.value = window.lc_plugin.check_input(this.value);
     this.value = this.value.to_persian();
     //calculate by any input in price input
     calculate();
 });
 
 async function calculate() {
-    window.lc_plugin.check_input('hello123eee444');
     //create formdata from html form
     let loan_form = document.getElementById('melli_loan_form');
     let loan_form_data = new FormData(loan_form);
