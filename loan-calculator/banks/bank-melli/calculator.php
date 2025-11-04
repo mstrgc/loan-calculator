@@ -4,6 +4,8 @@ if(!defined('ABSPATH')){
     exit;
 }
 
+require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/data.php';
+
 class Melli_loan_calculator{
 
     private static $instance = null;
@@ -17,6 +19,7 @@ class Melli_loan_calculator{
 
     public function __construct(){
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
+        $this->data = new Melli_data();
     }
 
     public function calculator() {
@@ -34,10 +37,7 @@ class Melli_loan_calculator{
                     'fee' => filter_input(INPUT_POST, 'fee', FILTER_VALIDATE_INT)
                 ];
 
-                if(is_null($this->bank_data)){
-                    $this->include_data();
-                }
-                $allowed_inputs = $this->bank_data['allowed_inputs'];
+                $allowed_inputs = $this->data->get_allowed_inputs();
 
                 foreach($int_inputs as $name => $value) {
                     if($name == 'price'){
@@ -78,9 +78,11 @@ class Melli_loan_calculator{
     }
 
     public function average_to_loan_calculator($inputs){
+        $data = $this->data->get_factors();
         //get factor percent and calculate loan
-        if($this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = $this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($data[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $data[$inputs['fee']][$inputs['date']][$inputs['time']];
+            error_log($factor);
             $loan = ($inputs['price'] * $factor) / 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
@@ -90,9 +92,11 @@ class Melli_loan_calculator{
     }
 
     public function loan_to_average_calculator($inputs){
+        $data = $this->data->get_factors();
         //get factor percent and calculate average
-        if($this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']]){
-            $factor = $this->bank_data['factors'][$inputs['fee']][$inputs['date']][$inputs['time']];
+        if($data[$inputs['fee']][$inputs['date']][$inputs['time']]){
+            $factor = $data[$inputs['fee']][$inputs['date']][$inputs['time']];
+            error_log($factor);
             $average = ($inputs['price'] / $factor) * 100;
         } else {
             wp_send_json_error(['message' => 'خطا در مقدار ورودی', 'status' => 'error']);
