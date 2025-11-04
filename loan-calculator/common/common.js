@@ -1,14 +1,6 @@
 (function(global){
     'use strict';
 
-    function error_handler(input, func){
-        if(typeof input == 'string' || typeof input == 'number'){
-            return func(input);
-        } else{
-            document.getElementById('error_text').textContent = 'ورودی مبلغ باید فقط شامل اعداد باشد';
-        }
-    }
-
     function check_input(input){
         let result = '';
         let allowed_inputs = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', ',', '1','2','3','4','5','6','7','8','9'];
@@ -61,11 +53,11 @@
     };
 
     if(!String.prototype.to_persian){
-        Object.defineProperty(String.prototype, 'to_persian', {'value': function() {return error_handler(this , to_persian)}});
+        Object.defineProperty(String.prototype, 'to_persian', {'value': function(){return to_persian(this);}});
     }
 
     if(!Number.prototype.to_persian){
-        Object.defineProperty(Number.prototype, 'to_persian', {'value': function() {return error_handler(this , to_persian)}});
+        Object.defineProperty(Number.prototype, 'to_persian', {'value': function(){return to_persian(this);}});
     }
 
     //convert numbers to english numbers
@@ -103,11 +95,11 @@
     };
 
     if(!String.prototype.to_english){
-        Object.defineProperty(String.prototype, 'to_english', {'value': function() {return error_handler(this, to_english)}});
+        Object.defineProperty(String.prototype, 'to_english', {'value': function(){return to_english(this);}});
     }
 
     if(!Number.prototype.to_english){
-        Object.defineProperty(Number.prototype, 'to_english', {'value': function() {return error_handler(this, to_english)}});
+        Object.defineProperty(Number.prototype, 'to_english', {'value': function(){return to_english(this);}});
     }
 
     //ajax request handler
