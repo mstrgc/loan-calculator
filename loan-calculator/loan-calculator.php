@@ -57,8 +57,13 @@ class Loan_calculator{
     }
 
     public function ajax_handler() {
-        $key = sanitize_text_field($_POST['key']) ?? '';
-        $class = $key . '_loan_calculator';
+        $key = sanitize_text_field($_POST['ke']) ?? '';
+
+        if(!in_array($key, $this->available_banks)){
+            wp_send_json_error(['message' => 'خطا در ارسال اطلاعات']);
+        }
+
+        $class = ucfirst($key) . '_loan_calculator';
         $class::get_instance()->calculator();
     }
 
