@@ -136,15 +136,7 @@ class Melli_loan_calculator{
         );
 
         wp_enqueue_script(
-            'melli_loan_form',
-            LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/form.js',
-            [],
-            null,
-            true
-        );
-
-        wp_enqueue_script(
-            'melli_loan_config',
+            'melli_config',
             LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/melli-config.js',
             [],
             null,
@@ -152,7 +144,7 @@ class Melli_loan_calculator{
         );
 
         wp_localize_script(
-            'melli_loan_config',
+            'melli_config',
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );

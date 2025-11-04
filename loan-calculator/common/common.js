@@ -128,8 +128,6 @@
 
         let result = await response.json();
 
-        console.log(result);
-
         //validate and send result data
         if(result && result.data){
             return result;

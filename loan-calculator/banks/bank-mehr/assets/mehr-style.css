@@ -205,6 +205,10 @@ tr:nth-child(odd){
         width: 100%;
         padding: 10px;
     }
+
+    .mehr_loan_result_container{
+        height: 330px;
+    }
 }
 
 @container loan_container_wrapper (max-width: 400px){
@@ -212,5 +216,9 @@ tr:nth-child(odd){
         width: 100%;
         padding: 0;
         margin: 10px auto;
+    }
+
+    .mehr_loan_result_container{
+        height: 330px;
     }
 }
