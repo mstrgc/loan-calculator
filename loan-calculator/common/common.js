@@ -24,11 +24,10 @@
     //convert numbers to persian numbers
     function to_persian(input){
         let result = '';
-        input = String(input);
 
         //convert numbers to persian numbers
         for (let i = 0; i < input.length; i++) {
-            let num = Array.from(input)[i];
+            let num = input[i];
             //ignore unmatched characters and remove them
             if(num.match(/[0-9]/g)){
                 result += num.match(/[۰-۹]/g);
