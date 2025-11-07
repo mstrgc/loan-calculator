@@ -23,21 +23,7 @@
 
     //convert numbers to persian numbers
     function to_persian(input){
-        let result = '';
-
-        //convert numbers to persian numbers
-        for (let i = 0; i < input.length; i++) {
-            let num = input[i];
-            //ignore unmatched characters and remove them
-            if(num.match(/[0-9]/g)){
-                result += num.match(/[۰-۹]/g);
-            } else if(num.match(/[۰-۹]/g)) {
-                //pass numbers if already persian
-                result += num;
-            }
-        }
-
-        return comma_separate(result);
+        return comma_separate(input.match(/[۰-۹]/g));
     };
 
     if(!String.prototype.to_persian){
