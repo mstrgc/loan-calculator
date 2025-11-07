@@ -15,17 +15,20 @@
         return result;
     }
 
-    function comma_separate(input){
-        let reversed_result = input.split('').reverse().join('').replaceAll(',', '');
-        let separated_result = reversed_result.match(/.{1,3}/g);
-        return separated_result.join(',').split('').reverse().join('');
+    function comma_separator(input){
+        if(input.length > 3){
+            let reversed_result = input.split('').reverse().join('').replaceAll(',', '');
+            let separated_result = reversed_result.match(/.{1,3}/g);
+            return separated_result.join(',').split('').reverse().join('');
+        }
+        return input;
     };
 
     //convert numbers to persian numbers
     function to_persian(input){
         let persian_numbers = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-        let str = input.replace(/\d/g, num => persian_numbers[num]);
-        return (str.length > 3) ? comma_separate(str) : str;
+        let result = input.replace(/\d/g, num => persian_numbers[num]);
+        return comma_separator(result);
     };
 
     if(!String.prototype.to_persian){
