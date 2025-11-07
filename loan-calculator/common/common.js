@@ -1,23 +1,9 @@
 (function(global){
     'use strict';
 
-    function check_input(input){
-        let result = '';
-        let allowed_inputs = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        let array_input = Array.from(String(input));
-        
-        array_input.forEach(word => {
-            if(allowed_inputs.includes(word)){
-                result += word;
-            }
-        });
-        
-        return result;
-    }
-
     function comma_separator(input){
         if(input.length > 3){
-            let reversed_result = input.split('').reverse().join('').replaceAll(',', '');
+            let reversed_result = input.split('').reverse().join('');
             let separated_result = reversed_result.match(/.{1,3}/g);
             return separated_result.join(',').split('').reverse().join('');
         }
@@ -100,5 +86,4 @@
     //register namespace
     global.lc_plugin = global.lc_plugin || {};
     global.lc_plugin.ajax_handler = ajax_handler;
-    global.lc_plugin.check_input = check_input;
 })(window);
