@@ -15,7 +15,7 @@
         return result;
     }
 
-    function comma_separated_result(input) {
+    function comma_separate(input) {
         let reversed_result = input.split('').reverse().join('').replaceAll(',', '');
         let separated_result = reversed_result.match(/.{1,3}/g);
         return separated_result.join(',').split('').reverse().join('');
@@ -23,19 +23,6 @@
 
     //convert numbers to persian numbers
     function to_persian(input){
-        let persian_number = {
-            0: '۰',
-            1: '۱',
-            2: '۲',
-            3: '۳',
-            4: '۴',
-            5: '۵',
-            6: '۶',
-            7: '۷',
-            8: '۸',
-            9: '۹'
-        };
-
         let result = '';
         input = String(input);
 
@@ -43,15 +30,15 @@
         for (let i = 0; i < input.length; i++) {
             let num = Array.from(input)[i];
             //ignore unmatched characters and remove them
-            if(persian_number.hasOwnProperty(num)){
-                result += persian_number[num];
-            } else if(Object.values(persian_number).includes(num)) {
+            if(num.match(/[0-9]/g)){
+                result += num.match(/[۰-۹]/g);
+            } else if(num.match(/[۰-۹]/g)) {
                 //pass numbers if already persian
                 result += num;
             }
         }
 
-        return comma_separated_result(result);
+        return comma_separate(result);
     };
 
     if(!String.prototype.to_persian){
