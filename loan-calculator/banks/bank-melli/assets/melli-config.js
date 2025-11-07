@@ -3,7 +3,7 @@ let text_error = document.getElementById('error_text');
 
 //display price input in persian
 price_value.addEventListener('input', function(){
-    //this.value = window.lc_plugin.check_input(this.value);
+    this.value = window.lc_plugin.check_input(this.value);
     this.value = this.value.to_persian();
     //calculate by any input in price input
     calculate();

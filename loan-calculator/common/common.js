@@ -23,7 +23,6 @@
 
     //convert numbers to persian numbers
     function to_persian(input){
-        input = String(input) || '';
         let persian_numbers = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
         let str = input.replace(/\d/g, num => persian_numbers[num]);
         return (str.length > 3) ? comma_separate(str) : str;
@@ -34,7 +33,7 @@
     }
 
     if(!Number.prototype.to_persian){
-        Object.defineProperty(Number.prototype, 'to_persian', {'value': function(){return to_persian(this);}});
+        Object.defineProperty(Number.prototype, 'to_persian', {'value': function(){return to_persian(String(this));}});
     }
 
     //convert numbers to english numbers
