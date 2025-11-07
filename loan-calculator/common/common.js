@@ -27,7 +27,7 @@
     //convert numbers to persian numbers
     function to_persian(input){
         let persian_numbers = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
-        let result = input.replace(/\d/g, num => persian_numbers[num]);
+        let result = input.replace(/\d/g, num => persian_numbers[num]).replace(/[^\u06F0-\u06F9]/g, '');
         return comma_separator(result);
     };
 
@@ -41,7 +41,7 @@
 
     //convert numbers to english numbers
     function to_english(input){
-        let english_number = {
+        let english_numbers = {
             '۰': 0,
             '۱': 1,
             '۲': 2,
@@ -54,23 +54,9 @@
             '۹': 9
         };
 
-        let result = '';
-
-        if(typeof input === 'string'){
-            //convert persian numbers to english numbers
-            for(let i = 0; i < input.length; i++){
-                let num = Array.from(input)[i];
-                //ignore unmatched characters and remove them
-                if(english_number.hasOwnProperty(num)){
-                    result += english_number[num];
-                } else if(Number(num)) {
-                    //pass numbers if already english
-                    result += num;
-                }
-            }
-        }
-
-        return Number(result);
+        //second replace method removes commas that came from to_persian method
+        let result = input.replace(/[\u06F0-\u06F9]/g, num => english_numbers[num]).replace(/[^\d]/g, '');
+        return result;
     };
 
     if(!String.prototype.to_english){
