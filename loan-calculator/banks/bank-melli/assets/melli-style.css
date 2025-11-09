@@ -75,7 +75,7 @@ label{
     direction: ltr;
     color: white;
     background: #1e76bf;
-    border: 1px solid white;
+    border: 1px solid white !important;
     border-radius: 10px;
     padding: 15px 20px;
     width: 100%;
@@ -85,13 +85,13 @@ label{
 }
 
 #display_price:focus{
-    border: 1px solid white;
+    border: 1px solid white !important;
     outline: none;
 }
 
 #error_text{
     height: 10px;
-    color: red;
+    color: red !important;
     margin: 20px 0;
 }
 
