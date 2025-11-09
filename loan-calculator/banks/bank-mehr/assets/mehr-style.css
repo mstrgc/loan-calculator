@@ -12,8 +12,7 @@
     text-align: right;
     font-size: 14px;
     accent-color: #78bd20;
-    height: 330px;
-    padding: 10px 0;
+    height: 360px;
 }
 
 .mehr_loan_form_container{
@@ -55,7 +54,7 @@
 }
 
 .input_title>p{
-    width: 125px;
+    width: 150px;
     margin: 0;
     border: 1px solid #888;
     border-radius: 6px;
@@ -204,6 +203,10 @@ tr:nth-child(odd){
     .mehr_loan_form_container, .mehr_loan_result_container{
         width: 100%;
         padding: 10px;
+    }
+
+    .mehr_loan_form_container{
+        height: auto;
     }
 
     .mehr_loan_result_container{

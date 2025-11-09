@@ -47,6 +47,7 @@ class Loan_calculator{
         try{
             if(in_array($parameters['bank_name'], $this->available_banks)){
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
+                $class_name::get_instance()->enqueue_assets();
                 return $class_name::get_instance()->render();
             } else{
                 throw new Calculator_exception('محاسبه گر وامی با این نام وجود ندارد', 'could not find a calculator with the given parameter.');
