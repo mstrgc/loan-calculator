@@ -15,6 +15,7 @@ function display_form(){
 
 async function calculate(){
     let loan_form = document.getElementById('resalat_form');
+
     let loan_form_data = new FormData(loan_form);
 
     loan_form_data.append('action', 'calculator');
@@ -29,9 +30,29 @@ async function calculate(){
     }
 };
 
-document.getElementById('resalat_form').addEventListener('input', calculate);
+function form_submit(){
+    let loan_form = document.getElementById('resalat_form');
+    let inputs = loan_form.querySelectorAll('input[type="text"]');
+
+    for(let input of inputs){
+        let number = Number(input.value);
+        if(input.name == 'price' || input.name == 'deposit'){
+            if(number < 1000000){
+                return false;
+            }
+        } else{
+            if(number < 0 || number > 99){
+                return false;
+            }
+        }
+    };
+
+    console.log('ok');
+}
+
+document.getElementById('resalat_form').addEventListener('input', form_submit);
 document.addEventListener('DOMContentLoaded', () => {
     display_form();
-    calculate();
+    form_submit();
 });
 document.getElementById('resalat_calc_type').addEventListener('input', display_form);
