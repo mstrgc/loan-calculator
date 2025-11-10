@@ -51,14 +51,11 @@ function form_submit(){
     if(errors.length > 0){
         errors.forEach(error => {
             let label = document.getElementById('resalat_form_inputs');
-            let text = 'label[for="' + error + '"]';
-            let elem = label.querySelector(text);
-            console.log(elem);
-            elem.innerHTML += '<span>test</span>';
+            let elem = label.querySelector('label[for="' + error + '"]');
+            elem.textContent += '<span>test</span>';
         });
     }
     return calculate();
-    
 }
 
 document.getElementById('resalat_form').addEventListener('input', form_submit);
