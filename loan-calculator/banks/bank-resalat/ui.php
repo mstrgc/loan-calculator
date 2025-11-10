@@ -3,7 +3,7 @@
         <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
         <div class="resalat_calc_type">
             <label for="calc_type">
-                <input name="calc_type" type="radio" value="price">مبلغ وام
+                <input name="calc_type" type="radio" value="price" checked>مبلغ وام
             </label>
             <label for="calc_type">
                 <input name="calc_type" type="radio" value="deposit">مبلغ سپرده
@@ -24,8 +24,3 @@
         </div>
     </div>
 </div>
-<script>
-    let template = document.getElementsByTagName('template')[0];
-    let clone = template.content.cloneNode(true);
-    document.getElementById('resalat_container').appendChild(clone);
-</script>
