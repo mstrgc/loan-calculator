@@ -7,6 +7,7 @@ function display_form(){
             let clone = template.content.cloneNode(true);
             document.getElementById('resalat_form_inputs').replaceChildren();
             document.getElementById('resalat_form_inputs').appendChild(clone);
+            document.getElementById('resalat_result_desc').textContent = document.querySelector('label[for="' + option.value + '"]').textContent;
         }
     });
     return;
