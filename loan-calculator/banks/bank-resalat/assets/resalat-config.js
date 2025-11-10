@@ -52,8 +52,11 @@ function form_submit(){
         errors.forEach(error => {
             let label = document.getElementById('resalat_form_inputs');
             let elem = label.querySelector('label[for="' + error + '"]');
-            elem.textContent += '<span>test</span>';
+            let err = document.createElement('span');
+            err.textContent = error;
+            elem.appendChild(err);
         });
+        return;
     }
     return calculate();
 }
