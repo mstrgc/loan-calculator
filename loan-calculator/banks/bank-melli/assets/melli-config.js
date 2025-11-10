@@ -22,16 +22,9 @@ async function calculate() {
     loan_form_data.delete('display_price');
 
     try{
-        request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
-
-        if(!request){
-            throw new Error('خطا در ارسال درخواست');
-        }
-
-        display_result(request);
-
+        request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data)
     } catch(error) {
-        return error_text.textContent = error.message;
+        return;
     }
 }
 
