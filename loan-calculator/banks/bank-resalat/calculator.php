@@ -24,14 +24,8 @@ class Resalat_loan_calculator{
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
-                $inputs = [
-                    'input1' => filter_input(INPUT_POST, 'input1', FILTER_VALIDATE_INT),
-                    'input2' => filter_input(INPUT_POST, 'input2', FILTER_VALIDATE_INT),
-                    'input3' => filter_input(INPUT_POST, 'input3', FILTER_VALIDATE_INT),
-                ];
-
                 $calc_type = sanitize_text_field($_POST['calc_type']);
-                $result = $this->$calc_type($inputs);
+                $result = $this->$calc_type();
                 return wp_send_json_success($result);
             }
         } catch (Calculator_exception $error) {
@@ -41,20 +35,32 @@ class Resalat_loan_calculator{
         wp_die();
     }
 
-    public function price(array $inputs){
-        return ($inputs['input1'] * $inputs['input2'] * 2) / $inputs['input3'];
+    public function price(){
+        $deposit = filter_input(INPUT_POST, 'deposit', FILTER_VALIDATE_INT);
+        $deposit_duration = filter_input(INPUT_POST, 'deposit_duration', FILTER_VALIDATE_INT);
+        $payment = filter_input(INPUT_POST, 'payment', FILTER_VALIDATE_INT);
+        return ($deposit * $deposit_duration * 2) / $payment;
     }
 
-    public function deposit(array $inputs){
-        return ($inputs['input1'] * $inputs['input3']) / ($inputs['input2'] * 2);
+    public function deposit(){
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
+        $deposit_duration = filter_input(INPUT_POST, 'deposit_duration', FILTER_VALIDATE_INT);
+        $payment = filter_input(INPUT_POST, 'payment', FILTER_VALIDATE_INT);
+        return ($price * $payment) / ($deposit_duration * 2);
     }
 
-    public function deposit_duration(array $inputs){
-        return ($inputs['input1'] * $inputs['input3']) / ($inputs['input2'] * 2);
+    public function deposit_duration(){
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
+        $deposit = filter_input(INPUT_POST, 'deposit', FILTER_VALIDATE_INT);
+        $payment = filter_input(INPUT_POST, 'payment', FILTER_VALIDATE_INT);
+        return ($price * $payment) / ($deposit * 2);
     }
 
-    public function payment(array $inputs){
-        return $inputs['input3'] * ($inputs['input2'] * 2) / $inputs['input1'];
+    public function payment(){
+        $price = filter_input(INPUT_POST, 'price', FILTER_VALIDATE_INT);
+        $deposit_duration = filter_input(INPUT_POST, 'deposit_duration', FILTER_VALIDATE_INT);
+        $deposit = filter_input(INPUT_POST, 'deposit', FILTER_VALIDATE_INT);
+        return $deposit * ($deposit_duration * 2) / $price;
     }
 
     public function render(){
