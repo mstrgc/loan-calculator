@@ -17,35 +17,17 @@ async function calculate(){
     let loan_form = document.getElementById('resalat_form');
     let loan_form_data = new FormData(loan_form);
 
-    if(check_input(loan_form_data)){
-        loan_form_data.append('action', 'calculator');
-        loan_form_data.append('key', 'resalat');
+    loan_form_data.append('action', 'calculator');
+    loan_form_data.append('key', 'resalat');
 
-        try{
-            request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
-            document.getElementById('resalat_result_text').textContent = request.data;
+    try{
+        request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
+        document.getElementById('resalat_result_text').textContent = request.data;
 
-        } catch(error) {
-            return;
-        }
+    } catch(error) {
+        return;
     }
 };
-
-function check_input(form){
-    let inputs = ['price', 'deposit', 'deposit_duration', 'payment'];
-    inputs.forEach(input => {
-        if(form.has(input)){
-            let number = Number(form.has(input));
-            if(input == 'price' || input == 'deposit'){
-                if (number >= 1000000) return false;
-            } else{
-                if (0 < number < 100) return false;
-            }
-        }
-    });
-
-    return true;
-}
 
 document.getElementById('resalat_form').addEventListener('input', calculate);
 document.addEventListener('DOMContentLoaded', () => {
