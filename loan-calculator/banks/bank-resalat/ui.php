@@ -1,21 +1,21 @@
 <div id="resalat_container_wrapper">
     <div id="resalat_container">
-        <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
-        <div id="resalat_calc_type">
-            <label for="calc_type">
-                <input name="calc_type" type="radio" value="price" checked>مبلغ وام
-            </label>
-            <label for="calc_type">
-                <input name="calc_type" type="radio" value="deposit">مبلغ سپرده
-            </label>
-            <label for="calc_type">
-                <input name="calc_type" type="radio" value="deposit_duration">زمان نگهداشت سپرده
-            </label>
-            <label for="calc_type">
-                <input name="calc_type" type="radio" value="payment">تعداد اقساط
-            </label>
-        </div>
         <form id="resalat_form">
+            <?php wp_nonce_field('loan_calculator_nonce', 'loan_calculator_nonce_field') ?>
+            <div id="resalat_calc_type">
+                <label for="calc_type">
+                    <input name="calc_type" type="radio" value="price" checked>مبلغ وام
+                </label>
+                <label for="calc_type">
+                    <input name="calc_type" type="radio" value="deposit">مبلغ سپرده
+                </label>
+                <label for="calc_type">
+                    <input name="calc_type" type="radio" value="deposit_duration">زمان نگهداشت سپرده
+                </label>
+                <label for="calc_type">
+                    <input name="calc_type" type="radio" value="payment">تعداد اقساط
+                </label>
+            </div>
             <div id="resalat_form_inputs"></div>
             <div class="resalat_results">
                 <p id="resalat_result_desc"></p>

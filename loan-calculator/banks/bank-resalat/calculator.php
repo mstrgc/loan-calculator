@@ -19,6 +19,21 @@ class Resalat_loan_calculator{
         add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
     }
 
+    public function calculator(){
+        try{
+            //validate nonce
+            if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
+                throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
+            } else {
+                
+            }
+        } catch (Calculator_exception $error) {
+            error_log('Loan calculator plugin error: ' . $error->getMessage());
+            wp_send_json_error(['message' => $error->get_error()]);
+        };
+        wp_die();
+    }
+
     public function render(){
         ob_start();
         include_once LC_PLUGIN_MAIN_PATH . 'banks/bank-resalat/ui.php';

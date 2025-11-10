@@ -18,8 +18,6 @@ function calculate(){
 
     loan_form_data.append('action', 'calculator');
     loan_form_data.append('key', 'resalat');
-
-    
 };
 
 
