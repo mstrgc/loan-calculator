@@ -29,7 +29,9 @@ async function calculate(){
     }
 };
 
-
 document.getElementById('resalat_form').addEventListener('input', calculate);
-document.addEventListener('DOMContentLoaded', display_form);
+document.addEventListener('DOMContentLoaded', () => {
+    display_form();
+    calculate();
+});
 document.getElementById('resalat_calc_type').addEventListener('input', display_form);
