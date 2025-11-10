@@ -32,22 +32,21 @@ async function calculate(){
 
 function form_submit(){
     let loan_form = document.getElementById('resalat_form');
-    let inputs = loan_form.querySelectorAll('input[type="text"]');
+    let inputs = Array.from(loan_form.querySelectorAll('input[type="text"]'));
 
-    for(let input of inputs){
+    console.log(inputs);
+
+    let status = inputs.some(input => {
+        console.log(input.value);
         let number = Number(input.value);
         if(input.name == 'price' || input.name == 'deposit'){
-            if(number < 1000000){
-                return false;
-            }
+            return number < 1000000;
         } else{
-            if(number < 0 || number > 99){
-                return false;
-            }
+            return number < 0 || number > 99;
         }
-    };
+    });
 
-    console.log('ok');
+    console.log(status);
 }
 
 document.getElementById('resalat_form').addEventListener('input', form_submit);
