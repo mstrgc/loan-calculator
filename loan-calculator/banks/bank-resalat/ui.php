@@ -16,19 +16,28 @@
             </label>
         </div>
         <form id="resalat_form">
-            
+            <div id="resalat_form_inputs"></div>
+            <button type="submit">محاسبه</button>
         </form>
-        <div>
-            <template id="price_form">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-            </template>
-            <template id="deposit_form">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-            </template>
-        </div>
     </div>
 </div>
+<template id="price_form">
+    <label for=""><input type="text">مبلغ سپرده</label>
+    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text">تعداد اقساط </label>
+</template>
+<template id="deposit_form">
+    <label for=""><input type="text">مبلغ وام</label>
+    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text">تعداد اقساط </label>
+</template>
+<template id="deposit_duration_form">
+    <label for=""><input type="text">مبلغ وام</label>
+    <label for=""><input type="text">مبلغ سپرده</label>
+    <label for=""><input type="text">تعداد اقساط </label>
+</template>
+<template id="payment_form">
+    <label for=""><input type="text">مبلغ وام</label>
+    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text">مبلغ سپرده</label>
+</template>
