@@ -13,4 +13,8 @@ class Resalat_loan_calculator{
         }
         return self::$instance;
     }
+
+    public function render(){
+
+    }
 }

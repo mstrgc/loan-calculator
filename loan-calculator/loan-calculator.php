@@ -15,6 +15,7 @@ define('LC_PLUGIN_MAIN_URL', plugin_dir_url(__FILE__ ));
 require_once LC_PLUGIN_MAIN_PATH . 'exception/calculator-exception.php';
 require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/calculator.php';
 require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/calculator.php';
+require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-resalat/calculator.php';
 
 class Loan_calculator{
     //add singleton pattern
@@ -34,7 +35,7 @@ class Loan_calculator{
         add_action('wp_ajax_nopriv_calculator', [$this, 'ajax_handler']);
     }
 
-    private $available_banks = ['melli', 'mehr'];
+    private $available_banks = ['melli', 'mehr', 'resalat'];
 
     public function render_loan_calculator($parameter){
 
@@ -47,7 +48,6 @@ class Loan_calculator{
         try{
             if(in_array($parameters['bank_name'], $this->available_banks)){
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
-                $class_name::get_instance()->enqueue_assets();
                 return $class_name::get_instance()->render();
             } else{
                 throw new Calculator_exception('محاسبه گر وامی با این نام وجود ندارد', 'could not find a calculator with the given parameter.');

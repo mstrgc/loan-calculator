@@ -11,6 +11,7 @@ class Mehr_loan_calculator{
     public static function get_instance() {
         if(is_null(self::$instance)){
             self::$instance = new self();
+            self::$instance->enqueue_assets();
         }
         return self::$instance;
     }
