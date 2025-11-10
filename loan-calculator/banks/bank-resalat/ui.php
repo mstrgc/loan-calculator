@@ -17,7 +17,10 @@
         </div>
         <form id="resalat_form">
             <div id="resalat_form_inputs"></div>
-            <button type="submit">محاسبه</button>
+            <div class="resalat_results">
+                <p id="resalat_result_desc"></p>
+                <p id="resalat_result_text"></p>
+            </div>
         </form>
     </div>
 </div>
