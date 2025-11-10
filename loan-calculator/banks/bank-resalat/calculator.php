@@ -21,17 +21,34 @@ class Resalat_loan_calculator{
 
     public function calculator(){
         try{
-            //validate nonce
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
-                
+                $calc_type = sanitize_text_field($_POST['calc_type']);
+                $result = $this->$calc_type();
+                return $result;
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
             wp_send_json_error(['message' => $error->get_error()]);
         };
         wp_die();
+    }
+
+    public function price(){
+        return;
+    }
+
+    public function deposit(){
+        return;
+    }
+
+    public function deposit_duration(){
+        return;
+    }
+
+    public function payment(){
+        return;
     }
 
     public function render(){
