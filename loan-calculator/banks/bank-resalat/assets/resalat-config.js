@@ -34,12 +34,18 @@ function form_submit(){
     let loan_form = document.getElementById('resalat_form');
     let inputs = Array.from(loan_form.querySelectorAll('input[type="text"]'));
 
+    let errors = [];
+
     let status = inputs.some(input => {
         let number = Number(input.value);
         if(input.name == 'price' || input.name == 'deposit'){
-            return number < 1000000;
+            if(number < 1000000){
+                errors += input.name;
+            }
+        } else if(number < 1 || number > 99){
+            errors += input.name;
         }
-        return number < 1 || number > 99;
+        if(errors.length > 0) return true;
     });
 
     if(!status) calculate();
