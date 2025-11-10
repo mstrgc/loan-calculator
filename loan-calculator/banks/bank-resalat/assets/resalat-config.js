@@ -12,5 +12,17 @@ function display_form(){
     return;
 }
 
+function calculate(){
+    let loan_form = document.getElementById('resalat_form');
+    let loan_form_data = new FormData(loan_form);
+
+    loan_form_data.append('action', 'calculator');
+    loan_form_data.append('key', 'resalat');
+
+    
+};
+
+
+document.getElementById('resalat_form').addEventListener('input', calculate);
 document.addEventListener('DOMContentLoaded', display_form);
 document.getElementById('resalat_calc_type').addEventListener('input', display_form);
