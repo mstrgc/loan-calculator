@@ -24,9 +24,15 @@ class Resalat_loan_calculator{
             if(!isset($_POST['loan_calculator_nonce_field']) || !wp_verify_nonce($_POST['loan_calculator_nonce_field'], 'loan_calculator_nonce')){
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
+                $inputs = [
+                    'input1' => filter_input(INPUT_POST, 'input1', FILTER_VALIDATE_INT),
+                    'input2' => filter_input(INPUT_POST, 'input2', FILTER_VALIDATE_INT),
+                    'input3' => filter_input(INPUT_POST, 'input3', FILTER_VALIDATE_INT),
+                ];
+
                 $calc_type = sanitize_text_field($_POST['calc_type']);
-                $result = $this->$calc_type();
-                return $result;
+                $result = $this->$calc_type($inputs);
+                return wp_send_json_success($result);
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
@@ -35,20 +41,20 @@ class Resalat_loan_calculator{
         wp_die();
     }
 
-    public function price(){
-        return;
+    public function price(array $inputs){
+        return ($inputs['input1'] * $inputs['input2'] * 2) / $inputs['input3'];
     }
 
-    public function deposit(){
-        return;
+    public function deposit(array $inputs){
+        return ($inputs['input1'] * $inputs['input3']) / ($inputs['input2'] * 2);
     }
 
-    public function deposit_duration(){
-        return;
+    public function deposit_duration(array $inputs){
+        return ($inputs['input1'] * $inputs['input3']) / ($inputs['input2'] * 2);
     }
 
-    public function payment(){
-        return;
+    public function payment(array $inputs){
+        return $inputs['input3'] * ($inputs['input2'] * 2) / $inputs['input1'];
     }
 
     public function render(){

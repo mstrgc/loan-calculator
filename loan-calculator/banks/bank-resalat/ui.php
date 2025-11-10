@@ -25,22 +25,22 @@
     </div>
 </div>
 <template id="price_form">
-    <label for=""><input type="text">مبلغ سپرده</label>
-    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
-    <label for=""><input type="text">تعداد اقساط </label>
+    <label for=""><input type="text" name="input1">مبلغ سپرده</label>
+    <label for=""><input type="text" name="input2">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text" name="input3">تعداد اقساط </label>
 </template>
 <template id="deposit_form">
-    <label for=""><input type="text">مبلغ وام</label>
-    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
-    <label for=""><input type="text">تعداد اقساط </label>
+    <label for=""><input type="text" name="input1">مبلغ وام</label>
+    <label for=""><input type="text" name="input2">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text" name="input3">تعداد اقساط </label>
 </template>
 <template id="deposit_duration_form">
-    <label for=""><input type="text">مبلغ وام</label>
-    <label for=""><input type="text">مبلغ سپرده</label>
-    <label for=""><input type="text">تعداد اقساط </label>
+    <label for=""><input type="text" name="input1">مبلغ وام</label>
+    <label for=""><input type="text" name="input2">مبلغ سپرده</label>
+    <label for=""><input type="text" name="input3">تعداد اقساط </label>
 </template>
 <template id="payment_form">
-    <label for=""><input type="text">مبلغ وام</label>
-    <label for=""><input type="text">مدت زمان نگهداشت پول در حساب</label>
-    <label for=""><input type="text">مبلغ سپرده</label>
+    <label for=""><input type="text" name="input1">مبلغ وام</label>
+    <label for=""><input type="text" name="input2">مدت زمان نگهداشت پول در حساب</label>
+    <label for=""><input type="text" name="input3">مبلغ سپرده</label>
 </template>
