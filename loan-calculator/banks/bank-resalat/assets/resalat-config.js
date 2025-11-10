@@ -40,15 +40,25 @@ function form_submit(){
         let number = Number(input.value);
         if(input.name == 'price' || input.name == 'deposit'){
             if(number < 1000000){
-                errors += input.name;
+                errors.push(input.name);
             }
         } else if(number < 1 || number > 99){
-            errors += input.name;
+            errors.push(input.name);
         }
-        if(errors.length > 0) return true;
+        
     });
 
-    if(!status) calculate();
+    if(errors.length > 0){
+        errors.forEach(error => {
+            let label = document.getElementById('resalat_form_inputs');
+            let text = 'label[for="' + error + '"]';
+            let elem = label.querySelector(text);
+            console.log(elem);
+            elem.innerHTML += '<span>test</span>';
+        });
+    }
+    return calculate();
+    
 }
 
 document.getElementById('resalat_form').addEventListener('input', form_submit);
