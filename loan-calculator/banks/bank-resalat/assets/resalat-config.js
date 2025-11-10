@@ -21,6 +21,8 @@ async function calculate(){
 
     try{
         request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
+        console.log('test');
+
     } catch(error) {
         return;
     }
