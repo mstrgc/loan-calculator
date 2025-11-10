@@ -73,7 +73,7 @@ class Resalat_loan_calculator{
         );
 
         wp_localize_script(
-            'melli_config',
+            'resalat_config',
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );
