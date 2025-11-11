@@ -2,10 +2,17 @@
     direction: rtl;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin: 0 auto;
     text-align: center;
     font-size: 20px;
+    padding: 56px;
+    border: 1px solid #74797f;
+    border-radius: 40px;
+}
+
+#resalat_form{
+    width: 50%;
 }
 
 #resalat_form_inputs{
@@ -13,10 +20,13 @@
     flex-direction: column;
 }
 
+/*** result section ***/
+
 .resalat_results{
+    width: 50%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    background-color: #ccc;
     padding: 2px 10px;
     border-radius: 5px;
     margin-top: 10px;
@@ -31,9 +41,10 @@
 
 .text_input input{
     width: 100%;
-    direction: ltr;
     border-radius: 5px;
 }
+
+/*** ange input attr ***/
 
 .input_label{
     width: 100%;
@@ -42,12 +53,39 @@
     justify-content: space-between;
 }
 
+.input_label label{
+    font-weight: bolder;
+}
+
+.input_label span{
+    font-weight: bolder;
+}
+
 .error_span{
     color: red;
 }
 
+.range_span{
+    display: flex;
+    justify-content: space-between;
+}
+
+.range_span span{
+    color: #44474e;
+    font-size: 16px;
+}
+
 #resalat_calc_type{
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #e5f0ff;
+    padding: 16px;
+    border-radius: 32px;
+}
+
+.resalat_calc_type{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -58,12 +96,16 @@
 }
 
 #resalat_calc_type label{
-    background-color: #ccc;
-    padding: 10px;
-    border-radius: 5px;
+    background-color: #f5faff;
+    border-radius: 16px;
     cursor: pointer;
+    margin: 0 5px 0 5px;
 }
 
 #resalat_calc_type label:has(input:checked){
-    background-color: #aaa;
+    border: 1px solid #2d5da7;
+}
+
+.display_range{
+    color: #2d5da7;
 }

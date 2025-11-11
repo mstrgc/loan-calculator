@@ -75,7 +75,7 @@ function display_range(){
     })
 }
 
-document.getElementById('resalat_form').addEventListener('input', form_submit);
+document.getElementById('resalat_form').addEventListener('change', form_submit);
 document.addEventListener('DOMContentLoaded', () => {
     display_form();
     form_submit();
