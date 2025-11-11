@@ -31,17 +31,19 @@ async function calculate(){
 };
 
 function form_submit(){
-    let label = document.getElementById('resalat_form_inputs').querySelectorAll('span');
-    label.forEach(span => {
+    let label = document.getElementById('resalat_form_inputs').querySelectorAll('span[class="error_span"]');
+
+    if(label.length > 0) return () => {label.forEach(span => {
         span.parentNode.removeChild(span);
-    })
+    })};
 
     let loan_form = document.getElementById('resalat_form');
     let inputs = Array.from(loan_form.querySelectorAll('input[type="text"]'));
 
+
     let errors = [];
 
-    let status = inputs.some(input => {
+    inputs.some(input => {
         let number = Number(input.value);
         if(input.name == 'price' || input.name == 'deposit'){
             if(number < 1000000){
@@ -66,9 +68,18 @@ function form_submit(){
     return calculate();
 }
 
+function display_range(){
+    let ranges = document.getElementById('resalat_form_inputs').querySelectorAll('input[type="range"]');
+    ranges.forEach(range => {
+        document.getElementById(range.name + '_index').textContent = (range.value).to_persian();
+    })
+}
+
 document.getElementById('resalat_form').addEventListener('input', form_submit);
 document.addEventListener('DOMContentLoaded', () => {
     display_form();
     form_submit();
 });
+
 document.getElementById('resalat_calc_type').addEventListener('input', display_form);
+document.getElementById('resalat_form_inputs').addEventListener('input', display_range);

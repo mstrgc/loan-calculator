@@ -24,20 +24,22 @@
 
 .text_input{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     margin: 10px 0;
 }
 
 .text_input input{
-    width: 60%;
+    width: 100%;
     direction: ltr;
     border-radius: 5px;
 }
 
-.text_input label{
-    width: 40%;
-    text-align: right;
+.input_label{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .error_span{
