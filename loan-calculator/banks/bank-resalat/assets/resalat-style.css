@@ -138,10 +138,38 @@ hr{
     border-radius: 50px;
     width: 20px;
     height: 20px;
-    margin-top: -10px;
+    margin-top: -9px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#resalat_form_inputs input[type='range']:hover::-webkit-slider-thumb{
+    box-shadow: 0 0 0 4px #2d5ea75c;
 }
 
 #resalat_form_inputs input[type='range']::-webkit-slider-runnable-track{
-    background: #74797f;
+    background: #ccc;
     height: 2px;
+}
+
+#resalat_form_inputs input[type='range']::-moz-range-thumb{
+    -moz-appearance: none;
+    background-color: #2d5da7;
+    border-radius: 50px;
+    width: 20px;
+    height: 20px;
+    margin-top: -9px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#resalat_form_inputs input[type='range']::-moz-range-track{
+    background: #ccc;
+    height: 2px;
+}
+
+#resalat_form_inputs input[type='range']:hover::-moz-range-thumb{
+    box-shadow: 0 0 0 4px #2d5ea75c;
+}
+
+#resalat_form_inputs input[type='range']::-moz-range-progress{
+    background: #2d5da7;
 }
