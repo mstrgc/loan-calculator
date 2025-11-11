@@ -31,8 +31,10 @@ async function calculate(){
 };
 
 function form_submit(){
-    let error_span = document.getElementsByClassName('error_span');
-    console.log(Array.from(error_span));
+    let label = document.getElementById('resalat_form_inputs').querySelectorAll('span');
+    label.forEach(span => {
+        span.parentNode.removeChild(span);
+    })
 
     let loan_form = document.getElementById('resalat_form');
     let inputs = Array.from(loan_form.querySelectorAll('input[type="text"]'));
@@ -57,7 +59,7 @@ function form_submit(){
             let elem = label.querySelector('label[for="' + error + '"]');
             let err = document.createElement('span');
             err.className = 'error_span';
-            err.textContent = error;
+            err.textContent = 'error';
             elem.appendChild(err);
         });
         return;

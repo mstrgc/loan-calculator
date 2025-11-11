@@ -25,22 +25,58 @@
     </div>
 </div>
 <template id="price_form">
-    <label for="deposit"><input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">مبلغ سپرده</label>
-    <label for="deposit_duration"><input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">مدت زمان نگهداشت پول در حساب</label>
-    <label for="payment"><input type="text" name="payment" value="12" minlength="1" maxlength="2">تعداد اقساط </label>
+    <div class="text_input">
+    <label for="deposit">مبلغ سپرده</label>
+    <input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">
+    </div>
+    <div class="text_input">
+    <label for="deposit_duration">مدت زمان نگهداشت پول در حساب</label>
+    <input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">
+    </div>
+    <div class="text_input">
+    <label for="payment">تعداد اقساط </label>
+    <input type="text" name="payment" value="12" minlength="1" maxlength="2">
+    </div>
 </template>
 <template id="deposit_form">
-    <label for="price"><input type="text" name="price" value="1000000" minlength="7" maxlength="15">مبلغ وام</label>
-    <label for="deposit_duration"><input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">مدت زمان نگهداشت پول در حساب</label>
-    <label for="payment"><input type="text" name="payment" value="12" minlength="1" maxlength="2">تعداد اقساط </label>
+    <div class="text_input">
+    <label for="price">مبلغ وام</label>
+    <input type="text" name="price" value="1000000" minlength="7" maxlength="15">
+    </div>
+    <div class="text_input">
+    <label for="deposit_duration">مدت زمان نگهداشت پول در حساب</label>
+    <input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">
+    </div>
+    <div class="text_input">
+    <label for="payment">تعداد اقساط </label>
+    <input type="text" name="payment" value="12" minlength="1" maxlength="2">
+    </div>
 </template>
 <template id="deposit_duration_form">
-    <label for="price"><input type="text" name="price" value="1000000" minlength="7" maxlength="15">مبلغ وام</label>
-    <label for="deposit"><input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">مبلغ سپرده</label>
-    <label for="payment"><input type="text" name="payment" value="12" minlength="1" maxlength="2">تعداد اقساط </label>
+    <div class="text_input">
+    <label for="price">مبلغ وام</label>
+    <input type="text" name="price" value="1000000" minlength="7" maxlength="15">
+    </div>
+    <div class="text_input">
+    <label for="deposit">مبلغ سپرده</label>
+    <input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">
+    </div>
+    <div class="text_input">
+    <label for="payment">تعداد اقساط </label>
+    <input type="text" name="payment" value="12" minlength="1" maxlength="2">
+    </div>
 </template>
 <template id="payment_form">
-    <label for="price"><input type="text" name="price" value="1000000" minlength="7" maxlength="15">مبلغ وام</label>
-    <label for="deposit_duration"><input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">مدت زمان نگهداشت پول در حساب</label>
-    <label for="deposit"><input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">مبلغ سپرده</label>
+    <div class="text_input">
+    <label for="price">مبلغ وام</label>
+    <input type="text" name="price" value="1000000" minlength="7" maxlength="15">
+    </div>
+    <div class="text_input">
+    <label for="deposit_duration">مدت زمان نگهداشت پول در حساب</label>
+    <input type="text" name="deposit_duration" value="6" minlength="1" maxlength="2">
+    </div>
+    <div class="text_input">
+    <label for="deposit">مبلغ سپرده</label>
+    <input type="text" name="deposit" value="1000000" minlength="7" maxlength="15">
+    </div>
 </template>

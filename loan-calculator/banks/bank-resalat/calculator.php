@@ -70,6 +70,11 @@ class Resalat_loan_calculator{
     }
 
     public function enqueue_assets(){
+        wp_enqueue_style(
+            'resalat_style',
+            LC_PLUGIN_MAIN_URL . 'banks/bank-resalat/assets/resalat-style.css'
+        );
+
         wp_enqueue_script(
             'resalat_config',
             LC_PLUGIN_MAIN_URL . 'banks/bank-resalat/assets/resalat-config.js',
