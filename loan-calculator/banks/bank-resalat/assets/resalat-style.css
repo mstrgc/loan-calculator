@@ -1,3 +1,8 @@
+#resalat_container_wrapper{
+    container-type: inline-size;
+    container-name: resalat_container;
+}
+
 #resalat_container{
     direction: rtl;
     width: 100%;
@@ -37,6 +42,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.result_row p:last-of-type{
+    font-size: 14px;
+}
+
+.result_row span{
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 /*** ange input attr ***/
@@ -107,7 +121,7 @@
     background-color: #f5faff;
     border-radius: 16px;
     cursor: pointer;
-    margin: 0 5px 0 5px;
+    margin: 0 5px;
 }
 
 #resalat_calc_type label:has(input:checked){
@@ -117,6 +131,11 @@
 .display_range{
     color: #2d5da7;
     white-space: nowrap;
+    font-size: 16px;
+}
+
+.display_range span{
+    font-size: 20px;
 }
 
 hr{
@@ -172,4 +191,60 @@ hr{
 
 #resalat_form_inputs input[type='range']::-moz-range-progress{
     background: #2d5da7;
+}
+
+/*** responsive ***/
+
+@container resalat_container (max-width: 826px){
+    #resalat_container{
+        padding: 10px;
+    }
+
+    .resalat_results{
+        margin-right: 20px;
+    }
+
+    /*#resalat_form, .resalat_results{
+        width: 100%;
+        margin-right: 0;
+    }*/
+}
+
+@container resalat_container (max-width: 500px){
+    #resalat_container{
+        flex-direction: column;
+        padding: 24px 16px;
+        font-size: 16px;
+    }
+
+    .resalat_results{
+        width: 100%;
+        margin-right: 0;
+        margin-top: 30px;
+    }
+
+    #resalat_form{
+        width: 100%;
+    }
+
+    .result_row p:last-of-type{
+        font-size: 12px;
+    }
+
+    .result_row span{
+        font-size: 16px;
+        font-weight: bolder;
+    }
+
+    .range_span span{
+        font-size: 10px;
+    }
+
+    .display_range{
+        font-size: 12px;
+    }
+
+    .display_range span{
+        font-size: 16px;
+    }
 }
