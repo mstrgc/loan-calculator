@@ -22,14 +22,10 @@
             <div id="resalat_form_inputs">
                 <div class="text_input">
                     <div class="input_label">
-                        <label for="deposit">مبلغ سپرده</label>
-                        <p class="display_range"><span id="deposit_index">۱,۰۰۰,۰۰۰</span> ریال</p>
+                        <label for="price">مبلغ وام</label>
+                        <p class="display_range"><span id="price_index">۱,۰۰۰,۰۰۰</span> ریال</p>
                     </div>
-                    <input type="range" name="deposit" value="1000000" min="1000000" max="1000000000" step="1000000">
-                    <div class="range_span">
-                        <span>۱,۰۰۰,۰۰۰ ریال</span>
-                        <span>۱,۰۰۰,۰۰۰,۰۰۰ ریال</span>
-                    </div>
+                    <input type="range" name="price" value="1000000" min="1000000" max="1000000000" step="1000000">
                 </div>
                 <div class="text_input">
                     <div class="input_label">
@@ -37,10 +33,6 @@
                         <p class="display_range"><span id="deposit_duration_index">۱</span> ماه</p>
                     </div>
                     <input type="range" name="deposit_duration" value="1" step="1" min="1" max="12">
-                    <div class="range_span">
-                        <span>۱ ماه</span>
-                        <span>۱۲ ماه</span>
-                    </div>
                 </div>
                 <div class="text_input">
                     <div class="input_label">
@@ -48,10 +40,6 @@
                         <p class="display_range"><span id="payment_index">۶</span> ماه</p>
                     </div>
                     <input type="range" name="payment" value="6" step="6" min="6" max="60">
-                    <div class="range_span">
-                        <span>۶ ماه</span>
-                        <span>۶۰ ماه</span>
-                    </div>
                 </div>
             </div>
         </form>
