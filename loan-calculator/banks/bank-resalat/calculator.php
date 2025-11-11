@@ -25,7 +25,7 @@ class Resalat_loan_calculator{
                 throw new Calculator_exception('خطا در تایید فرم', 'nonce validation failed');
             } else {
                 $calc_type = sanitize_text_field($_POST['calc_type']);
-                $result = $this->$calc_type();
+                $result = $this->deposit();
                 return wp_send_json_success(intval($result));
             }
         } catch (Calculator_exception $error) {
