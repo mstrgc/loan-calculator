@@ -80,6 +80,11 @@
                 <p>مبلغ هر قسط</p>
                 <p><span id="payment_price_result"></span> ریال</p>
             </div>
+            <hr>
+            <div class="result_row">
+                <p>مجموع اقساط</p>
+                <p><span id="payment_total_price_result"></span> ریال</p>
+            </div>
         </div>
     </div>
 </div>

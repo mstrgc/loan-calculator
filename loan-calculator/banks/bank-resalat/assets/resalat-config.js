@@ -81,7 +81,10 @@ function display_range(){
 }
 
 function payment_calc(price, payment){
-    document.getElementById('payment_price_result').textContent = Math.round(price / payment).to_persian();
+    let payment_price = document.getElementById('payment_price_result').textContent = Math.round(price / payment).to_persian();
+    //round to million to remove little conflicts
+    let total = Math.round((payment_price.to_english() * payment) / 1000000) * 1000000;
+    document.getElementById('payment_total_price_result').textContent = total.to_persian();
 }
 
 document.getElementById('resalat_form').addEventListener('change', calculate);
