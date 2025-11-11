@@ -16,19 +16,52 @@
 .resalat_results{
     display: flex;
     justify-content: space-between;
+    background-color: #ccc;
+    padding: 2px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
 .text_input{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin: 10px 0;
 }
 
 .text_input input{
     width: 60%;
+    direction: ltr;
+    border-radius: 5px;
 }
 
 .text_input label{
     width: 40%;
     text-align: right;
+}
+
+.error_span{
+    color: red;
+}
+
+#resalat_calc_type{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#resalat_calc_type input{
+    display: none;
+}
+
+#resalat_calc_type label{
+    background-color: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#resalat_calc_type label:has(input:checked){
+    background-color: #aaa;
 }

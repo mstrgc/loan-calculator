@@ -19,7 +19,7 @@
             <div id="resalat_form_inputs"></div>
             <div class="resalat_results">
                 <p id="resalat_result_desc"></p>
-                <p id="resalat_result_text"></p>
+                <p><span id="resalat_result_text"></span></p>
             </div>
         </form>
     </div>

@@ -23,7 +23,7 @@ async function calculate(){
 
     try{
         request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
-        document.getElementById('resalat_result_text').textContent = request.data;
+        document.getElementById('resalat_result_text').textContent = request.data.to_persian();
 
     } catch(error) {
         return;
@@ -50,7 +50,6 @@ function form_submit(){
         } else if(number < 1 || number > 99){
             errors.push(input.name);
         }
-        
     });
 
     if(errors.length > 0){

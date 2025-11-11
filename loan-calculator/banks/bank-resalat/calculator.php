@@ -26,7 +26,7 @@ class Resalat_loan_calculator{
             } else {
                 $calc_type = sanitize_text_field($_POST['calc_type']);
                 $result = $this->$calc_type();
-                return wp_send_json_success($result);
+                return wp_send_json_success(intval($result));
             }
         } catch (Calculator_exception $error) {
             error_log('Loan calculator plugin error: ' . $error->getMessage());
