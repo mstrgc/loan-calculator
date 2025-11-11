@@ -74,14 +74,20 @@ function display_range(){
         document.getElementById(range.name + '_index').textContent = (range.value).to_persian();
         document.getElementById(range.name + '_result').textContent = (range.value).to_persian();
     })
+
+    let price  = ranges[0].value;
+    let payment  = ranges[2].value;
+    payment_calc(price, payment);
+}
+
+function payment_calc(price, payment){
+    document.getElementById('payment_price_result').textContent = Math.round(price / payment).to_persian();
 }
 
 document.getElementById('resalat_form').addEventListener('change', calculate);
-document.addEventListener('DOMContentLoaded', calculate);
-
-function payment_calc(){
-    
-}
-
+document.addEventListener('DOMContentLoaded', () => {
+    calculate();
+    display_range();
+});
 //document.getElementById('resalat_calc_type').addEventListener('input', display_form);
 document.getElementById('resalat_form_inputs').addEventListener('input', display_range);
