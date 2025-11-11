@@ -26,6 +26,10 @@
                         <p class="display_range"><span id="price_index">۱,۰۰۰,۰۰۰</span> ریال</p>
                     </div>
                     <input type="range" name="price" value="1000000" min="1000000" max="1000000000" step="1000000">
+                    <div class="range_span">
+                        <span>۱,۰۰۰,۰۰۰ ریال</span>
+                        <span>۱,۰۰۰,۰۰۰,۰۰۰ ریال</span>
+                    </div>
                 </div>
                 <div class="text_input">
                     <div class="input_label">
@@ -33,6 +37,10 @@
                         <p class="display_range"><span id="deposit_duration_index">۱</span> ماه</p>
                     </div>
                     <input type="range" name="deposit_duration" value="1" step="1" min="1" max="12">
+                    <div class="range_span">
+                        <span>۱ ماه</span>
+                        <span>۱۲ ماه</span>
+                    </div>
                 </div>
                 <div class="text_input">
                     <div class="input_label">
@@ -40,17 +48,37 @@
                         <p class="display_range"><span id="payment_index">۶</span> ماه</p>
                     </div>
                     <input type="range" name="payment" value="6" step="6" min="6" max="60">
+                    <div class="range_span">
+                        <span>۶ ماه</span>
+                        <span>۶۰ ماه</span>
+                    </div>
                 </div>
             </div>
         </form>
         <div class="resalat_results">
             <div class="result_row">
-                <p></p>
-                <p><span id="resalat_result_text"></span></p>
+                <p>میانگین حساب</p>
+                <p><span id="deposit_result"></span> ریال</p>
             </div>
+            <hr>
             <div class="result_row">
-                <p></p>
-                <p><span id="resalat_result_text"></span></p>
+                <p>تعداد اقساط</p>
+                <p><span id="payment_result">۶</span> ماه</p>
+            </div>
+            <hr>
+            <div class="result_row">
+                <p>مبلغ وام</p>
+                <p><span id="price_result">۱,۰۰۰,۰۰۰</span> ریال</p>
+            </div>
+            <hr>
+            <div class="result_row">
+                <p>مدت زمان میانگین حساب</p>
+                <p><span id="deposit_duration_result">۱</span> ماه</p>
+            </div>
+            <hr>
+            <div class="result_row">
+                <p>مبلغ هر قسط</p>
+                <p><span id="payment_price_result"></span> ریال</p>
             </div>
         </div>
     </div>

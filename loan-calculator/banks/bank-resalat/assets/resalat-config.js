@@ -23,7 +23,7 @@ async function calculate(){
 
     try{
         request = await window.lc_plugin.ajax_handler(loan_config_variables.admin_ajax_url, loan_form_data);
-        document.getElementById('resalat_result_text').textContent = request.data.to_persian();
+        document.getElementById('deposit_result').textContent = request.data.to_persian();
 
     } catch(error) {
         return;
@@ -31,7 +31,7 @@ async function calculate(){
 };
 
 function form_submit(){
-    let label = document.getElementById('resalat_form_inputs').querySelectorAll('span[class="error_span"]');
+    /*let label = document.getElementById('resalat_form_inputs').querySelectorAll('span[class="error_span"]');
 
     if(label.length > 0) return () => {label.forEach(span => {
         span.parentNode.removeChild(span);
@@ -64,7 +64,7 @@ function form_submit(){
             elem.appendChild(err);
         });
         return;
-    }
+    }*/
     return calculate();
 }
 
@@ -72,14 +72,16 @@ function display_range(){
     let ranges = document.getElementById('resalat_form_inputs').querySelectorAll('input[type="range"]');
     ranges.forEach(range => {
         document.getElementById(range.name + '_index').textContent = (range.value).to_persian();
+        document.getElementById(range.name + '_result').textContent = (range.value).to_persian();
     })
 }
 
-document.getElementById('resalat_form').addEventListener('change', form_submit);
-document.addEventListener('DOMContentLoaded', () => {
-    display_form();
-    form_submit();
-});
+document.getElementById('resalat_form').addEventListener('change', calculate);
+document.addEventListener('DOMContentLoaded', calculate);
 
-document.getElementById('resalat_calc_type').addEventListener('input', display_form);
+function payment_calc(){
+    
+}
+
+//document.getElementById('resalat_calc_type').addEventListener('input', display_form);
 document.getElementById('resalat_form_inputs').addEventListener('input', display_range);
