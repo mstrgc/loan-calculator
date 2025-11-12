@@ -7,17 +7,16 @@ if(!defined('ABSPATH')){
 require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/data.php';
 class Mehr_loan_calculator{
     private static $instance = null;
+    private static $is_enqueued = false;
 
     public static function get_instance() {
         if(is_null(self::$instance)){
             self::$instance = new self();
-            self::$instance->enqueue_assets();
         }
         return self::$instance;
     }
 
     public function __construct(){
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         $this->data = new Mehr_data();
     }
 
@@ -101,13 +100,15 @@ class Mehr_loan_calculator{
         return $result;
     }
 
-    public function render(){        
+    public function render(){   
+        $this->enqueue_assets();     
         ob_start();
         include_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/ui.php';
         return ob_get_clean();
     }
 
     public function enqueue_assets(){
+        if(self::$is_enqueued) return;
         wp_enqueue_style(
             'mehr_style',
             LC_PLUGIN_MAIN_URL . 'banks/bank-mehr/assets/mehr-style.css'
@@ -126,5 +127,6 @@ class Mehr_loan_calculator{
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );
+        self::$is_enqueued = true;
     }
 }

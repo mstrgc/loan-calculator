@@ -9,17 +9,16 @@ require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/data.php';
 class Melli_loan_calculator{
 
     private static $instance = null;
+    private static $is_enqueued = false;
 
     public static function get_instance() {
         if(is_null(self::$instance)){
             self::$instance = new self();
-            self::$instance->enqueue_assets();
         }
         return self::$instance;
     }
 
     public function __construct(){
-        add_action('wp_enqueue_scripts', [$this, 'enqueue_assets']);
         $this->data = new Melli_data();
     }
 
@@ -105,13 +104,14 @@ class Melli_loan_calculator{
     }
 
     public function render(){
-        //render page
+        $this->enqueue_assets();
         ob_start();
         include_once LC_PLUGIN_MAIN_PATH . 'banks/bank-melli/ui.php';
         return ob_get_clean();
     }
 
     public function enqueue_assets(){
+        if(self::$is_enqueued) return;
         wp_enqueue_style(
             'melli_style',
             LC_PLUGIN_MAIN_URL . 'banks/bank-melli/assets/melli-style.css'
@@ -130,5 +130,6 @@ class Melli_loan_calculator{
             'loan_config_variables',
             ['admin_ajax_url' => admin_url('admin-ajax.php')]
         );
+        self::$is_enqueued = true;
     }
 }

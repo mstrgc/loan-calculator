@@ -68,7 +68,6 @@ class Resalat_loan_calculator{
 
     public function enqueue_assets(){
         if(self::$is_enqueued) return;
-        error_log('test');
         wp_enqueue_style(
             'resalat_style',
             LC_PLUGIN_MAIN_URL . 'banks/bank-resalat/assets/resalat-style.css'
