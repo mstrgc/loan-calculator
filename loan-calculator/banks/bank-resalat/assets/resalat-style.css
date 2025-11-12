@@ -149,7 +149,7 @@ hr{
 #resalat_form_inputs input[type='range']{
     appearance: none;
     -webkit-appearance: none;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 #resalat_form_inputs input[type='range']::-webkit-slider-thumb{

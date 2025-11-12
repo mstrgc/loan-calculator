@@ -18,6 +18,8 @@ require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-mehr/calculator.php';
 require_once LC_PLUGIN_MAIN_PATH . 'banks/bank-resalat/calculator.php';
 
 class Loan_calculator{
+
+    public $post;
     //add singleton pattern
     private static $instance = null;
 
@@ -48,6 +50,7 @@ class Loan_calculator{
         try{
             if(in_array($parameters['bank_name'], $this->available_banks)){
                 $class_name = ucfirst($parameters['bank_name']) . '_loan_calculator';
+                wp_enqueue_script('common_js');
                 return $class_name::get_instance()->render();
             } else{
                 throw new Calculator_exception('محاسبه گر وامی با این نام وجود ندارد', 'could not find a calculator with the given parameter.');
@@ -72,7 +75,7 @@ class Loan_calculator{
     }
 
     public function enqueue_essentials(){
-        wp_enqueue_script(
+        wp_register_script(
             'common_js',
             LC_PLUGIN_MAIN_URL . 'common/common.js',
             ['jquery'],
